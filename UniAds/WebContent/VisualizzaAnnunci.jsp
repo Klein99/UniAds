@@ -24,12 +24,15 @@
 		<%
 			
 			String errore = (String)request.getAttribute("erroreRicerca");
-			int numeroAnnunci = (Integer) request.getAttribute("numeroAnnunci");
-			if(errore==null){				
+			Object objNumAnnunci =  request.getAttribute("numeroAnnunci");	
+		
+			if(errore==null && objNumAnnunci!=null){				
 		%>
 					<input type="hidden" value="0" id="selettorePagine" name="selettorePagine">
 		<%
-       			ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getAttribute("annunci");
+		
+				int numeroAnnunci = (Integer) request.getAttribute("numeroAnnunci");
+				ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getAttribute("annunci");
 				String annunciJson = (String) request.getAttribute("annunciJson");
 				System.out.println(annunciJson);
 				if(annunci.size()>=0){

@@ -288,12 +288,11 @@ function inviaForm(){
 
 
 
-
 function paginazione(numeroPagina, annunciJson){
 	var fine = numeroPagina*5;
 	if(annunciJson[fine-5] != null) {
 		$("#div1").empty();
-		$("#div1").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-5].utente.email+'&titolo='+annunciJson[fine-5].titolo+'">'+annunciJson[fine-5].titolo+annunciJson[fine-5].descrizione);
+		$("#div1").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-5].utente.email+'&titolo='+annunciJson[fine-5].titolo+'"><div class="adBody"><span class="titoloAds">'+annunciJson[fine-5].titolo+'</span><span class="descrizioneAds">'+annunciJson[fine-5].descrizione+'</span></div>');
 		
 	}
 	else{
@@ -302,14 +301,14 @@ function paginazione(numeroPagina, annunciJson){
 
 	if(annunciJson[fine-4] != null) {
 		$("#div2").empty();
-		$("#div2").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-4].utente.email+'&titolo='+annunciJson[fine-4].titolo+'">'+annunciJson[fine-4].titolo+annunciJson[fine-4].descrizione);
+		$("#div2").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-4].utente.email+'&titolo='+annunciJson[fine-4].titolo+'"><div class="adBody"><span class="titoloAds">'+annunciJson[fine-4].titolo+'</span><span class="descrizioneAds">'+annunciJson[fine-4].descrizione+'</span></div>');
 	}
 	else{
 		$("#div2").empty();
 	}
 	if(annunciJson[fine-3] != null) {
 		$("#div3").empty();
-		$("#div3").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-3].utente.email+'&titolo='+annunciJson[fine-3].titolo+'">'+annunciJson[fine-3].titolo+annunciJson[fine-3].descrizione+annunciJson[fine-3].descrizione);
+		$("#div3").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-3].utente.email+'&titolo='+annunciJson[fine-3].titolo+'"><div class="adBody"><span class="titoloAds">'+annunciJson[fine-3].titolo+'</span><span class="descrizioneAds">'+annunciJson[fine-3].descrizione+'</span></div>');
 	}
 	else{
 		$("#div3").empty();
@@ -317,7 +316,7 @@ function paginazione(numeroPagina, annunciJson){
 	}
 	if(annunciJson[fine-2] != null) {
 		$("#div4").empty();
-		$("#div4").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-2].utente.email+'&titolo='+annunciJson[fine-2].titolo+'">'+annunciJson[fine-2].titolo+annunciJson[fine-2].descrizione);
+		$("#div4").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-2].utente.email+'&titolo='+annunciJson[fine-2].titolo+'"><div class="adBody"><span class="titoloAds">'+annunciJson[fine-2].titolo+'</span><span class="descrizioneAds">'+annunciJson[fine-2].descrizione+'</span></div>');
 	}
 	else{
 		$("#div4").empty();
@@ -325,7 +324,7 @@ function paginazione(numeroPagina, annunciJson){
 	}
 	if(annunciJson[fine-1] != null) {
 		$("#div5").empty();
-		$("#div5").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-1].utente.email+'&titolo='+annunciJson[fine-1].titolo+'">'+annunciJson[fine-1].titolo+annunciJson[fine-1].descrizione);
+		$("#div5").html('<img class="adImage" src="PrelevaImmaginiServlet?email='+annunciJson[fine-1].utente.email+'&titolo='+annunciJson[fine-1].titolo+'"><div class="adBody"><span class="titoloAds">'+annunciJson[fine-1].titolo+'</span><span class="descrizioneAds">'+annunciJson[fine-1].descrizione+'</span></div>');
 
 	}
 	else{
