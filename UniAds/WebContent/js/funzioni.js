@@ -71,7 +71,7 @@ function mostraCategorie() {
 			
 	    }
 	  }
-	  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/PrendiCategorieServlet",true);
+	  xmlhttp.open("GET","http://localhost:8080/UniAds/PrendiCategorieServlet",true);
 	 
 	  xmlhttp.send();
 	}
@@ -89,7 +89,7 @@ function aggiungiCategoria(form, nome) {
 		}
 	  }
 	  var valore=$(form["nomeCategoria"]).val();
-	  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/InserimentoCategoriaServlet"+"?nome="+valore,true);
+	  xmlhttp.open("GET","http://localhost:8080/UniAds/InserimentoCategoriaServlet"+"?nome="+valore,true);
 	  
 	  xmlhttp.send();
 	}
@@ -109,7 +109,7 @@ function aggiungiUniversita(form, nome) {
 	  var siglaUniversita=$(form["siglaUniversita"]).val();
 	  var localita=$(form["nomeLocalita"]).val();
 	  
-	  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/InserimentoUniversitaServlet"+"?siglaUniversita="+siglaUniversita+"&localita="+localita,true);
+	  xmlhttp.open("GET","http://localhost:8080/UniAds/InserimentoUniversitaServlet"+"?siglaUniversita="+siglaUniversita+"&localita="+localita,true);
 	  xmlhttp.setRequestHeader("connection","close");
 	  xmlhttp.send();
 	}
@@ -140,7 +140,7 @@ function mostraUniversita() {
 			
 	    }
 	  }
-	  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/PrendiUniversitaServlet",true);
+	  xmlhttp.open("GET","http://localhost:8080/UniAds/PrendiUniversitaServlet",true);
 	 
 	  xmlhttp.send();
 	}
@@ -169,7 +169,7 @@ function mostraListaUniversita() {
 			
 	    }
 	  }
-	  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/PrendiUniversitaServlet",true);
+	  xmlhttp.open("GET","http://localhost:8080/UniAds/PrendiUniversitaServlet",true);
 	 
 	  xmlhttp.send();
 	}
@@ -201,7 +201,7 @@ function mostraListaRegioni() {
 			
 	    }
 	  }
-	  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/PrendiRegioniServlet",true);
+	  xmlhttp.open("GET","http://localhost:8080/UniAds/PrendiRegioniServlet",true);
 	 
 	  xmlhttp.send();
 	}
@@ -241,7 +241,7 @@ function eliminaCategorie(form, nome){
 		  }
 		  var nomeCategoria=$(form["nomeCateogira"]).val();
 		  
-		  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/EliminaCategoriaServlet"+"?nome="+nomeCategoria,true);
+		  xmlhttp.open("GET","http://localhost:8080/UniAds/EliminaCategoriaServlet"+"?nome="+nomeCategoria,true);
 		 
 		  xmlhttp.send();
 }
@@ -258,7 +258,7 @@ function eliminaUniversita(form, nome){
 		  }
 		  var siglaUniversita=$(form["siglaUniversita"]).val();
 		  window.alert("CIAO");
-		  xmlhttp.open("GET","http://localhost:8080/PROGETTO_TSW/PrendiRegioniServlet",true);
+		  xmlhttp.open("GET","http://localhost:8080/UniAds/PrendiRegioniServlet",true);
 		 
 		  xmlhttp.send();
 }

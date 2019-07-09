@@ -24,10 +24,11 @@ public class PrendiRegioniServlet extends HttpServlet {
 		DriverManagerConnectionPool dmcp=(DriverManagerConnectionPool)getServletContext().getAttribute("DriverManager");
 		RegioneModel modelRegione = new RegioneModel(dmcp);
 		try {
-			
 			ArrayList<Regione> regioni = modelRegione.doRetrieveAll("nome");
+			
 			Gson gson = new Gson();
 			String jsonString = gson.toJson(regioni);
+			
 			response.getWriter().print(jsonString.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
