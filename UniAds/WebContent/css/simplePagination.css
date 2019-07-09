@@ -1,0 +1,51 @@
+
+.containerAds{
+	display:block;
+	background-color:white;
+	height: auto;
+	border: 1px solid #5a5a5a;
+	padding: 0 15px;
+}
+
+#ricerca{
+	font-weight:bold;
+	font-size: 20pt;
+	
+}
+
+.listAds {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.titoloAds {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+
+.descrizioneAds {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.everyAds {
+  display: flex;
+  padding: 10px;
+}
+
+.everyAds:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+.adImage {
+	height: 100px;
+	width: 100px;
+	margin: 0 15px 0 0;
+}
+
+.adBody {
+	display: flex;
+	flex-flow: column;
+	
+}

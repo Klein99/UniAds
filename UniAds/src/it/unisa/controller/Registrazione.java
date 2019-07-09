@@ -1,0 +1,131 @@
+package it.unisa.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import it.unisa.model.Corriere;
+import it.unisa.model.CorriereModel;
+import it.unisa.model.DriverManagerConnectionPool;
+import it.unisa.model.GenericUser.Ruolo;
+import it.unisa.model.UtenteModel;
+import it.unisa.model.Utente;
+
+/**
+ * Servlet implementation class Registrazione
+ */
+@WebServlet("/Registrazione")
+public class Registrazione extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/plain");
+
+		out.write("Error: GET method is used but POST method is required");
+		out.close();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email= request.getParameter("emailRegistrazione");
+		String password = request.getParameter("password");
+		String nome = request.getParameter("nome");
+		String cognome = request.getParameter("cognome");
+		String indirizzo = request.getParameter("indirizzo");
+		String ruolo = request.getParameter("ruolo");
+		String agenzia = request.getParameter("agenzia");
+		DriverManagerConnectionPool dmcp=(DriverManagerConnectionPool)getServletContext().getAttribute("DriverManager");
+		if(ruolo.equals("Utente")) {
+			Utente utente = new Utente();
+			utente.setEmail(email);
+			UtenteModel model = new UtenteModel(dmcp);
+			String error = "";
+			try {
+				utente = model.doRetrieveByKey(utente);
+				if(!(utente==null || utente.getEmail().equals(email))) {
+					utente.setEmail(email);
+					utente.setNome(nome);
+					utente.setCognome(cognome);
+					utente.setIndirizzo(indirizzo);
+					utente.setPassword(password);
+					utente.setRuolo(Ruolo.UTENTE);
+					model.doSave(utente);
+					response.sendRedirect("HomePage.jsp");
+				}
+				else {
+					error+="E-mail non valida";
+					request.setAttribute("errore", error);
+//					request.setAttribute("nome", nome);
+//					request.setAttribute("cognome", cognome);
+//					request.setAttribute("indirizzo", indirizzo);
+//					request.setAttribute("password", password);
+//					request.setAttribute("ruolo", ruolo);
+					request.setAttribute("utente", utente);
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Registrazione.jsp");
+					d.forward(request, response);
+				}
+				
+		} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			Utente utente = new Utente();
+			
+			Corriere corriere = new Corriere();
+			corriere.setEmail(email);
+			corriere.setNomeAgenzia(agenzia);
+			corriere.setPassword(password);
+			corriere.setRuolo(Ruolo.CORRIERE);
+			UtenteModel modelUtente = new UtenteModel(dmcp);
+			CorriereModel modelCorriere = new CorriereModel(dmcp);
+			String error = "";
+			try {
+				utente.setEmail(email);
+				utente = modelUtente.doRetrieveByKey(utente);
+				corriere = modelCorriere.doRetrieveByKey(corriere);
+				if(!(utente==null || utente.getEmail().equals(email))) {
+					utente.setEmail(email);
+					utente.setNome(nome);
+					utente.setCognome(cognome);
+					utente.setIndirizzo(indirizzo);
+					utente.setPassword(password);
+					utente.setRuolo(Ruolo.CORRIERE);
+					corriere.setEmail(email);
+					corriere.setNomeAgenzia(agenzia);
+					corriere.setPassword(password);
+					corriere.setRuolo(Ruolo.CORRIERE);
+					modelUtente.doSave(utente);
+					modelCorriere.doSave(corriere);
+					response.sendRedirect("HomePage.jsp");
+				}
+				else {
+					error+="E-mail non valida";
+					request.setAttribute("errore", error);
+//					request.setAttribute("nome", nome);
+//					request.setAttribute("cognome", cognome);
+//					request.setAttribute("indirizzo", indirizzo);
+//					request.setAttribute("password", password);
+//					request.setAttribute("ruolo", ruolo);
+					request.setAttribute("utente", corriere);
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Registrazione.jsp");
+					d.forward(request, response);
+				}
+				
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		}
+
+	}
+
+}

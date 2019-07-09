@@ -1,0 +1,51 @@
+package it.unisa.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import it.unisa.model.Categoria;
+import it.unisa.model.CategoriaModel;
+import it.unisa.model.DriverManagerConnectionPool;
+
+@WebServlet("/InserimentoCategoriaServlet")
+public class InserimentoCategoriaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String nomeCategoria = request.getParameter("nomeCategoria");
+    	DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
+    	CategoriaModel modelCategoria = new CategoriaModel(dmcp);
+    	Categoria categoria = new Categoria();
+    	categoria.setNome(nomeCategoria);
+    	try {
+			categoria=modelCategoria.doRetrieveByKey(categoria);
+			if(categoria!=null && !categoria.getNome().equals(nomeCategoria)) {
+				categoria.setNome(nomeCategoria);
+				modelCategoria.doSave(categoria);
+				request.getSession().setAttribute("completamentoCategoria", "Categoria inserita");
+				response.sendRedirect("OperazioniAdmin.jsp");
+			}
+			else {
+				request.setAttribute("erroreInserimentoCateogira", "Impossibile aggiungere categoria");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				d.forward(request, response);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
