@@ -1,5 +1,5 @@
 <footer>
-	<img id="logo_footer" src="img/logo.png">
+	<img id="logo_footer" src="/UniAds/img/logo.png">
 		<div id="copiright"> © 2019 UniAds</div>
 			<div id="address">
 				<address>

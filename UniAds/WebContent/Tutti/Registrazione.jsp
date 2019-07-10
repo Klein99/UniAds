@@ -13,17 +13,17 @@
 
 <title>UniAds.it - Registrazione</title>
 
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/LoginRegistrazione.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+<link rel="stylesheet" type="text/css" href="/UniAds/css/style.css">
+<link rel="stylesheet" type="text/css" href="/UniAds/css/LoginRegistrazione.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 
 </head>
 
-<body>
+<body onload=mostraCategorie();mostraUniversita();mostraListaRegioni()>
 
 	<%@include file="Header.jsp"%>
-
+	<%@include file="BarraNavigazione.jsp"%>
+	
 	<%
 		String errore = (String) request.getAttribute("errore");
 
@@ -49,7 +49,7 @@
 	<div class="container">
 		<fieldset style="width: 300px; margin-left: auto; margin-right: auto;">
 					<p class="scritte">Registrazione</p>
-		<form action="Registrazione" method="POST" name="formReg"  onsubmit="return validazione(this)">
+		<form action="<%=response.encodeURL("/UniAds/Registrazione")%>" method="POST" name="formReg"  onsubmit="return validazione(this)">
 
 				
 
@@ -126,10 +126,9 @@
 
 	<%@include file="Footer.jsp"%>
 
-	<script src="js/jquery.js"></script>
-
-	<script src="js/funzioni.js"></script>
-
+	
+	<script src="/UniAds/js/jquery.js"></script>
+	<script src="/UniAds/js/funzioni.js"></script>
 </body>
 
 </html>

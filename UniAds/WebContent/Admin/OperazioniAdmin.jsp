@@ -8,17 +8,17 @@
 		<title>Operazioni Admin - UniAds</title>
 		
 			
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/LoginRegistrazione.css">
-	<link rel="stylesheet" type="text/css" href="css/InserimentoAnnuncio.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/LoginRegistrazione.css">
+	<link rel="stylesheet" type="text/css" href="../css/InserimentoAnnuncio.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 		
 	 </head>
 	 
 	<body onload=mostraCategorie();mostraUniversita()>
-		<%@include file="Header.jsp"%>
+		<%@include file="/Tutti/Header.jsp"%>
 	
-		<%@include file="BarraNavigazione.jsp"%>
+		<%@include file="/Tutti/BarraNavigazione.jsp"%>
 	
 	<div class="container">
 	
@@ -268,7 +268,7 @@
  		</div>
  		
 		
-			<%@include file="Footer.jsp"%>
+			<%@include file="/Tutti/Footer.jsp"%>
 				 		
  		<script src="js/jquery.js"></script>
 		<script src="js/funzioni.js"></script>

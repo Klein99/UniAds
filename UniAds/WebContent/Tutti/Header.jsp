@@ -2,7 +2,7 @@
 <%@page import="it.unisa.model.Amministratore"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="it.unisa.model.Utente"%>
 <header>
-	<div id="logo"><a href="HomePage.jsp" title="UniAds"><img src="img/logo.png"></a></div>
+	<div id="logo"><a href="/UniAds/Tutti/HomePage.jsp" title="UniAds"><img src="/UniAds/img/logo.png"></a></div>
 		<nav>  
 			<%
 				Amministratore amministratore = new Amministratore();
@@ -86,9 +86,9 @@
 			%>
 			
 			<ul>
-				<li><a href="Login.jsp">Accedi</a></li>
-				<li><a href="Registrazione.jsp">Registrati</a></li>
-				<li><a href="Login.jsp"><nobr>Crea Annuncio</nobr></a></li>
+				<li><a href="/UniAds/Tutti/Login.jsp">Accedi</a></li>
+				<li><a href="/UniAds/Tutti/Registrazione.jsp">Registrati</a></li>
+				<li><a href="/UniAds/Tutti/Login.jsp"><nobr>Crea Annuncio</nobr></a></li>
 			</ul>
 			<%}%>
 				

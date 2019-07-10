@@ -60,13 +60,13 @@ public class Login extends HttpServlet {
 					if(utente.getRuolo().equals(GenericUser.Ruolo.UTENTE)) {
 						session.setAttribute("login", true);		
 						session.setAttribute("utente", utente);
-						response.sendRedirect("HomePage.jsp");
+						response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 					}
 					else {
 						
 						String errore="Email o password o ruolo errati ";
 						request.setAttribute("errore", errore);
-						RequestDispatcher  d = getServletContext().getRequestDispatcher("/Login.jsp");
+						RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/Login.jsp");
 						d.forward(request, response);
 
 					}
@@ -75,7 +75,7 @@ public class Login extends HttpServlet {
 					
 					String errore="Email o password o ruolo errati";
 					request.setAttribute("errore", errore);
-					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Login.jsp");
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/Login.jsp");
 					d.forward(request, response);
 				}
 			} catch (SQLException e) {
@@ -97,19 +97,19 @@ public class Login extends HttpServlet {
 					if(corriere.getRuolo().equals(GenericUser.Ruolo.CORRIERE)) {	
 						session.setAttribute("login", true);
 						session.setAttribute("utente", corriere);
-						response.sendRedirect("HomePage.jsp");
+						response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 					}
 					else {
 						String errore="Email o password o ruolo errati ";
 						request.setAttribute("errore", errore);
-						RequestDispatcher  d = getServletContext().getRequestDispatcher("/Login.jsp");
+						RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/Login.jsp");
 						d.forward(request, response);
 					}
 				}
 				else {
 					String errore="Email o password o ruolo errati";
 					request.setAttribute("errore", errore);
-					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Login.jsp");
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/Login.jsp");
 					d.forward(request, response);
 				}
 			}
@@ -131,19 +131,19 @@ public class Login extends HttpServlet {
 
 					session.setAttribute("login", true);
 					session.setAttribute("utente", amministratore);
-					response.sendRedirect("HomePage.jsp");
+					response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 				}
 				else {
 					String errore="Email o password o ruolo errati ";
 					request.setAttribute("errore", errore);
-					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Login.jsp");
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/Login.jsp");
 					d.forward(request, response);
 				}
 			}
 			else {
 				String errore="Email o password o ruoli errati";
 				request.setAttribute("errore", errore);
-				RequestDispatcher  d = getServletContext().getRequestDispatcher("/Login.jsp");
+				RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/Login.jsp");
 				d.forward(request, response);
 			}
 		} catch (SQLException e) {

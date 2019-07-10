@@ -9,13 +9,13 @@
 	
 	<title>UniAds.it - Login</title>
 	
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/LoginRegistrazione.css">
+	<link rel="stylesheet" type="text/css" href="/UniAds/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/UniAds/css/LoginRegistrazione.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 	 
 	</head>
 	
-	<body>
+	<body onload=mostraCategorie();mostraUniversita();mostraListaRegioni()>
 	
 		<%@include file="Header.jsp"%>
 	
@@ -25,7 +25,7 @@
 			<fieldset style="width: 300px; margin-left: auto; margin-right: auto;">
 				<p class="scritte">Accedi</p>
 
-				<form action="<%=response.encodeURL("Login")%>" method="POST" name="formLogin">
+				<form action="<%=response.encodeURL("/UniAds/Login")%>" method="POST" name="formLogin">
 
 					<div class="form-riga">
 
@@ -61,9 +61,9 @@
 							<legend>Ruolo</legend>
 
 							<label for="select"></label><br/>
-							Utente<input id="selection-option" type="radio" name="ruolo" value="Utente" checked="checked"> 
-							Corriere<input id="selection-option" type="radio" name="ruolo" value="Corriere">
-							Admin<input id="selection-option" type="radio" name="ruolo" value="Amministratore">
+							Utente<input  type="radio" name="ruolo" value="Utente" checked="checked"> 
+							Corriere<input  type="radio" name="ruolo" value="Corriere">
+							Admin<input  type="radio" name="ruolo" value="Amministratore">
 
 						</fieldset> 
 
@@ -85,7 +85,7 @@
 			
 		<%@include file="Footer.jsp"%>
 		
-		<script src="js/jquery.js"></script>
-		<script src="js/funzioni.js" type="text/javascript"></script>
+		<script src="/UniAds/js/jquery.js"></script>
+		<script src="/UniAds/js/funzioni.js"></script>
 	</body>
 </html>

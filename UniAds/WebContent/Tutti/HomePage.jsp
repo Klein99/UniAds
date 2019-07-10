@@ -6,13 +6,13 @@
     	<meta charset="utf-8">
     	<meta http-equiv="x-ua-compatible" content="ie=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="stylesheet" href="css/style.css">
+    	<link rel="stylesheet" href="/UniAds/css/style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
   		<title>UniAds</title>
 	</head>
 	<body onload=mostraCategorie();mostraUniversita();mostraListaRegioni()>
-		<%@include file="Header.jsp" %>
-		<%@include file="BarraNavigazione.jsp" %>
+		<%@include file="/Tutti/Header.jsp" %>
+		<%@include file="/Tutti/BarraNavigazione.jsp" %>
 		<div class="container">
 			<article id="grigliaCategorie">
 				<a href="page1.html" style="height: 123px"><img id="appunti" class="icon-categorie" ></a>
@@ -27,8 +27,8 @@
 				<ul class="regione-lista" id="regione-lista2"></ul>
 			</article>
 		</div>
-		<%@include file="Footer.jsp" %>
-		<script src="js/jquery.js"></script>
-		<script src="js/funzioni.js"></script>
+		<%@include file="/Tutti/Footer.jsp" %>
+	<script src="/UniAds/js/jquery.js"></script>
+	<script src="/UniAds/js/funzioni.js"></script>
 	</body>
 </html>

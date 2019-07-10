@@ -1,6 +1,6 @@
 <div class="navigator"> 
-		<img src="img/cercare.png" id="search">
-		<form action="PrelevaAnnunciServlet" method="GET" id="ricerca">
+		<img src="/UniAds/img/cercare.png" id="search">
+		<form action="/UniAds/PrelevaAnnunciServlet" method="GET" id="ricerca">
 			<select name="universita" class="select" id="selectUniversita">
 				<option value="0" selected="selected">Seleziona Università:</option>
 			</select>

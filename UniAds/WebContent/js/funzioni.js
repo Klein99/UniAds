@@ -276,7 +276,7 @@ function mostraPassword() {
 
 function selectOperazioni(value) {
 	if(value == 1)
-		window.location.href="./OperazioniAdmin.jsp";
+		window.location.href="./Admin/OperazioniAdmin.jsp";
 	if(value == 9)
 		window.location.href="./OperazioniCorriere.jsp";
 }
