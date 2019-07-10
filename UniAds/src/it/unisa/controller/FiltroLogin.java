@@ -77,7 +77,7 @@ public class FiltroLogin implements Filter {
 				hresponse.sendRedirect("/UniAds/Tutti/Login.jsp");
 			}	
 		}
-		chain.doFilter(request, response);
+		
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

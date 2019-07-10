@@ -43,7 +43,7 @@
    	<div class="container_insert">
 	<fieldset class="fieldVit">
 
-		<form action="<%=response.encodeURL("/UniAds/InserimentoAnnuncioServlet")%>" method="POST" id="formInserisciAnnuncio" enctype="multipart/form-data">
+		<form action="<%=response.encodeURL("/UniAds/User/InserimentoAnnuncioServlet")%>" method="POST" id="formInserisciAnnuncio" enctype="multipart/form-data">
 			
 				
 			<input type = "hidden" value="<%=email%>" name="email">

@@ -21,7 +21,7 @@
 	
 			<fieldset class="fieldVit">
 				<legend style="font-weight:bold; color: #2f2f2f;">Aggiungi area di consegna</legend>
-				<form action="<%=response.encodeURL("/UniAds/InserimentoAreaConsegnaServlet")%>" method="GET" id="formAreaConsegna">
+				<form action="<%=response.encodeURL("/UniAds/Corriere/InserimentoAreaConsegnaServlet")%>" method="GET" id="formAreaConsegna">
 					<input type="hidden" id="agenzia" name="agenzia" value="<%=corriere.getNomeAgenzia()%>">
 					<input type="hidden" id="email" name="email" value="<%=corriere.getEmail()%>">
 			
@@ -61,7 +61,7 @@
 		<!--ELIMINA AREA DI CONSEGNA-->
 		<fieldset class="fieldVit">
 			<legend style="font-weight:bold; color: #2f2f2f;">Elimina area di consegna</legend>
-			<form action="<%=response.encodeURL("/UniAds/EliminazioneAreaConsegnaServlet")%>" method="GET" id="formAreaConsegna">
+			<form action="<%=response.encodeURL("/UniAds/Corriere/EliminazioneAreaConsegnaServlet")%>" method="GET" id="formAreaConsegna">
 				<input type="hidden" id="agenzia" name="agenzia" value="<%=corriere.getNomeAgenzia()%>">
 				<input type="hidden" id="email" name="email" value="<%=corriere.getEmail()%>">
 				

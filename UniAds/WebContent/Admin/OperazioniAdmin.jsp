@@ -24,7 +24,7 @@
 	
 		<!-- INSERIMENTO UNIVERSITA --> 
 		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Aggiungi Università</legend>
-		 <form action="<%=response.encodeURL("/UniAds/InserimentoUniversitaServlet")%>" method="GET" id="formCategoria">
+		 <form action="<%=response.encodeURL("/UniAds/Admin/InserimentoUniversitaServlet")%>" method="GET" id="formCategoria">
 			Sigla universita<br/>
 			<input class="input-text" type = "text" id="siglaUniversita" name = "siglaUniversita" value="" required onkeyup= "maiuscolo(this.form,'siglaUniversita')"> <br/>
 			<%
@@ -74,7 +74,7 @@
  		
  		<!-- INSERIMENTO CATEGORIA-->
  		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Inserimento Categoria</legend>
- 		<form action="<%=response.encodeURL("/UniAds/InserimentoCategoriaServlet")%>" method="GET" id="formCategoria">
+ 		<form action="<%=response.encodeURL("/UniAds/Admin/InserimentoCategoriaServlet")%>" method="GET" id="formCategoria">
 			Nome categoria<br/>
 			<input class="input-text" type = "text" id="nomeCategoria" name = "nomeCategoria" value="" required onblur="primaLetteraMaiuscola(this.form,'nomeCategoria')"> <br/>
 			<%
@@ -104,7 +104,7 @@
  		
  		<!-- ELIMINA CATEGORIE -->
 		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Elimina Categoria:</legend>
-		<form action = "<%=response.encodeURL("/UniAds/EliminaCategoriaServlet")%>" method = "GET" name = "formEliminaCategoria" >
+		<form action = "<%=response.encodeURL("/UniAds/Admin/EliminaCategoriaServlet")%>" method = "GET" name = "formEliminaCategoria" >
 			<select name="categorie" id="selectCategoria2"  class="selectVit" > <!-- C'era class="select" -->
 				<option value="0" selected="selected">Elimina categoria:</option>
 			</select>
@@ -136,7 +136,7 @@
 		
 		<!-- ELIMINA UNIVERSITA -->
 		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Elimina Università:</legend>
-		<form action = "<%=response.encodeURL("/UniAds/EliminaUniversitaServlet")%>" method="GET">
+		<form action = "<%=response.encodeURL("/UniAds/Admin/EliminaUniversitaServlet")%>" method="GET">
 			<select name="universita" id="selectUniversita2" class="selectVit">  <!-- C'era class="select" -->
 					<option value="0" selected="selected">Seleziona Università:</option>
 			</select>
@@ -168,7 +168,7 @@
 		</fieldset>
 		
 		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Elimina Annuncio:</legend>
-		<form action = "<%=response.encodeURL("/UniAds/EliminaAnnuncioServlet")%>" method="GET">
+		<form action = "<%=response.encodeURL("/UniAds/Admin/EliminaAnnuncioServlet")%>" method="GET">
 			
 			Email utente<br/>
 			<input class="input-text" type="email" name="emailUtente" value="" required>
@@ -206,7 +206,7 @@
 		
 		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Elimina Utente</legend>
 		
-		<form action = "<%=response.encodeURL("/UniAds/EliminaUtenteServlet")%>" method="GET">
+		<form action = "<%=response.encodeURL("/UniAds/Admin/EliminaUtenteServlet")%>" method="GET">
 			
 			Email utente<br/>
 			<input class="input-text" type="email" name="emailUtente" value="" required>
@@ -239,7 +239,7 @@
 		</fieldset>
 		
 		<fieldset class="fieldVit"><legend style="font-weight:bold; color: #2f2f2f;">Modifica Ruolo:</legend>
-			<form action="<%=response.encodeURL("/UniAds/ModificaRuoloServlet")%>" method="GET" id="formCategoria">
+			<form action="<%=response.encodeURL("/UniAds/Admin/ModificaRuoloServlet")%>" method="GET" id="formCategoria">
 			Email Ruolo da Modificare<br/>
 			<input class="input-text" type = "text" name = "emailUtente" value="" required ><br/> <br/>
 			<%
