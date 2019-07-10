@@ -53,7 +53,7 @@ nav ul li a:hover
 	background: white;
 }
 
-/*Categorie , Universit√† ,select, Research Bar*/
+/*Categorie , Universit‡ ,select, Research Bar*/
 
 .navigator 
 {
@@ -502,6 +502,13 @@ address a
    		grid-template-columns: 1fr;
 	}
 	
+	#ricerca
+	{
+		display: grid;
+   		grid-gap: 15px;
+   		grid-template-columns: 1fr;
+	}
+	
 	#research 
 	{
 		width: 90%;
@@ -567,9 +574,11 @@ address a
 	{
     	width: 250px;
 	}
+	
 	nav ul {
 	 display: inline;
 	 }
+	 
 	#search 
 	{
 		margin-left: 25%;
@@ -578,6 +587,13 @@ address a
 	.navigator
 	{
 		height: 200px;
+		display: grid;
+   		grid-gap: 15px;
+   		grid-template-columns: 1fr;
+	}
+	
+	#ricerca
+	{
 		display: grid;
    		grid-gap: 15px;
    		grid-template-columns: 1fr;
