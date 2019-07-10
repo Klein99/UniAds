@@ -59,6 +59,7 @@ public class Login extends HttpServlet {
 				if(utente!=null && utente.getEmail().equals(email) && utente.getPassword().equals(password)) {
 					if(utente.getRuolo().equals(GenericUser.Ruolo.UTENTE)) {
 						session.setAttribute("login", true);		
+						session.setAttribute("ruolo", "UTENTE");
 						session.setAttribute("utente", utente);
 						response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 					}
@@ -97,6 +98,7 @@ public class Login extends HttpServlet {
 					if(corriere.getRuolo().equals(GenericUser.Ruolo.CORRIERE)) {	
 						session.setAttribute("login", true);
 						session.setAttribute("utente", corriere);
+						session.setAttribute("ruolo", "CORRIERE");
 						response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 					}
 					else {
@@ -130,6 +132,7 @@ public class Login extends HttpServlet {
 				if(amministratore.getRuolo().equals(GenericUser.Ruolo.AMMINISTRATORE)) {	
 
 					session.setAttribute("login", true);
+					session.setAttribute("ruolo", "AMMINISTRATORE");
 					session.setAttribute("utente", amministratore);
 					response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 				}
