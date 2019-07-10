@@ -7,15 +7,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>UniAds - Inserisci Annunci</title>
 		
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/InserimentoAnnuncio.css">
+		<link rel="stylesheet" type="text/css" href="/UniAds/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/UniAds/css/InserimentoAnnuncio.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 		
 	</head>
 	
 	<body onload=mostraCategorie();mostraUniversita();>
-		<%@include file="Header.jsp"%>
-		<%@include file="BarraNavigazione.jsp"%>
+		<%@include file="/Tutti/Header.jsp"%>
+		<%@include file="/Tutti/BarraNavigazione.jsp"%>
 		<% isLog = (Boolean) request.getSession().getAttribute("login"); 
 			if(isLog!=null && isLog.equals(true) && object!=null){
 				String email="";
@@ -43,7 +43,7 @@
    	<div class="container_insert">
 	<fieldset class="fieldVit">
 
-		<form action="InserimentoAnnuncioServlet" method="POST" id="formInserisciAnnuncio" enctype="multipart/form-data">
+		<form action="<%=response.encodeURL("/UniAds/InserimentoAnnuncioServlet")%>" method="POST" id="formInserisciAnnuncio" enctype="multipart/form-data">
 			
 				
 			<input type = "hidden" value="<%=email%>" name="email">
@@ -54,10 +54,10 @@
 			<fieldset style="border: 2px dashed #838383;" id="fieldsetImg">
 				<legend class="dettagli">Seleziona immagini(facoltativo)</legend>
 				<div class="img" id="divImg">
-					<img src="img/iconaddphoto.png">
+					<img src="/UniAds/img/iconaddphoto.png">
 					<label for="imgLabel"></label>
 					
-					<input type="file"  value="Scegli immagine" name="img" size="200" class="uploadImg" onchange="aggiungiImmagine(0)">
+					<input type="file"  value="Scegli immagine" name="img" size="200" class="uploadImg" >
 					<input type="button" value="+" onclick="addImg()">
 				</div>
 				<span id="0"></span>
@@ -100,10 +100,10 @@
 			
   </fieldset>
   </div>
-			<%@include file="Footer.jsp"%>
+			<%@include file="/Tutti/Footer.jsp"%>
 
-		<script src="js/jquery.js"></script>
-		<script src="js/funzioni.js"></script>
+		<script src="/UniAds/js/jquery.js"></script>
+		<script src="/UniAds/js/funzioni.js"></script>
 		
 		
 		

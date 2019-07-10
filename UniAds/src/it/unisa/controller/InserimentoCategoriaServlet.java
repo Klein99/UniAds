@@ -30,11 +30,11 @@ public class InserimentoCategoriaServlet extends HttpServlet {
 				categoria.setNome(nomeCategoria);
 				modelCategoria.doSave(categoria);
 				request.getSession().setAttribute("completamentoCategoria", "Categoria inserita");
-				response.sendRedirect("OperazioniAdmin.jsp");
+				response.sendRedirect("/UniAds/Admin/OperazioniAdmin.jsp");
 			}
 			else {
 				request.setAttribute("erroreInserimentoCateogira", "Impossibile aggiungere categoria");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 			}
 		} catch (SQLException e) {

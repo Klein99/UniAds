@@ -37,12 +37,12 @@ public class EliminaAnnuncioServlet extends HttpServlet {
 			if((annuncio=modelAnnuncio.doRetrieveByKey(annuncio)) != null && annuncio.getTitolo().equals(titoloAnnuncio) && annuncio.getUtente().getEmail().equals(emailUtente)) {
 				modelAnnuncio.doDelete(annuncio);
 				request.setAttribute("completamentoEliminazioneAnnuncio", "Annuncio eliminato");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 			}
 			else {
 				request.setAttribute("erroreEliminazioneAnnuncio", "Impossibile eliminare annuncio");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 
 			}

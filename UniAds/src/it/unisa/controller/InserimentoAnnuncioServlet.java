@@ -83,7 +83,7 @@ public class InserimentoAnnuncioServlet extends HttpServlet {
 		//Fai codice
 		if(categoria.equals("0") || universita.equals("0")) {
 			request.setAttribute("errore", "Impossibile aggiungere annuncio");
-			RequestDispatcher d = getServletContext().getRequestDispatcher("/InserimentoAnnuncio.jsp");
+			RequestDispatcher d = getServletContext().getRequestDispatcher("/User/InserimentoAnnuncio.jsp");
 			d.forward(request, response);
 		}
 		else {	

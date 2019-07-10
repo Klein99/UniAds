@@ -276,9 +276,9 @@ function mostraPassword() {
 
 function selectOperazioni(value) {
 	if(value == 1)
-		window.location.href="./Admin/OperazioniAdmin.jsp";
+		window.location.href="/UniAds/Admin/OperazioniAdmin.jsp";
 	if(value == 9)
-		window.location.href="./OperazioniCorriere.jsp";
+		window.location.href="/UniAds/OperazioniCorriere.jsp";
 }
 
 function inviaForm(){

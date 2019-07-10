@@ -32,12 +32,12 @@ public class EliminaUtenteServlet extends HttpServlet {
 			if((utente=modelUtente.doRetrieveByKey(utente))!= null && utente.getEmail().equals(email)) {
 				modelUtente.doDelete(utente);
 				request.setAttribute("completamentoEliminazioneUtente", "Utente eliminato");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 			}
 			else {
 				request.setAttribute("erroreEliminazioneUtente", "Impossibilre eliminare l'utente");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 			}
 		} 

@@ -19,7 +19,7 @@ public class Logout extends HttpServlet {
 	{	
 		request.setAttribute("login",false);
 		request.getSession().invalidate();
-		response.sendRedirect("HomePage.jsp");
+		response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 	}
 
 	

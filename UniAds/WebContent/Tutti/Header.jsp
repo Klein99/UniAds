@@ -26,8 +26,8 @@
 				    <span class="select_arrow"></span>
 				    </span>
 				</li>
-    			<li><a href="InserimentoAnnuncio.jsp"><nobr>Crea Annuncio</nobr></a></li>
-				<li><a href="Logout">Esci</a></li>
+    			<li><a href="/UniAds/User/InserimentoAnnuncio.jsp"><nobr>Crea Annuncio</nobr></a></li>
+				<li><a href="/UniAds/Logout">Esci</a></li>
 				<!-- aggiungi il select dell utente -->
 			</ul>
 			<%}%>
@@ -49,8 +49,8 @@
 				    <span class="select_arrow"></span>
 				    </span>
 				</li>
-    			<li><a href="InserimentoAnnuncio.jsp"><nobr>Crea Annuncio</nobr></a></li>
-				<li><a href="Logout">Esci</a></li>
+    			<li><a href="/UniAds/User/InserimentoAnnuncio.jsp"><nobr>Crea Annuncio</nobr></a></li>
+				<li><a href="/UniAds/Logout">Esci</a></li>
 				<!-- aggiungi il select dell utente -->
 			</ul>
 			<%
@@ -73,8 +73,8 @@
 				    <span class="select_arrow"></span>
 				    </span>
 				</li>
-    			<li><a href="InserimentoAnnuncio.jsp"><nobr>Crea Annuncio</nobr></a></li>
-				<li><a href="Logout">Esci</a></li>
+    			<li><a href="/UniAds/User/InserimentoAnnuncio.jsp"><nobr>Crea Annuncio</nobr></a></li>
+				<li><a href="/UniAds/Logout">Esci</a></li>
 				<!-- aggiungi il select dell utente -->
 			</ul>
 			<%

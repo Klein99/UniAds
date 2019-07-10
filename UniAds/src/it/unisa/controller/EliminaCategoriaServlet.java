@@ -36,7 +36,7 @@ public class EliminaCategoriaServlet extends HttpServlet {
     		try {
 				modelCategoria.doDelete(c);
 				request.getSession().setAttribute("completamentoEliminazioneCategoria", "Categoria eliminata");
-				response.sendRedirect("OperazioniAdmin.jsp");
+				response.sendRedirect("/UniAds/Admin/OperazioniAdmin.jsp");
     		} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -44,7 +44,7 @@ public class EliminaCategoriaServlet extends HttpServlet {
     	}
     	else {
     		request.setAttribute("erroreEliminazioneCategoria", "Impossibile cancellare categoria");
-    		RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+    		RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
     		d.forward(request, response);
     	}
     }

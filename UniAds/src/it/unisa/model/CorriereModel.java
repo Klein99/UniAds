@@ -68,9 +68,11 @@ public class CorriereModel implements DataAccesObjectInterface<Corriere>  {
 				bean.setEmail(rs.getString("email_utente"));
 				bean.setNomeAgenzia(rs.getString("agenzia"));
 				bean.setPassword(rs.getString("password"));
-				UtenteModel modelUtente = new UtenteModel(dmcp);
+				
+				UtenteModel modelUtente = new UtenteModel(dmcp);	
 				Utente utente = new Utente();
 				utente.setEmail(bean.getEmail());
+				
 				String nome = modelUtente.doRetrieveByKey(utente).getNome();
 				bean.setNome(nome);
 				if(rs.getString("ruolo").equals("AMMINISTRATORE")) {

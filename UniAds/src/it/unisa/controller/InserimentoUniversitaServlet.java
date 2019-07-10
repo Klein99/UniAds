@@ -41,7 +41,7 @@ public class InserimentoUniversitaServlet extends HttpServlet {
    		try {
 			if((regione=modelRegione.doRetrieveByKey(tempRegione))==null  || !regione.getNome().equals(localita)) {
 				request.setAttribute("erroreRegione", "Regione non valida");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 				return;
 				
@@ -53,11 +53,11 @@ public class InserimentoUniversitaServlet extends HttpServlet {
 					universita.setSigla(siglaUniversita);
 					modelUniversita.doSave(universita);
 					request.getSession().setAttribute("completamentoInserimentoUniversita","Univerista inserita");
-					response.sendRedirect("OperazioniAdmin.jsp");
+					response.sendRedirect("/UniAds/Admin/OperazioniAdmin.jsp");
 				}
 				else {
 					request.setAttribute("erroreSigla", "Sigla esistente");
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 					d.forward(request, response);
 
 				}

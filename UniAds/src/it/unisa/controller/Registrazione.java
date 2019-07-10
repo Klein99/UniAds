@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.model.Corriere;
 import it.unisa.model.CorriereModel;
@@ -57,7 +58,10 @@ public class Registrazione extends HttpServlet {
 					utente.setPassword(password);
 					utente.setRuolo(Ruolo.UTENTE);
 					model.doSave(utente);
-					response.sendRedirect("HomePage.jsp");
+					HttpSession session = request.getSession();
+					session.setAttribute("login", true);		
+					session.setAttribute("utente", utente);
+					response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 				}
 				else {
 					error+="E-mail non valida";
@@ -104,7 +108,10 @@ public class Registrazione extends HttpServlet {
 					corriere.setRuolo(Ruolo.CORRIERE);
 					modelUtente.doSave(utente);
 					modelCorriere.doSave(corriere);
-					response.sendRedirect("HomePage.jsp");
+					HttpSession session = request.getSession();
+					session.setAttribute("login", true);		
+					session.setAttribute("utente", corriere);
+					response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 				}
 				else {
 					error+="E-mail non valida";

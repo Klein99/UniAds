@@ -34,12 +34,12 @@ public class EliminaUniversitaServlet extends HttpServlet {
 			
 				modelUniversita.doDelete(universita);
 				request.setAttribute("completamentoEliminazioneUniversita","Universita eliminata");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 			}
 			else {
 				request.setAttribute("erroreEliminazioneUniversita","Impossibile cancellare universita");
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniAdmin.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Admin/OperazioniAdmin.jsp");
 				d.forward(request, response);
 			}
 		} catch (SQLException e) {
