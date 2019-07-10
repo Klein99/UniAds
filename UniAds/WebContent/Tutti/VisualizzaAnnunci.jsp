@@ -35,7 +35,7 @@
 				ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getAttribute("annunci");
 				String annunciJson = (String) request.getAttribute("annunciJson");
 				System.out.println(annunciJson);
-				if(annunci.size()>=0){
+				if(annunci.size()>0){
 		%>
 		
 		
@@ -62,9 +62,20 @@
     	 				<%} %>
     	 			</div>
      			</div>
+       
+     	
+     
+		<% 		}
       
-      	
-      <% 		}%>
+				else{
+		%>
+				<div class="containerAds">
+					<h2>Annunci non disponibili</h2>
+				</div>
+		<%
+				}
+		%>
+      			
 		<%}%>
 				
 		<%@include file="Footer.jsp" %>
