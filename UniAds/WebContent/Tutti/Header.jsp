@@ -1,3 +1,6 @@
+<%@page import="it.unisa.model.DriverManagerConnectionPool"%>
+<%@page import="it.unisa.model.UtenteModel"%>
+<%@page import="it.unisa.model.GenericUser"%>
 <%@page import="it.unisa.model.Corriere"%>
 <%@page import="it.unisa.model.Amministratore"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="it.unisa.model.Utente"%>
@@ -58,7 +61,7 @@
 			%>
 			<%
 				if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Corriere ){
-					corriere = (Corriere) request.getSession().getAttribute("utente");			
+					corriere = (Corriere) request.getSession().getAttribute("utente");
 			%>
 			<ul>
 				<li class="selectUtente">
