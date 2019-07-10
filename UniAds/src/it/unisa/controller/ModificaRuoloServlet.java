@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.model.Amministratore;
 import it.unisa.model.AmministratoreModel;
 import it.unisa.model.Corriere;
-import it.unisa.model.CorriereModel;
 import it.unisa.model.DriverManagerConnectionPool;
 import it.unisa.model.Utente;
 import it.unisa.model.UtenteModel;
@@ -21,7 +20,7 @@ import it.unisa.model.UtenteModel;
 /**
  * Servlet implementation class ModificaRuoloServlet
  */
-@WebServlet("/ModificaRuoloServlet")
+@WebServlet("/Admin/ModificaRuoloServlet")
 public class ModificaRuoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,8 +32,6 @@ public class ModificaRuoloServlet extends HttpServlet {
 		UtenteModel modelUtente = new UtenteModel(dmcp);
 		Utente utente = new Utente();
 		utente.setEmail(email);
-		
-		CorriereModel modelCorriere = new CorriereModel(dmcp);
 		Corriere corriere = new Corriere();
 		corriere.setEmail(email);
 	

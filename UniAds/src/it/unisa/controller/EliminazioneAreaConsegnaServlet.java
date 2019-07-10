@@ -17,7 +17,7 @@ import it.unisa.model.DriverManagerConnectionPool;
 /**
  * Servlet implementation class EliminazioneAreaConsegnaServlet
  */
-@WebServlet("/EliminazioneAreaConsegnaServlet")
+@WebServlet("/Corriere/EliminazioneAreaConsegnaServlet")
 public class EliminazioneAreaConsegnaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

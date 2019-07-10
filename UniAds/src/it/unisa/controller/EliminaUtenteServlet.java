@@ -17,7 +17,7 @@ import it.unisa.model.UtenteModel;
 /**
  * Servlet implementation class EliminaUtenteServlet
  */
-@WebServlet("/EliminaUtenteServlet")
+@WebServlet("/Admin/EliminaUtenteServlet")
 public class EliminaUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

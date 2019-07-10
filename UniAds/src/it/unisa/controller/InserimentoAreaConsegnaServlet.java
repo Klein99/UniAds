@@ -14,7 +14,7 @@ import it.unisa.model.AreaCompetenza;
 import it.unisa.model.AreaCompetenzaModel;
 import it.unisa.model.DriverManagerConnectionPool;
 
-@WebServlet("/InserimentoAreaConsegnaServlet")
+@WebServlet("/Corriere/InserimentoAreaConsegnaServlet")
 public class InserimentoAreaConsegnaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

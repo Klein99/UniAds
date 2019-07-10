@@ -19,7 +19,7 @@ import it.unisa.model.UniversitaModel;
 /**
  * Servlet implementation class InserimentoUniversitaServlet
  */
-@WebServlet("/InserimentoUniversitaServlet")
+@WebServlet("/Admin/InserimentoUniversitaServlet")
 public class InserimentoUniversitaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

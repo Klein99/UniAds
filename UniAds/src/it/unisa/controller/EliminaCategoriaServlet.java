@@ -17,7 +17,7 @@ import it.unisa.model.DriverManagerConnectionPool;
 /**
  * Servlet implementation class EliminaCategoriaServlet
  */
-@WebServlet("/EliminaCategoriaServlet")
+@WebServlet("/Admin/EliminaCategoriaServlet")
 public class EliminaCategoriaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

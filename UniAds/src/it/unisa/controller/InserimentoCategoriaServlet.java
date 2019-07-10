@@ -14,7 +14,7 @@ import it.unisa.model.Categoria;
 import it.unisa.model.CategoriaModel;
 import it.unisa.model.DriverManagerConnectionPool;
 
-@WebServlet("/InserimentoCategoriaServlet")
+@WebServlet("/Admin/InserimentoCategoriaServlet")
 public class InserimentoCategoriaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +26,9 @@ public class InserimentoCategoriaServlet extends HttpServlet {
     	categoria.setNome(nomeCategoria);
     	try {
 			categoria=modelCategoria.doRetrieveByKey(categoria);
-			if(categoria!=null && !categoria.getNome().equals(nomeCategoria)) {
+			System.out.println(categoria.getNome());
+			System.out.println(nomeCategoria);
+			if(categoria!=null && !categoria.getNome().equals(nomeCategoria)&& nomeCategoria!=null) {
 				categoria.setNome(nomeCategoria);
 				modelCategoria.doSave(categoria);
 				request.getSession().setAttribute("completamentoCategoria", "Categoria inserita");

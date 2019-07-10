@@ -17,7 +17,7 @@ import it.unisa.model.UniversitaModel;
 /**
  * Servlet implementation class EliminaUniversitaServlet
  */
-@WebServlet("/EliminaUniversitaServlet")
+@WebServlet("/Admin/EliminaUniversitaServlet")
 public class EliminaUniversitaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
         
