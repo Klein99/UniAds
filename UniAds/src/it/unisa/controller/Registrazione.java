@@ -86,6 +86,7 @@ public class Registrazione extends HttpServlet {
 			Corriere corriere = new Corriere();
 			corriere.setEmail(email);
 			corriere.setNomeAgenzia(agenzia);
+			corriere.setNome(nome);
 			corriere.setPassword(password);
 			corriere.setRuolo(Ruolo.CORRIERE);
 			UtenteModel modelUtente = new UtenteModel(dmcp);

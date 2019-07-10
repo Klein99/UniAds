@@ -15,13 +15,13 @@
 	</head>
 	<body onload=mostraCategorie();mostraUniversita()>
 		<!--INSERIMENTO AREA DI CONSEGNA-->
-		<%@include file="Header.jsp"%>
-		<%@include file="BarraNavigazione.jsp"%>
+		<%@include file="/Tutti/Header.jsp"%>
+		<%@include file="/Tutti/BarraNavigazione.jsp"%>
 		<div class="container">
 	
 			<fieldset class="fieldVit">
 				<legend style="font-weight:bold; color: #2f2f2f;">Aggiungi area di consegna</legend>
-				<form action="InserimentoAreaConsegnaServlet" method="GET" id="formAreaConsegna">
+				<form action="<%=response.encodeURL("/UniAds/InserimentoAreaConsegnaServlet")%>" method="GET" id="formAreaConsegna">
 					<input type="hidden" id="agenzia" name="agenzia" value="<%=corriere.getNomeAgenzia()%>">
 					<input type="hidden" id="email" name="email" value="<%=corriere.getEmail()%>">
 			
@@ -61,7 +61,7 @@
 		<!--ELIMINA AREA DI CONSEGNA-->
 		<fieldset class="fieldVit">
 			<legend style="font-weight:bold; color: #2f2f2f;">Elimina area di consegna</legend>
-			<form action="EliminazioneAreaConsegnaServlet" method="GET" id="formAreaConsegna">
+			<form action="<%=response.encodeURL("/UniAds/EliminazioneAreaConsegnaServlet")%>" method="GET" id="formAreaConsegna">
 				<input type="hidden" id="agenzia" name="agenzia" value="<%=corriere.getNomeAgenzia()%>">
 				<input type="hidden" id="email" name="email" value="<%=corriere.getEmail()%>">
 				
@@ -99,10 +99,10 @@
  	</div>	
 
 
-		<%@include file="Footer.jsp"%>
-		<script src="js/jquery.js"></script>
+		<%@include file="/Tutti/Footer.jsp"%>
+		<script src="/UniAds/js/jquery.js"></script>
 
-		<script src="js/funzioni.js"></script>
+		<script src="/UniAds/js/funzioni.js"></script>
 	
 	</body>
 
