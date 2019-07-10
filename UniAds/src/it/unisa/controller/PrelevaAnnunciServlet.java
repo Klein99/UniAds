@@ -17,6 +17,8 @@ import it.unisa.model.Annuncio;
 import it.unisa.model.AnnuncioModel;
 import it.unisa.model.Categoria;
 import it.unisa.model.DriverManagerConnectionPool;
+import it.unisa.model.Universita;
+import it.unisa.model.UniversitaModel;
 
 /**
  * Servlet implementation class PrelevaAnnunciServlet
@@ -29,6 +31,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		String siglaUni = request.getParameter("universita");
 		String categoria = request.getParameter("categorie");
 		String titolo = request.getParameter("search");
+		String regione = request.getParameter("regione");
 		System.out.println(titolo);
 		System.out.println(categoria);
 		System.out.println(siglaUni);
@@ -179,6 +182,38 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 			catch (SQLException e) {
 				e.printStackTrace();
 			} 
+		}
+		else if(regione!=null) {
+			try {
+				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
+				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();
+				UniversitaModel modelUniversita = new UniversitaModel(dmcp);
+				
+				ArrayList<Universita> universita = modelUniversita.doRetrieveAll("localita");
+				Universita uni = new Universita();
+				
+				for(Universita u: universita) {
+					if(u.getLocalita().equals(regione)){
+						uni = u;
+					}
+				}
+				
+				for(Annuncio a : annunci) {
+					if(a.getSiglaUni().equals(uni.getSigla())) {
+						annunciView.add(a);
+					}
+				}
+				request.setAttribute("numeroAnnunci", annunciView.size());
+				
+				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
+				request.setAttribute("annunci", annunciView);
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				d.forward(request, response);
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			} 
+
 		}
 		else {
 			request.setAttribute("erroreRicerca", "Annunci non trovati");

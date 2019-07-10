@@ -191,7 +191,8 @@ function mostraListaRegioni() {
 				var temp = obj[i];
 				
 				var testo= temp.nome;
-				var openTag = "<li><a href='"+temp.nome+"'>";
+				var path = '/UniAds/PrelevaAnnunciServlet?regione='+temp.nome+'&search=';
+				var openTag = "<li><a href='"+path+"'>";
 				var closeTag = "</a>"+"</li>";
 				if(i<lunghezza/2)
 					$("#regione-lista1").append(openTag+testo+closeTag);
@@ -278,7 +279,7 @@ function selectOperazioni(value) {
 	if(value == 1)
 		window.location.href="/UniAds/Admin/OperazioniAdmin.jsp";
 	if(value == 9)
-		window.location.href="/UniAds/OperazioniCorriere.jsp";
+		window.location.href="/UniAds/Corriere/OperazioniCorriere.jsp";
 }
 
 function inviaForm(){
