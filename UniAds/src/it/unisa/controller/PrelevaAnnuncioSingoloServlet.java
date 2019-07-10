@@ -24,7 +24,7 @@ public class PrelevaAnnuncioSingoloServlet extends HttpServlet
 	{
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		AnnuncioModel modelAnnuncio = new AnnuncioModel(dmcp);
-		String titolo = "psd"; //request.getParameter("titolo");
+		String titolo = "Programmazione e Strutture Dati"; //request.getParameter("titolo");
 		String mail = "lorenzone1999@hotmail.it"; //request.getParameter("mail");
 		/* fittizio */
 		Annuncio annuncioFit = new Annuncio();

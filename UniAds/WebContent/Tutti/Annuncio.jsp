@@ -13,29 +13,39 @@
 		<link type="text/css" rel="stylesheet" href="/UniAds/css/simplePagination.css"/>
 		<link rel="stylesheet" href="/UniAds/css/style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
-		<link rel="stylesheet" href="/UniAds/css/annuncio.css">
+		<link rel="stylesheet" href="/UniAds/css/Annuncio.css">
   	</head>
 	
 	<body onload=mostraCategorie();mostraUniversita()>	
 		<%@include file="Header.jsp" %>
 		<%@include file="BarraNavigazione.jsp" %>
 		<!-- TITOLO-IMMAGINI (PrelevaImmagini, arraylist)- DESCRIZIONE - BOTTONEACQUISTA (SE C'è) - BOTTONECONTATTA -->	
-		<div class="container">
-		<div id="TitoloAnnuncio">
-			<%= annuncio.getTitolo() %>
-		</div>
-		<form action="/UniAds/NONLOSOServlet" method="GET" >
-		<img onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annuncio.getUtente().getEmail()%>&titolo=<%=annuncio.getTitolo()%>">
-			
-				<%= annuncio.getDescrizione() %> <br>
-				Rilasciato da: <%= annuncio.getUtente().getEmail() %>	<br>
-				Appartenente a: <%= annuncio.getSiglaUni() %> <br>
-				Categoria: <%= annuncio.getCategoria().getNome() %> <br>
-				Azioni: <input type="submit" value="Contatta"> 
-				<% if (!annuncio.isAcquistoOnline()) { %>
-						<input type="submit" value="Acquista Online"> <% } %></button>
-		</form>
-		</div>
+		<div class="containerAnnuncio">
+			<div id="TitoloAnnuncio"> <%= annuncio.getTitolo() %> </div>
+			<div id="fakeTable">
+				<div id="slideshow">
+					<img onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annuncio.getUtente().getEmail()%>&titolo=<%=annuncio.getTitolo()%>">
+				</div>
+				<div>
+					<div id="descrizione"><%= annuncio.getDescrizione() %> </div>
+					<div id="elenco">
+						<span class="proprietà">Rilasciato da: </span> 
+						<%= annuncio.getUtente().getEmail() %>	<br>
+						<span class="proprietà">Appartenente a: </span>
+						<%= annuncio.getSiglaUni() %> <br>
+						<span class="proprietà">Categoria: </span>
+						<%= annuncio.getCategoria().getNome() %> <br>
+						<div>
+							<form action="mailto: <%= annuncio.getUtente().getEmail() %>" method="GET" >
+								<button class="btnAnnuncio"> Contatta </button>
+							</form>
+							<% if (annuncio.isAcquistoOnline()) { %>
+							<button class="btnAnnuncio"> Acquista Online </button> <% } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
 		
 			
   

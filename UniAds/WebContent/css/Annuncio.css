@@ -1,0 +1,81 @@
+.containerAnnuncio 
+{
+   	display: grid;
+   	grid-gap: 5px;
+   	grid-template-columns: 1fr;
+   	padding: 15px;
+    border: 1px solid #5a5a5a;
+	height: calc(100vh - (112.19px + 40px + 56px));
+	background-color:white;
+}
+
+#TitoloAnnuncio
+{
+	background-image: linear-gradient(to bottom left, #78d4ff, #188aff);
+	width: 100%;
+	border: 1px solid #fffffff;	
+	border-radius: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 30px;
+	color: white;
+	border: 1px solid #AeAeAe;
+}
+
+#fakeTable
+{
+   	display: grid;
+   	grid-gap: 5px;
+   	grid-template-columns: 1fr 1fr;
+   	padding: 15px;
+	background-color:white;
+}
+
+#slideshow
+{
+	border: 1px solid #AeAeAe;
+}
+
+#descrizione
+{
+	background-image: white;
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px dashed #AeAeAe;
+}
+
+#elenco
+{
+	padding-top: 10px;	
+}
+
+.proprietà
+{
+	font-weight: bold;
+	text-align: center;
+	padding: 3px;
+	border-radius: 2px;
+}
+
+.proprietà:hover
+{
+	background-image: linear-gradient(to bottom left, #78d4ff, #188aff);
+	color: white;
+}
+
+.btnAnnuncio
+{
+	background-color: white; 
+	color: #2f2f2f; 
+	border: 2px solid #1d7dff;
+	font-size: 12pt;
+}
+
+.btnAnnuncio:hover 
+{
+	background-color: #1d7dff;
+	color: white;
+}
