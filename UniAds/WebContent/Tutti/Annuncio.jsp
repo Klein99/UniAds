@@ -29,7 +29,7 @@
 				<div>
 					<div id="descrizione"><%= annuncio.getDescrizione() %> </div>
 					<div id="elenco">
-						<span class="proprietà">Rilasciato da: </span>
+						<span class="proprietà">Rilasciato da: </span> 
 						<%= annuncio.getUtente().getEmail() %>	<br>
 						<span class="proprietà">Appartenente a: </span>
 						<%= annuncio.getSiglaUni() %> <br>
