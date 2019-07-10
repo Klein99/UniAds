@@ -47,18 +47,20 @@
 					for(int i = 1; i <= 5; i++) {
 						if(annunci.size()>i-1 && annunci.get(i-1)!=null){%>
 							<li class="everyAds" id="div<%=i%>">
-								<img class="adImage" src="PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
+								<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
 		     						<div class="adBody">
-		     							<span class="titoloAds"> <%=annunci.get(i-1).getTitolo()%> </span>
+		     							<span class="titoloAds"> <%=annunci.get(i-1).getTitolo()%> <img class="preferitiIcon" src="/UniAds/img/heart.png"> </span>
 		     							<span class="descrizioneAds"><%=annunci.get(i-1).getDescrizione()%></span>
 		     						</div>
 		     				</li>
 							<%}%>        		
    					<%} %>
    					</ul>
+   					<div class="pageButton">
      					<%for(int i=0; i < numeroAnnunci;i=i+5) {%>	  
-    	 		 			<button onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>)'><%=i/5+1 %></button>
+    	 		 			<a class="active" onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>)'><%=i/5+1 %></a>
     	 				<%} %>
+    	 			</div>
      			</div>
       
       	
