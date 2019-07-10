@@ -19,7 +19,7 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 
 	@Override
 	public synchronized void doSave(Preferiti preferiti) throws SQLException {
- 
+  
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
