@@ -294,7 +294,7 @@ footer
 	grid-template-columns: 385px 1fr;
 	margin:auto;
 	max-width:1000px;
-    height: 15%;
+    height: 127px;
     background-image: linear-gradient(to bottom left, #78d4ff, #188aff);
 	clear: both;
 	border-right: #5a5a5a solid 1px;
