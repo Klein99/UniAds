@@ -207,9 +207,9 @@ function mostraListaRegioni() {
 	  xmlhttp.send();
 	}
 
+//AGGIUNGE L'IMMAGINE IN INSERIMENTO ANNUNCIO.
 function aggiungiImmagine(n){
-	var i=n+1;
-	var openTagDiv ='<div class="img">';	
+	var i=n+1;	
 	$("#uploadImg").trigger("click");	
 }
 
@@ -225,18 +225,26 @@ $(document).ready(() =>{
 			else
 				$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
 			numeroImg=numeroImg+1;
-			var openDiv = '<div class="img">';
+			var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
 			var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
+			var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
 			var label = '<label for="imgLabel"></label>';
 			var closeDiv ='</div>';
-			window.alert(openDiv+imgTag+label+closeDiv)
-			$("#"+0).append(openDiv+imgTag+label+closeDiv);
+			$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv);
 		});
 		
 });
 
-
-	
+//RIMUOVE L'IMMAGINE DALL'INSERIMENTO ANNUNCIO.
+function rimuoviImmagine(idd){
+	if(idd=="divImg"){
+		$("#imgCaricata").prop("src","/UniAds/img/iconaddphoto.png")
+	}
+	else{
+		$("#"+idd).remove();
+		numeroImg = numeroImg-1;
+	}
+}
 
 function primaLetteraMaiuscola(form, nome){
 	var valore = $(form[""+nome]).val();
@@ -263,7 +271,7 @@ function eliminaCategorie(form, nome){
 		  }
 		  var nomeCategoria=$(form["nomeCateogira"]).val();
 		  
-		  xmlhttp.open("GET","http://localhost:8080/UniAds/EliminaCategoriaServlet"+"?nome="+nomeCategoria,true);
+		  xmlhttp.open("GET","http://localhost:8080/UniAds/Admin/EliminaCategoriaServlet"+"?nome="+nomeCategoria,true);
 		 
 		  xmlhttp.send();
 }
@@ -358,15 +366,9 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser){
 
 var count = 2;
 
-function removeImg(idd){
-	var element = document.getElementById(idd);
-	element.parentNode.removeChild(element);
 
-	
-}
 
 function hoverImg(id){
-	
 	$("#"+id).prop('src', '/UniAds/img/deleteHover.png');
 	
 	

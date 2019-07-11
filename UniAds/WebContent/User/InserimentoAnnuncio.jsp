@@ -55,10 +55,11 @@
 				<legend class="dettagli">Seleziona immagini(facoltativo)</legend>
 				<div class="img" id="divImg">
 					<img src="/UniAds/img/iconaddphoto.png" class="nuovaImg" onclick="aggiungiImmagine()" id="imgCaricata">
-					<label for="imgLabel"></label>
-					<input type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg" >
-					
+					<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine('divImg')" id="img0" onmouseout="outImg('img0')" onmouseenter="hoverImg('img0')">
+					<label for="imgLabel"></label>	
 				</div>
+				<input type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg" >
+				
 				<span id="0"></span>
 				<br/>				
 			</fieldset><br/>
