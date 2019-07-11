@@ -1,12 +1,14 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.unisa.model.Annuncio"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%
+	Annuncio annuncio = (Annuncio) request.getAttribute("Annuncio");
+%>
+		
 <!DOCTYPE html>
 <html>
 	<head>
-		<%
-			Annuncio annuncio = (Annuncio) request.getAttribute("Annuncio");
-		%>
 		<meta charset="ISO-8859-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<title>Annuncio <%=annuncio.getTitolo()%></title> 
@@ -14,6 +16,7 @@
 		<link rel="stylesheet" href="/UniAds/css/style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 		<link rel="stylesheet" href="/UniAds/css/Annuncio.css">
+	
   	</head>
 	
 	<body onload=mostraCategorie();mostraUniversita()>	
@@ -40,7 +43,10 @@
 								<button class="btnAnnuncio"> Contatta </button>
 							</form>
 							<% if (annuncio.isAcquistoOnline()) { %>
-							<button class="btnAnnuncio"> Acquista Online </button> <% } %>
+								<button id="acquisto" class="btnAnnuncio" onclick="displaySelect()"> Acquista Online </button> 
+							<% } %>
+							<div id="corriere"></div>
+							<div id="response"></div>
 						</div>
 					</div>
 				</div>
@@ -53,5 +59,6 @@
 			
 		<script src="/UniAds/js/jquery.js"></script>
 		<script src="/UniAds/js/funzioni.js"></script>	
+		
 	</body>
 </html>

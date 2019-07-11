@@ -42,12 +42,12 @@ public class InserimentoAreaConsegnaServlet extends HttpServlet {
 					area.setNomeRegione(regione);
 					modelArea.doSave(area);
 					request.setAttribute("completamentoInserimentoArea", "Area consegna inserita");
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniCorriere.jsp");
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Corriere/OperazioniCorriere.jsp");
 					d.forward(request, response);
 				}
 				else {
 					request.setAttribute("erroreRegione", "Regione non presente o area già inserita");
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/OperazioniCorriere.jsp");
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Corriere/OperazioniCorriere.jsp");
 					d.forward(request, response);
 				}
 			} 

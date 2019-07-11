@@ -107,6 +107,7 @@ public class Registrazione extends HttpServlet {
 					corriere.setNomeAgenzia(agenzia);
 					corriere.setPassword(password);
 					corriere.setRuolo(Ruolo.CORRIERE);
+					corriere.setNome(nome);
 					modelUtente.doSave(utente);
 					modelCorriere.doSave(corriere);
 					HttpSession session = request.getSession();
