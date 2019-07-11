@@ -210,12 +210,33 @@ function mostraListaRegioni() {
 function aggiungiImmagine(n){
 	var i=n+1;
 	var openTagDiv ='<div class="img">';	
-		
-	var tagInput='<input type="file" name="img" size="200" class="uploadImg" onchange=aggiungiImmagine('+i+')>';
-	var closeTagDiv = '</div><br/>';
-	$("#fieldsetImg").append(openTagDiv+tagInput+closeTagDiv);	
-	
+	$("#uploadImg").trigger("click");	
 }
+
+var numeroImg=0;
+$(document).ready(() =>{
+			$("#uploadImg").change(function(e){
+			var files = e.currentTarget.files;
+			var file = files[files.length-1];
+			var objectUrl = window.URL.createObjectURL(file);
+			
+			if(numeroImg==0)
+				$("#imgCaricata").prop("src", objectUrl);
+			else
+				$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
+			numeroImg=numeroImg+1;
+			var openDiv = '<div class="img">';
+			var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
+			var label = '<label for="imgLabel"></label>';
+			var closeDiv ='</div>';
+			window.alert(openDiv+imgTag+label+closeDiv)
+			$("#"+0).append(openDiv+imgTag+label+closeDiv);
+		});
+		
+});
+
+
+	
 
 function primaLetteraMaiuscola(form, nome){
 	var valore = $(form[""+nome]).val();
@@ -311,32 +332,6 @@ function paginazione(numeroPagina, annunciJson){
 	}
 }
 var count = 2;
-function addImg(){
-	var container = document.getElementById("divImg");
-	
-	var divv = document.createElement("div");
-	divv.id = "id"+count;
-	count++;
-	
-	var label = document.createElement("label");
-	label.htmlFor = "imgLabel";
-	divv.appendChild(label);
-	
-	var element = document.createElement("input");
-	element.type = "file";
-	element.name = "img";
-	
-	element.placeholder = "111-1111111";
-	divv.appendChild(element);
-	
-	var input = document.createElement("input");
-	input.type = "button";
-	input.value = "-";
-	input.addEventListener("click", function() {removeImg(divv.id)});
-	divv.appendChild(input);
-	
-	container.appendChild(divv);
-}
 
 function removeImg(idd){
 	var element = document.getElementById(idd);

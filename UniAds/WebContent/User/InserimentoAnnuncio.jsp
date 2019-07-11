@@ -54,11 +54,10 @@
 			<fieldset style="border: 2px dashed #838383;" id="fieldsetImg">
 				<legend class="dettagli">Seleziona immagini(facoltativo)</legend>
 				<div class="img" id="divImg">
-					<img src="/UniAds/img/iconaddphoto.png">
+					<img src="/UniAds/img/iconaddphoto.png" class="nuovaImg" onclick="aggiungiImmagine()" id="imgCaricata">
 					<label for="imgLabel"></label>
+					<input type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg" >
 					
-					<input type="file"  value="Scegli immagine" name="img" size="200" class="uploadImg" >
-					<input type="button" value="+" onclick="addImg()">
 				</div>
 				<span id="0"></span>
 				<br/>				
