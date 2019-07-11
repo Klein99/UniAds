@@ -318,7 +318,7 @@ function paginazione(numeroPagina, annunciJson){
 	
 	for(var i = 5, y = 1; i > 0; i--, y++) {
 		if(annunciJson[fine-i] != null) {
-			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 			codice += '<div class="adBody">';
 			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
 			codice += '<img class="preferitiIcon" src="/UniAds/img/heart.png">';
@@ -339,7 +339,7 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser){
 	var fine = numeroPagina*5;
 	for(var i = 5, y = 1; i > 0; i--, y++) {
 		if(annunciJson[fine-i] != null && emailUser == annunciJson[i-1].utente.email) {
-			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 			codice += '<div class="adBody">';
 			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
 			codice += '<img class="deleteIcon" onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';

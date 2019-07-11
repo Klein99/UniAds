@@ -23,7 +23,7 @@ import it.unisa.model.Utente;
  * Servlet implementation class InserimentoAnnuncioServlet
  */
 @WebServlet(name = "/User/InserimentoAnnuncioServlet", 
-urlPatterns = { "/InserimentoAnnuncioServlet" }, 
+urlPatterns = { "/User/InserimentoAnnuncioServlet" }, 
 initParams = {@WebInitParam(name = "file-upload", value = "tmpDir") })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB after which the file will be 
 										  // temporarily stored on disk

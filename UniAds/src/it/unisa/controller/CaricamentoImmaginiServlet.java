@@ -84,7 +84,7 @@ public class CaricamentoImmaginiServlet extends HttpServlet {
 					modelImmagine.doSave(immagine);
 				} 
 			}
-			response.sendRedirect("HomePage.jsp");
+			response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
 		}
 		catch (SQLException e1) {
 			e1.printStackTrace();
