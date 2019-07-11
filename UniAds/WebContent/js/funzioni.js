@@ -365,3 +365,14 @@ function removeImg(idd){
 	
 }
 
+function hoverImg(id){
+	
+	$("#"+id).prop('src', '/UniAds/img/deleteHover.png');
+	
+	
+}
+
+function outImg(id){
+	$("#"+id).prop('src', '/UniAds/img/delete.png');
+	
+}
