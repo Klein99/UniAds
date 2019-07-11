@@ -409,7 +409,7 @@ function displaySelect()
 					var prezzo = temp.prezzo;
 					var valoreOption = "Agenzia:"+agenzia+" Prezzo:"+prezzo;
 					option = option +  "<option value='" + agenzia + "'>" + valoreOption + " </option>";
-				}	
+				}	 
 					var selectEnd = "</select>";
 					var input = "<input type='text' placeholder='Numero Carta' id='carta'>";
 					var button = "<button class='btnAnnuncio' onclick='sendData()'>Scegli corriere </button>";
