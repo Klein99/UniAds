@@ -299,6 +299,9 @@ function mostraPassword() {
 function selectOperazioni(value) {
 	if(value == 1)
 		window.location.href="/UniAds/Admin/OperazioniAdmin.jsp";
+	if(value==5){
+		window.location.href="/UniAds/Tutti/PrelevaAnnunciServlet?tutti=-1";
+	}
 	if(value == 9)
 		window.location.href="/UniAds/Corriere/OperazioniCorriere.jsp";
 }
@@ -331,6 +334,28 @@ function paginazione(numeroPagina, annunciJson){
 		}
 	}
 }
+
+function paginazioneUtente(numeroPagina, annunciJson,emailUser){
+	var fine = numeroPagina*5;
+	for(var i = 5, y = 1; i > 0; i--, y++) {
+		if(annunciJson[fine-i] != null && emailUser == annunciJson[i-1].utente.email) {
+			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+			codice += '<div class="adBody">';
+			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
+			codice += '<img class="preferitiIcon" src="/UniAds/img/heart.png">';
+			codice += '</span>';
+			codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
+			codice += '</div>';
+
+			$("#div" + y).empty();
+			$("#div" + y).html(codice);
+		} 
+		else {
+			$("#div" + y).empty();
+		}
+	}
+}
+
 var count = 2;
 
 function removeImg(idd){

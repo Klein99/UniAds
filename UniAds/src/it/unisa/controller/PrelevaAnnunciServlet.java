@@ -23,7 +23,7 @@ import it.unisa.model.UniversitaModel;
 /**
  * Servlet implementation class PrelevaAnnunciServlet
  */
-@WebServlet("/PrelevaAnnunciServlet")
+@WebServlet("/Tutti/PrelevaAnnunciServlet")
 public class PrelevaAnnunciServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +32,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		String categoria = request.getParameter("categorie");
 		String titolo = request.getParameter("search");
 		String regione = request.getParameter("regione");
+		String tutti =  request.getParameter("tutti");
 		System.out.println(titolo);
 		System.out.println(categoria);
 		System.out.println(siglaUni);
@@ -39,8 +40,21 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		Categoria c = new Categoria();
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		AnnuncioModel modelAnnuncio = new AnnuncioModel(dmcp);
-		
-		if(siglaUni!=null && categoria != null && titolo!=null && !siglaUni.equals("0") && !categoria.equals("0") && !titolo.equals("")) {
+		if(tutti!=null && tutti.equals("-1")) {
+			try {
+				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
+				request.setAttribute("numeroAnnunci", annunci.size());
+				request.setAttribute("annunci", annunci);
+				request.setAttribute("annunciJson", new Gson().toJson(annunci));
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/User/AnnunciCreati.jsp");
+				d.forward(request, response);
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		else if(siglaUni!=null && categoria != null && titolo!=null && !siglaUni.equals("0") && !categoria.equals("0") && !titolo.equals("")) {
 			try {
 				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
 				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();

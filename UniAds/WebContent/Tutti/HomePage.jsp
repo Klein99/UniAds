@@ -15,12 +15,12 @@
 		<%@include file="/Tutti/BarraNavigazione.jsp" %>
 		<div class="container">
 			<article id="grigliaCategorie">
-				<a href="/UniAds/PrelevaAnnunciServlet?universita=0&categorie=Appunti&search=" style="height: 123px"><img id="appunti" class="icon-categorie" ></a>
-				<a href="/UniAds/PrelevaAnnunciServlet?universita=0&categorie=CarSharing&search=" style="height: 123px"><img id="car" class="icon-categorie" ></a>
-				<a href="/UniAds/PrelevaAnnunciServlet?universita=0&categorie=Lavoro&search=" style="height: 123px"><img id="lavoro" class="icon-categorie" ></a>
-				<a href="/UniAds/PrelevaAnnunciServlet?universita=0&categorie=Ripetizioni&search=" style="height: 123px"><img id="ripetizioni" class="icon-categorie"></a>  
-				<a href="/UniAds/PrelevaAnnunciServlet?universita=0&categorie=Libri&search=" style="height: 123px"><img id="libri" class="icon-categorie"></a>
-				<a href="/UniAds/PrelevaAnnunciServlet?universita=0&categorie=Affitti&search=" style="height: 123px"><img id="affitti" class="icon-categorie"></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Appunti&search=" style="height: 123px"><img id="appunti" class="icon-categorie" ></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=CarSharing&search=" style="height: 123px"><img id="car" class="icon-categorie" ></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Lavoro&search=" style="height: 123px"><img id="lavoro" class="icon-categorie" ></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Ripetizioni&search=" style="height: 123px"><img id="ripetizioni" class="icon-categorie"></a>  
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Libri&search=" style="height: 123px"><img id="libri" class="icon-categorie"></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Affitti&search=" style="height: 123px"><img id="affitti" class="icon-categorie"></a>
 			</article>
 			<article id="regioni">
 				<ul class="regione-lista" id="regione-lista1"></ul>

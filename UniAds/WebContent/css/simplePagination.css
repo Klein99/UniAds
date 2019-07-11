@@ -96,4 +96,25 @@
   border: 1px solid #1068c1;
 }
 
-.pageButton a:hover:not(.active) {background-color: #ddd;}
+.pageButton a:hover:not(.active) {
+	background-color: #ddd;
+	}
+	
+.deleteIcon{
+	float:right;
+	height:32px;
+	width:32px;
+	
+	
+}
+
+.deleteIcon:hover{
+	background:url("/UniAds/img/deleteHover.png");
+	height:32px;
+	width:32px;
+	float:right;
+	
+	
+	/*<---Responsive--->*/
+
+	

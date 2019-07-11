@@ -44,7 +44,7 @@
 				    <span class="prova">
 				    <select onchange="selectOperazioni(value)">
 				        <option><%=utente.getNome()%></option>
-				        <option value="5">Gestione sito</option>
+				        <option value="5">I miei annunci</option>
 				        <option value="6">Hello 2</option>
 				        <option value="7">Hello 3</option> 
 				        <option value="8">Hello 4</option>
