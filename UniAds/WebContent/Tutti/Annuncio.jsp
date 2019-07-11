@@ -80,7 +80,6 @@
 		function sendData()
 		{
 			var matching = /^[0-9]+$/;
-			alert($("select.corriere").val());
 			$("#response").empty();
 			if ($("#carta").val().length == 0)
 				$("#response").append("<font color='red' style='bold'>Inserisci la carta</font>");
@@ -91,7 +90,7 @@
 				if ($("#carta").val().length != 16)
 					$("#response").append("<font color='red' style='bold'>La carta deve essere di 16 caratteri</font>");
 			else
-				if ($("#corriere") == 0)
+				if ( $('#corriere').find(":selected").val() == 0)
 					$("#response").append("<font color='red' style='bold'>Devi selezionare un corriere</font>");
 			else
 			{
