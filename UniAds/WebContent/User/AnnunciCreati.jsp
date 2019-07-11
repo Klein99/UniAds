@@ -50,7 +50,7 @@
 						<li class="everyAds" id="div<%=i%>">
 							<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
 	     						<div class="adBody">
-	     							<span class="titoloAds"> <%=annunci.get(i-1).getTitolo()%> <img class="preferitiIcon" src="/UniAds/img/heart.png"> </span>
+	     							<span class="titoloAds"> <%=annunci.get(i-1).getTitolo()%> <img class="deleteIcon" src="/UniAds/img/delete.png"> </span>
 	     							<span class="descrizioneAds"><%=annunci.get(i-1).getDescrizione()%></span>
 	     						</div>
 	     				</li>
