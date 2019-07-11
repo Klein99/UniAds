@@ -191,7 +191,7 @@ function mostraListaRegioni() {
 				var temp = obj[i];
 				
 				var testo= temp.nome;
-				var path = '/UniAds/PrelevaAnnunciServlet?regione='+temp.nome+'&search=';
+				var path = '/UniAds/Tutti/PrelevaAnnunciServlet?regione='+temp.nome+'&search=';
 				var openTag = "<li><a href='"+path+"'>";
 				var closeTag = "</a>"+"</li>";
 				if(i<lunghezza/2)
@@ -375,4 +375,74 @@ function hoverImg(id){
 function outImg(id){
 	$("#"+id).prop('src', '/UniAds/img/delete.png');
 	
+}
+
+function selezionaAnnuncio(titolo, mail){
+	window.location.href="/UniAds/PrelevaAnnuncioSingoloServlet?mail="+mail+"&titolo="+titolo;
+}
+
+function displaySelect() 
+{
+	
+	
+	
+	   if (window.XMLHttpRequest) {
+		    xmlhttp=new XMLHttpRequest();
+		  } else { // code for IE6, IE5
+		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  xmlhttp.onreadystatechange=function() {
+		    if (this.readyState==4 && this.status==200) {
+
+				var jsonString = this.responseText;
+				var obj = JSON.parse(jsonString);
+				var lunghezza=obj.length;
+				$("#acquisto").remove();
+				var fieldset = "<fieldset> <legend>Acquisto Online</legend>";
+				var select = "<select id='corriere' class='select'>";
+				var option = "<option value='0' selected>Scegli un corriere</option>";
+			
+				for(var i = 0; i<lunghezza; i++){
+					var temp = obj[i];
+				
+					var agenzia = temp.agenzia;
+					var prezzo = temp.prezzo;
+					var valoreOption = "Agenzia:"+agenzia+" Prezzo:"+prezzo;
+					option = option +  "<option value='" + agenzia + "'>" + valoreOption + " </option>";
+				}	
+					var selectEnd = "</select>";
+					var input = "<input type='text' placeholder='Numero Carta' id='carta'>";
+					var button = "<button class='btnAnnuncio' onclick='sendData()'>Scegli corriere </button>";
+					var fieldEnd = "</fieldset>";
+					
+					$("#corriere").empty();
+					$("#corriere").append(fieldset + select + option + selectEnd + input + button + fieldEnd);
+				
+		    }
+		  }
+		  xmlhttp.open("GET","http://localhost:8080/UniAds/PrelevaCorrieriServlet",true);
+		 
+		  xmlhttp.send();
+}
+
+function sendData()
+{
+	var matching = /^[0-9]+$/;
+	$("#response").empty();
+	if ($("#carta").val().length == 0)
+		$("#response").append("<font color='red' style='bold'>Inserisci la carta</font>");
+	else
+		if (!$("#carta").val().match(matching))
+			$("#response").append("<font color='red' style='bold'>La carta non può contenere caratteri non numerici</font>");
+	else
+		if ($("#carta").val().length != 16)
+			$("#response").append("<font color='red' style='bold'>La carta deve essere di 16 caratteri</font>");
+	else
+		if ( $('#corriere').find(":selected").val() == 0)
+			$("#response").append("<font color='red' style='bold'>Devi selezionare un corriere</font>");
+	else
+	{
+		$("#response").append("I tuoi dati sono stati consegnati al corriere scelto, ");
+		$("#response").append("il quale provvederà a contattarti appena possibile");	
+	}				
 }

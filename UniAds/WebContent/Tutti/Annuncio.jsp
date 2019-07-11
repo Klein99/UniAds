@@ -43,7 +43,7 @@
 								<button class="btnAnnuncio"> Contatta </button>
 							</form>
 							<% if (annuncio.isAcquistoOnline()) { %>
-								<button class="btnAnnuncio" onclick="displaySelect()"> Acquista Online </button> 
+								<button id="acquisto" class="btnAnnuncio" onclick="displaySelect()"> Acquista Online </button> 
 							<% } %>
 							<div id="corriere"></div>
 							<div id="response"></div>
@@ -59,45 +59,6 @@
 			
 		<script src="/UniAds/js/jquery.js"></script>
 		<script src="/UniAds/js/funzioni.js"></script>	
-			
-		<script type="text/javascript">
-		function displaySelect() 
-		{
-			var fieldset = "<fieldset> <legend>Acquisto Online</legend>";
-			var select = "<select id='corriere' class='select'>";
-			var option = "<option value='0' selected>Scegli un corriere</option>";
-			for (var x=1; x<10; x++)
-				var option = option +  "<option value='" + x + "'> Corriere " + x + " </option>";
-			var selectEnd = "</select>";
-			var input = "<input type='text' placeholder='Numero Carta' id='carta'>";
-			var button = "<button class='btnAnnuncio' onclick='sendData()'>Scegli corriere </button>";
-			var fieldEnd = "</fieldset>";
-			
-			$("#corriere").empty();
-			$("#corriere").append(fieldset + select + option + selectEnd + input + button + fieldEnd);
-		}
 		
-		function sendData()
-		{
-			var matching = /^[0-9]+$/;
-			$("#response").empty();
-			if ($("#carta").val().length == 0)
-				$("#response").append("<font color='red' style='bold'>Inserisci la carta</font>");
-			else
-				if (!$("#carta").val().match(matching))
-					$("#response").append("<font color='red' style='bold'>La carta non può contenere caratteri non numerici</font>");
-			else
-				if ($("#carta").val().length != 16)
-					$("#response").append("<font color='red' style='bold'>La carta deve essere di 16 caratteri</font>");
-			else
-				if ( $('#corriere').find(":selected").val() == 0)
-					$("#response").append("<font color='red' style='bold'>Devi selezionare un corriere</font>");
-			else
-			{
-				$("#response").append("I tuoi dati sono stati consegnati al corriere scelto");
-				$("#response").append("il quale provvederà a contattarti appena possibile");	
-			}				
-		}
-		</script>
 	</body>
 </html>

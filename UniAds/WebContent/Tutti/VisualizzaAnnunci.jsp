@@ -1,3 +1,4 @@
+<%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.unisa.model.Annuncio"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -45,8 +46,13 @@
 					<li id="ricerca">Annunci trovati</li>
 					<%
 					for(int i = 1; i <= 5; i++) {
-						if(annunci.size()>i-1 && annunci.get(i-1)!=null){%>
-							<li class="everyAds" id="div<%=i%>">
+						if(annunci.size()>i-1 && annunci.get(i-1)!=null){
+							String gtitolo = new Gson().toJson(annunci.get(i-1).getTitolo());
+							String gEmail = new Gson().toJson(annunci.get(i-1).getUtente().getEmail());
+							
+					
+					%>
+							<li class="everyAds" id="div<%=i%>" onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
 								<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
 		     						<div class="adBody">
 		     							<span class="titoloAds"> <%=annunci.get(i-1).getTitolo()%> <img class="preferitiIcon" src="/UniAds/img/heart.png"> </span>
