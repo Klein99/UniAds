@@ -42,6 +42,8 @@ public class Registrazione extends HttpServlet {
 		String indirizzo = request.getParameter("indirizzo");
 		String ruolo = request.getParameter("ruolo");
 		String agenzia = request.getParameter("agenzia");
+		HttpSession session = request.getSession();
+		
 		DriverManagerConnectionPool dmcp=(DriverManagerConnectionPool)getServletContext().getAttribute("DriverManager");
 		if(ruolo.equals("Utente")) {
 			Utente utente = new Utente();
@@ -58,10 +60,12 @@ public class Registrazione extends HttpServlet {
 					utente.setPassword(password);
 					utente.setRuolo(Ruolo.UTENTE);
 					model.doSave(utente);
-					HttpSession session = request.getSession();
 					session.setAttribute("login", true);		
+					session.setAttribute("ruolo", "UTENTE");
 					session.setAttribute("utente", utente);
-					response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/HomePage.jsp");
+					d.forward(request, response);
+
 				}
 				else {
 					error+="E-mail non valida";
@@ -101,19 +105,22 @@ public class Registrazione extends HttpServlet {
 					utente.setNome(nome);
 					utente.setCognome(cognome);
 					utente.setIndirizzo(indirizzo);
-					utente.setPassword(password);
+					utente.setPassword(password); 
 					utente.setRuolo(Ruolo.CORRIERE);
+				
 					corriere.setEmail(email);
 					corriere.setNomeAgenzia(agenzia);
 					corriere.setPassword(password);
 					corriere.setRuolo(Ruolo.CORRIERE);
 					corriere.setNome(nome);
+					
 					modelUtente.doSave(utente);
 					modelCorriere.doSave(corriere);
-					HttpSession session = request.getSession();
 					session.setAttribute("login", true);		
 					session.setAttribute("utente", corriere);
-					response.sendRedirect("/UniAds/Tutti/HomePage.jsp");
+					session.setAttribute("ruolo", "UTENTE");
+					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/HomePage.jsp");
+					d.forward(request, response);
 				}
 				else {
 					error+="E-mail non valida";
