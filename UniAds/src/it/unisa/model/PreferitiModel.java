@@ -22,15 +22,17 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
   
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		
 		String insertSQL = "INSERT INTO " + PreferitiModel.TABLE_NAME
-				+ " (email_utente, titoloAnnuncio) VALUES (?, ?)";
+				+ " (email_annuncio, titoloAnnuncio,mail_utente) VALUES (?, ?, ?)";
 
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, preferiti.getEmailUtente());
-			preparedStatement.setString(2, preferiti.getTitotloAnnuncio());
+			preparedStatement.setString(1, preferiti.getEmailUtenteAnnuncio());
+			preparedStatement.setString(2, preferiti.getTitoloAnnuncio());
+			preparedStatement.setString(3, preferiti.getEmailUtente());
+
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -51,19 +53,23 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 		
 		Preferiti bean = new Preferiti();
 		String email = preferiti.getEmailUtente();
-		
-		String selectSQL = "SELECT * FROM " + PreferitiModel.TABLE_NAME + " WHERE email_utente = ?";
+		String titolo = preferiti.getTitoloAnnuncio();
+		String emailAnnuncio = preferiti.getEmailUtenteAnnuncio();
+		String selectSQL = "SELECT * FROM " + PreferitiModel.TABLE_NAME + " WHERE mail_utente = ? AND titolo_annuncio = ? AND email_annuncio = ?";
 
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, titolo);
+			preparedStatement.setString(3, emailAnnuncio);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
 				
-				bean.setEmailUtente(rs.getString("email_utente"));
-				bean.setTitotloAnnuncio(rs.getString("titoloAnnuncio"));
+				bean.setEmailUtente(rs.getString("mail_utente"));
+				bean.setTitoloAnnuncio(rs.getString("titoloAnnuncio"));
+				bean.setEmailUtenteAnnuncio(rs.getString("email_annuncio"));
 			}
 
 		} finally {
@@ -84,13 +90,14 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 		
 		int result = 0;
 		
-		String deleteSQL = "DELETE FROM " + PreferitiModel.TABLE_NAME + " WHERE email_utente = ? AND titotloAnnuncio = ?";
+		String deleteSQL = "DELETE FROM " + PreferitiModel.TABLE_NAME + " WHERE mail_utente = ? AND titotloAnnuncio = ? AND email_annuncio = ?";
 
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			preparedStatement.setString(1, preferiti.getEmailUtente());
-			preparedStatement.setString(2, preferiti.getTitotloAnnuncio());
+			preparedStatement.setString(2, preferiti.getTitoloAnnuncio());
+			preparedStatement.setString(3, preferiti.getEmailUtenteAnnuncio());
 			
 
 			result = preparedStatement.executeUpdate();
@@ -130,8 +137,9 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 			while (rs.next()) {
 				Preferiti bean = new Preferiti();
 
-				bean.setEmailUtente(rs.getString("email_utente"));
-				bean.setTitotloAnnuncio(rs.getString("titoloAnnuncio"));
+				bean.setEmailUtente(rs.getString("mail_utente"));
+				bean.setTitoloAnnuncio(rs.getString("titoloAnnuncio"));
+				bean.setEmailUtenteAnnuncio(rs.getString("email_annuncio"));
 				uni.add(bean);
 			}
 

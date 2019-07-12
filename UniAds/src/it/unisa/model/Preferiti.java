@@ -1,7 +1,7 @@
 package it.unisa.model;
 
 public class Preferiti {
-	private String titotloAnnuncio;
+	private String titoloAnnuncio;
 	private String emailUtenteAnnuncio;
 	private String emailUtente;
 	 public Preferiti() {
@@ -9,13 +9,6 @@ public class Preferiti {
 	 }
 	
 	
-	public String getTitotloAnnuncio() {
-		return titotloAnnuncio;
-	}
-	 
-	public void setTitotloAnnuncio(String titotloAnnuncio) {
-		this.titotloAnnuncio = titotloAnnuncio;
-	}
 	
 	public String getEmailUtente() {
 		return emailUtente;
@@ -33,6 +26,18 @@ public class Preferiti {
 
 	public void setEmailUtenteAnnuncio(String emailUtenteAnnuncio) {
 		this.emailUtenteAnnuncio = emailUtenteAnnuncio;
+	}
+
+
+
+	public String getTitoloAnnuncio() {
+		return titoloAnnuncio;
+	}
+
+
+
+	public void setTitoloAnnuncio(String titoloAnnuncio) {
+		this.titoloAnnuncio = titoloAnnuncio;
 	}
 	
 	
