@@ -52,7 +52,7 @@
 	padding-top: 10px;	
 }
 
-.proprietà
+.proprietï¿½
 {
 	font-weight: bold;
 	text-align: center;
@@ -60,7 +60,7 @@
 	border-radius: 2px;
 }
 
-.proprietà:hover
+.proprietï¿½:hover
 {
 	background-image: linear-gradient(to bottom left, #78d4ff, #188aff);
 	color: white;
@@ -72,10 +72,25 @@
 	color: #2f2f2f; 
 	border: 2px solid #1d7dff;
 	font-size: 12pt;
+	margin: 10px;
 }
 
 .btnAnnuncio:hover 
 {
 	background-color: #1d7dff;
 	color: white;
+}
+
+#corriere{
+	margin: 10px;
+    width: 80%;
+	
+}
+
+
+#carta{
+	width: 80%;
+    margin: 10px;
+    border-radius: 10px;
+    outline: 0;
 }
