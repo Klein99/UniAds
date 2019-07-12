@@ -109,13 +109,36 @@
 
 #notFound {
 	display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  text-align:center;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 50%;
+  	text-align:center;
 	
 }
 
 	/*<---Responsive--->*/
+@media screen and (max-width: 1365px) 
+{
+	#notFound
+	{
+		margin-right: 30%;
+	}
+}
 
+@media screen and (max-width: 736px) 
+{
+	#notFound img
+	{
+		width: 300px;
+	}
+}
+
+
+@media screen and (max-width: 641px) 
+{
+	#notFound img
+	{
+		width: 300px;
+	}
+}
 	
