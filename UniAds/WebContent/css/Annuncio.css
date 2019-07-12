@@ -32,6 +32,7 @@
    	grid-template-columns: 1fr 1fr;
    	padding: 15px;
 	background-color:white;
+	overflow: auto;
 }
 
 #slideshow
@@ -39,12 +40,21 @@
 	border: 1px solid #AeAeAe;
 }
 
+.slides
+{
+	width: 350px;
+}
+
 #descrizione
 {
+	width: 500px;
 	background-image: white;
 	border-radius: 5px;
 	padding: 10px;
 	border: 1px dashed #AeAeAe;
+	word-wrap: break-word;
+	height: 150px;
+	overflow-y: auto;
 }
 
 #elenco
@@ -52,7 +62,7 @@
 	padding-top: 10px;	
 }
 
-.propriet�
+.proprieta
 {
 	font-weight: bold;
 	text-align: center;
@@ -60,7 +70,7 @@
 	border-radius: 2px;
 }
 
-.propriet�:hover
+.proprieta:hover
 {
 	background-image: linear-gradient(to bottom left, #78d4ff, #188aff);
 	color: white;
@@ -87,10 +97,74 @@
 	
 }
 
+.risi
+{
+	width: 480px;
+}
 
 #carta{
+	font-size: 18px;
 	width: 80%;
     margin: 10px;
     border-radius: 10px;
     outline: 0;
+}
+
+	/*<---Responsive--->*/
+@media screen and (max-width: 1365px) 
+{
+	#fakeTable
+	{
+   		grid-template-columns: 1fr;
+   		clear: both;
+	}
+}
+
+@media screen and (max-width: 736px) 
+{
+	#fakeTable
+	{
+   		grid-template-columns: 1fr;
+   		clear: both;
+	}
+	
+	#descrizione 
+	{
+		width: 300px;
+	}
+	
+	.slides
+	{
+		width: 300px;
+	}
+	
+	.risi
+	{
+		width: 280px;
+	}
+}
+
+
+@media screen and (max-width: 641px) 
+{
+	#fakeTable
+	{
+   		grid-template-columns: 1fr;
+   		clear: both;
+	}
+	
+	#descrizione 
+	{
+		width: 300px;
+	}
+	
+	.slides
+	{
+		width: 300px;
+	}
+	
+	.risi
+	{
+		width: 280px;
+	}
 }

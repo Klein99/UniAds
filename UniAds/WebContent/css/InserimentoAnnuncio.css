@@ -115,6 +115,53 @@ textarea
   height: 306px;
 }
 
+#selectCategoria2
+{
+	margin-left:2px;
+	background-color: white;
+	border: 0;
+	border-bottom: 2px solid currentcolor; 
+	font-weight: bold;
+	letter-spacing: .15em;
+	border-radius: 10px;
+}
+
+#selectCategoria2:focus, #selectCategoria2:active
+{
+    outline: 0;
+    border-bottom-color: #188aff;
+  }
+  
+#selectCategoria2:hover
+{
+	border-bottom: 2px solid #188aff; 
+}	
+
+
+#selectUniversita2
+{
+	margin-left:2px;
+	background-color: white;
+	border: 0;
+	border-bottom: 2px solid currentcolor; 
+	font-weight: bold;
+	letter-spacing: .15em;
+	border-radius: 10px;
+}
+
+#selectUniversita2:focus, #selectUniversita2:active
+{
+    outline: 0;
+    border-bottom-color: #188aff;
+  }
+  
+#selectUniversita2:hover
+{
+	border-bottom: 2px solid #188aff; 
+}	
+
+
+
 /*Responsive*/
 
 @media screen and (max-width: 538px) 
@@ -128,6 +175,7 @@ textarea
 	textarea
 	{
 		width: 280px;
+		border: 1px solid black;
 	}
 	
 	.selectVit

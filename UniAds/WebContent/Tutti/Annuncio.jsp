@@ -27,17 +27,19 @@
 			<div id="TitoloAnnuncio"> <%= annuncio.getTitolo() %> </div>
 			<div id="fakeTable">
 				<div id="slideshow">
-					<img onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annuncio.getUtente().getEmail()%>&titolo=<%=annuncio.getTitolo()%>">
+					<img onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annuncio.getUtente().getEmail()%>&titolo=<%=annuncio.getTitolo()%>" class="slides" onclick="changeImage()">
 				</div>
 				<div>
 					<div id="descrizione"><%= annuncio.getDescrizione() %> </div>
 					<div id="elenco">
-						<span class="proprietà">Rilasciato da: </span> 
+						<span class="proprieta">Rilasciato da: </span> 
 						<%= annuncio.getUtente().getEmail() %>	<br>
-						<span class="proprietà">Appartenente a: </span>
+						<span class="proprieta">Appartenente a: </span>
 						<%= annuncio.getSiglaUni() %> <br>
-						<span class="proprietà">Categoria: </span>
+						<span class="proprieta">Categoria: </span>
 						<%= annuncio.getCategoria().getNome() %> <br>
+						<% isLog = (Boolean) request.getSession().getAttribute("login"); 
+						if(isLog!=null && isLog.equals(true) && object!=null){ %>
 						<div>
 							<form action="mailto: <%= annuncio.getUtente().getEmail() %>" method="GET" >
 								<button class="btnAnnuncio"> Contatta </button>
@@ -48,6 +50,7 @@
 							<div id="corriere"></div>
 							<div id="response"></div>
 						</div>
+						<% } %>
 					</div>
 				</div>
 			</div>
