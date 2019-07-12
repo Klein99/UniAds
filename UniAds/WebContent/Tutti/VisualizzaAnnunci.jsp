@@ -79,7 +79,7 @@
 				else{
 		%>
 				<div class="containerAds">
-					<h2>Annunci non disponibili</h2>
+					<div id="notFound"><img src="/UniAds/img/adsNotFound.png"></div>
 				</div>
 		<%
 				}

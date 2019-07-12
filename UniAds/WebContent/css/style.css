@@ -439,6 +439,11 @@ float:left;
     border-top-color: #3297ff;
 }
 
+.contattaci:visited{
+	color:#0091df;
+	
+}
+
 /*Responsive*/
 
 @media screen and (max-width: 1365px) 
