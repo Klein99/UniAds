@@ -45,7 +45,9 @@ function validazione(form) {
 }
 
 
-
+function aggiungiPreferiti(event){
+	event.stopPropagation();
+}
 
 function mostraCategorie() {
 	   if (window.XMLHttpRequest) {
@@ -329,7 +331,7 @@ function paginazione(numeroPagina, annunciJson){
 			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 			codice += '<div class="adBody">';
 			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
-			codice += '<img class="preferitiIcon" src="/UniAds/img/heart.png">';
+			codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
 			codice += '</span>';
 			codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 			codice += '</div>';
@@ -350,7 +352,7 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser){
 			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 			codice += '<div class="adBody">';
 			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
-			codice += '<img class="deleteIcon" onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+			codice += '<img class="deleteIcon"  onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
 			codice += '</span>';
 			codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 			codice += '</div>';
