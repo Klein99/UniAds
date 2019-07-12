@@ -1,6 +1,6 @@
 <footer>
-	<article>
-		<ul id="link_utili" >
+	<article id="column_1">
+		<ul id="link_utili">
 			<li><h4 style="color:white; margin:3px;">Link Utili</h4>
 				<a style="color:white;text-decoration:none;" href="/UniAds/Tutti/Regolamento.jsp">Regolamento</a>
 			</li>

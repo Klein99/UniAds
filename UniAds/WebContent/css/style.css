@@ -439,9 +439,9 @@ float:left;
     border-top-color: #3297ff;
 }
 
-.contattaci:visited{
-	color:#0091df;
-	
+.contattaci:visited
+{
+	color:#0091df;	
 }
 
 /*Responsive*/
@@ -476,6 +476,22 @@ float:left;
 	{
    		width: 100px;
 	}
+	
+	footer
+	{
+		display:grid;
+		grid-template-columns: 385px 1fr;
+		margin:auto;
+		max-width:1000px;
+    	height: 127px;
+    	background-image: linear-gradient(to bottom left, #78d4ff, #188aff);
+		clear: both;
+		border-right: #5a5a5a solid 1px;
+		border-left: #5a5a5a solid 1px;
+		right:0; 
+		bottom: 0;
+		left:0;
+	}	
 }
 
 @media screen and (max-width: 736px) 
@@ -559,6 +575,20 @@ float:left;
    		width: 200px;
 	}
 	
+	footer
+	{
+		grid-template-columns: 1fr;
+	}	
+	
+	#column_1
+	{
+		display: none;
+	}
+	
+	#logo_footer
+	{
+		margin-left: 30%;
+	}
 }
 
 
@@ -635,8 +665,8 @@ float:left;
 	
 	nav ul li 
 	{
-		margin: 3px;
-		padding-left:13px;
+		margin: 6px;
+		padding-left: 6px;
 		padding-bottom: 1px; 
 	}
 	
@@ -656,4 +686,20 @@ float:left;
 	{
 		margin-right: 70px;
 	}
+	
+	footer
+	{
+		grid-template-columns: 1fr;
+	}	
+	
+	#column_1
+	{
+		display: none;
+	}
+	
+	#logo_footer
+	{
+		margin-left: 30%;
+	}
+	
 }
