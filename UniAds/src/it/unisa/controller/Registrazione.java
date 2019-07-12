@@ -105,7 +105,7 @@ public class Registrazione extends HttpServlet {
 					utente.setNome(nome);
 					utente.setCognome(cognome);
 					utente.setIndirizzo(indirizzo);
-					utente.setPassword(password);
+					utente.setPassword(password); 
 					utente.setRuolo(Ruolo.CORRIERE);
 				
 					corriere.setEmail(email);
