@@ -261,6 +261,7 @@ function maiuscolo(form, nome){
 	$(form[""+nome]).val(maiuscolo);
 }
 
+
 function eliminaCategorie(form, nome){
 	   if (window.XMLHttpRequest) {
 		    xmlhttp=new XMLHttpRequest();
@@ -389,8 +390,6 @@ function selezionaAnnuncio(titolo, mail){
 function displaySelect() 
 {
 	
-	
-	
 	   if (window.XMLHttpRequest) {
 		    xmlhttp=new XMLHttpRequest();
 		  } else { // code for IE6, IE5
@@ -403,7 +402,7 @@ function displaySelect()
 				var obj = JSON.parse(jsonString);
 				var lunghezza=obj.length;
 				$("#acquisto").remove();
-				var fieldset = "<fieldset> <legend>Acquisto Online</legend>";
+				var fieldset = "<fieldset class='risi'> <legend>Acquisto Online</legend>";
 				var select = "<select id='corriere' class='select'>";
 				var option = "<option value='0' selected>Scegli un corriere</option>";
 			
