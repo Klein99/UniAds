@@ -16,7 +16,7 @@
 
 	</head>
 	
-	<body onload=mostraCategorie();mostraUniversita()>	
+	<body onload="mostraCategorie();mostraUniversita();paginazioneUtente(0,0,0,0)">	
 	
 		<%@include file="/Tutti/Header.jsp"%>
 		<%@include file="/Tutti/BarraNavigazione.jsp"%>
@@ -78,7 +78,7 @@
 							String gEmail = new Gson().toJson(utente.getEmail());
 							System.out.println(utente.getEmail());
 			%>
-			<a class="active" onclick='paginazioneUtente(<%=i/5+1%>,<%=annunciJson%>,<%=gEmail%>)'><%=i / 5 + 1%></a>
+			<a class="active" id="bottone<%=i%>"onclick='paginazioneUtente(<%=i/5+1%>,<%=annunciJson%>,<%=gEmail%>,<%=i%>,<%=numeroAnnunci%>)'><%=i / 5 + 1%></a>
 			<%
 				}
 			%>

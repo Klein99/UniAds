@@ -327,57 +327,70 @@ function inviaForm(){
 
 function paginazione(numeroPagina, annunciJson,id,size){
 	var fine = numeroPagina*5;
-	
-	for(var i = 5, y = 1; i > 0; i--, y++) {
-		if(annunciJson[fine-i] != null) {
-			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
-			codice += '<div class="adBody">';
-			codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
-			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
-			codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
-			codice += '</span>';
-			codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
-			codice += '</a>';
-			codice += '</div>';
+	if(numeroPagina!=0){
+		for(var i = 5, y = 1; i > 0; i--, y++) {
+			if(annunciJson[fine-i] != null) {
+				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+				codice += '<div class="adBody">';
+				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
+				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
+				codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
+				codice += '</span>';
+				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
+				codice += '</a>';
+				codice += '</div>';
 
-			$("#div" + y).empty();
-			$("#div" + y).html(codice);
-		} 
-		else {
-			$("#div" + y).empty();
+				$("#div" + y).empty();
+				$("#div" + y).html(codice);
+			} 
+			else {
+				$("#div" + y).empty();
+			}
 		}
 	}
+	
 	for(var i = 0; i <size;i++){
-			$("#bottone"+i).css("background-color","#188aff");
-			$("#bottone"+i).css("color","#ffffff");
+		$("#bottone"+i).css("background-color","#188aff");
+		$("#bottone"+i).css("color","#ffffff");
 	}
-		$("#bottone"+id).css("background-color","#ffffff");
-		$("#bottone"+id).css("color","#188aff");
+	
+	$("#bottone"+id).css("background-color","#ffffff");
+	$("#bottone"+id).css("color","#188aff");
 		
 }
 
-function paginazioneUtente(numeroPagina, annunciJson,emailUser){
+function paginazioneUtente(numeroPagina, annunciJson,emailUser,id,size){
 	var fine = numeroPagina*5;
-	for(var i = 5, y = 1; i > 0; i--, y++) {
+	if(numeroPagina!=0){
+		for(var i = 5, y = 1; i > 0; i--, y++) {
 		
-		if(annunciJson[fine-i] != null) {
-			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
-			codice += '<div class="adBody">';
-			codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
-			codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
-			codice += '<img class="deleteIcon"  onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
-			codice += '</span>';
-			codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
-			codice += '</a>';
-			codice += '</div>';
+			if(annunciJson[fine-i] != null) {
+				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+				codice += '<div class="adBody">';
+				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
+				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
+				codice += '<img class="deleteIcon"  onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+				codice += '</span>';
+				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
+				codice += '</a>';
+				codice += '</div>';
 
-			$("#div" + y).empty();
-			$("#div" + y).html(codice);
-		} 
-		else {
-			$("#div" + y).empty();
+				$("#div" + y).empty();
+				$("#div" + y).html(codice);
+			} 
+			else {
+				$("#div" + y).empty();
+			}
 		}
 	}
+	for(var i = 0; i <size;i++){
+		$("#bottone"+i).css("background-color","#188aff");
+		$("#bottone"+i).css("color","#ffffff");
+	}
+	
+	$("#bottone"+id).css("background-color","#ffffff");
+	$("#bottone"+id).css("color","#188aff");
+
 }
 
 var count = 2;

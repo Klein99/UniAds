@@ -16,7 +16,7 @@
 
 	</head>
 	
-	<body onload=mostraCategorie();mostraUniversita()>	
+	<body onload="mostraCategorie();mostraUniversita();paginazione(0,0 ,0,0)">	
 	
 		<%@include file="Header.jsp" %>
 		<%@include file="BarraNavigazione.jsp" %>
