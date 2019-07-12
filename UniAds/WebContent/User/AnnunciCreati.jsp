@@ -38,51 +38,87 @@
 				System.out.println(annunciJson);
 				if(annunci.size()>0){
 		%>
-		
-		
-		
-		<div class="containerAds">
-			<ul class="listAds">
-				<li id="ricerca">I Miei Annunci</li>
-				<%
-				int numeroAnnunciEffettivi=0;
-				for(int i = 1; i <= 5; i++) {
-					if(annunci.size()>i-1 && annunci.get(i-1)!=null && annunci.get(i-1).getUtente().getEmail().equals(utente.getEmail())){
-						numeroAnnunciEffettivi = numeroAnnunciEffettivi+1;
-					%>
-						<li class="everyAds" id="div<%=i%>">
-							<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
-	     						<div class="adBody">
-	     							<span class="titoloAds"> <%=annunci.get(i-1).getTitolo()%> <img id="<%=i%>" class="deleteIcon" onmouseout="outImg(<%=i%>)" onmouseenter="hoverImg(<%=i%>)" src="/UniAds/img/delete.png"></span>
-	     							<span class="descrizioneAds"><%=annunci.get(i-1).getDescrizione()%></span>
-	     						</div>
-	     				</li>
-						<%}%>        		
-  					<%} %>
-  					</ul>
-  					<div class="pageButton">
-    					<%for(int i=0; i < numeroAnnunciEffettivi;i=i+5) { 
-    						String gEmail = new Gson().toJson(utente.getEmail());
-    					%>	  
-   	 		 			<a class="active" onclick='paginazioneUtente(<%=i/5+1%>,<%=annunciJson%>, <%=gEmail%>)'><%=i/5+1 %></a>
-   	 				<%} %>
-   	 			</div>
-    			</div>
-           
-     	
-     
-		<% 		}
-      
-				else{
-		%>
+
+
+
+	<div class="containerAds">
+		<ul class="listAds">
+			<li id="ricerca">Miei Annunci</li>
+			<%
+				int numeroAnnunciEffettivi = 0;
+						for (int i = 1; i <= 5; i++) {
+							if (annunci.size() > i - 1 && annunci.get(i - 1) != null
+									&& annunci.get(i - 1).getUtente().getEmail().equals(utente.getEmail())) {
+								numeroAnnunciEffettivi = numeroAnnunciEffettivi + 1;
+								String gtitolo = new Gson().toJson(annunci.get(i - 1).getTitolo());
+								String gEmail = new Gson().toJson(annunci.get(i - 1).getUtente().getEmail());
+			%>
+			<li class="everyAds" id="div<%=i%>"><img class="adImage"
+				onerror="this.onerror=null; this.src='/UniAds/img/error.png'"
+				src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i - 1).getUtente().getEmail()%>&titolo=<%=annunci.get(i - 1).getTitolo()%>">
+				<div class="adBody">
+					<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
+						 <span class="titoloAds"> <%=annunci.get(i - 1).getTitolo()%> 
+						 	<img class="preferitiIcon" onclick="aggiungiPreferiti(event)" src="/UniAds/img/heart.png">
+						</span>
+					 	<span class="descrizioneAds"><%=annunci.get(i - 1).getDescrizione()%></span>
+					</a>
+				</div></li>
+			<%
+				}
+			%>
+			<%
+				}
+			%>
+		</ul>
+
+		<div class="pageButton">
+			<%
+				for (int i = 0; i < numeroAnnunciEffettivi; i = i + 5) {
+							String gEmail = new Gson().toJson(utente.getEmail());
+							System.out.println(utente.getEmail());
+			%>
+			<a class="active" onclick='paginazioneUtente(<%=i/5+1%>,<%=annunciJson%>,<%=gEmail%>)'><%=i / 5 + 1%></a>
+			<%
+				}
+			%>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<%
+		}
+
+			else {
+	%>
 				<div class="containerAds">
 					<h2>Nessun Annuncio Pubblicato</h2>
 				</div>
 		<%
-				}
+			}
 		%>
       			
-		<%}%>
+		<%
+      						}
+      					%>
 				
 		<%@include file="/Tutti/Footer.jsp"%>
 			
