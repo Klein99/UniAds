@@ -2,8 +2,8 @@ package it.unisa.model;
 
 public class Preferiti {
 	private String titotloAnnuncio;
+	private String emailUtenteAnnuncio;
 	private String emailUtente;
-	
 	 public Preferiti() {
 		 
 	 }
@@ -23,6 +23,16 @@ public class Preferiti {
 	
 	public void setEmailUtente(String emailUtente) {
 		this.emailUtente = emailUtente;
+	}
+
+
+	public String getEmailUtenteAnnuncio() {
+		return emailUtenteAnnuncio;
+	}
+
+
+	public void setEmailUtenteAnnuncio(String emailUtenteAnnuncio) {
+		this.emailUtenteAnnuncio = emailUtenteAnnuncio;
 	}
 	
 	

@@ -49,7 +49,7 @@
 			<input type = "hidden" value="<%=email%>" name="email">
 			<input type ="hidden" value="0" name="valutazione">
 			<p class="dettagli">Titolo Annuncio:</p>
-			<input class="input-text" type = "text" value="" name="titoloAnnuncio" placeholder="Titolo" onblur="primaLetteraMaiuscola(this.form,'titoloAnnuncio')"><br/>
+			<input class="input-text" type = "text" value="" name="titoloAnnuncio" placeholder="Titolo" onblur="primaLetteraMaiuscola(this.form,'titoloAnnuncio')" required="required"><br/>
 			<br/>
 			<fieldset style="border: 2px dashed #838383;" id="fieldsetImg">
 				<legend class="dettagli">Seleziona immagini(facoltativo)</legend>
@@ -88,7 +88,7 @@
 			<br/>
 			
 			<% if(error != null && !error.equals("")) { %>	
-				<span class="error"> <%=error %> </span>
+				<span class="errore"> <%=error %> </span>
 			<% } %>
 			<br/>
 			<input type="submit" class="pulsantilogin-registrazione-add" value="Aggiungi">
