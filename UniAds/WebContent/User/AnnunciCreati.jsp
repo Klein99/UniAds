@@ -48,7 +48,7 @@
 			<li id="ricerca">Miei Annunci</li>
 			<%
 						for (int i = 1; i <= 5; i++) {
-							String emailUtente=annunci.get(i - 1).getUtente().getEmail();
+							
 							if (annunci.size() > (i - 1)  && annunci.get(i-1)!=null) {
 								String gtitolo = new Gson().toJson(annunci.get(i - 1).getTitolo());
 								String gEmail = new Gson().toJson(annunci.get(i - 1).getUtente().getEmail());
