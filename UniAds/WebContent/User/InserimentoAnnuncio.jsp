@@ -88,7 +88,7 @@
 			<br/>
 			
 			<% if(error != null && !error.equals("")) { %>	
-				<%=error %>
+				<span class="error"> <%=error %> </span>
 			<% } %>
 			<br/>
 			<input type="submit" class="pulsantilogin-registrazione-add" value="Aggiungi">
