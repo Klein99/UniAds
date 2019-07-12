@@ -49,17 +49,17 @@
 						if(annunci.size()>i-1 && annunci.get(i-1)!=null){
 							String gtitolo = new Gson().toJson(annunci.get(i-1).getTitolo());
 							String gEmail = new Gson().toJson(annunci.get(i-1).getUtente().getEmail());
-							
-					
-					%>
-							<li class="everyAds" id="div<%=i%>" onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
+					%> 
+							<li class="everyAds" id="div<%=i%>">
 								<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
 		     						<div class="adBody">
+										<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
 		     							<span class="titoloAds"> 
 		     								<%=annunci.get(i-1).getTitolo()%> 
 		     								<img class="preferitiIcon" onclick="aggiungiPreferiti(event)" src="/UniAds/img/heart.png"> 
 		     							</span>
 		     							<span class="descrizioneAds"><%=annunci.get(i-1).getDescrizione()%></span>
+		     						</a>
 		     						</div>
 		     				</li>
 							<%}%>        		
