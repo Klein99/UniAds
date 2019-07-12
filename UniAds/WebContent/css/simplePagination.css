@@ -131,6 +131,11 @@
 	{
 		width: 300px;
 	}
+	
+	#notFound
+	{
+		margin-right: 30%;
+	}
 }
 
 
@@ -138,7 +143,12 @@
 {
 	#notFound img
 	{
-		width: 300px;
+		width: 250px;
+	}
+	
+	#notFound
+	{
+		margin-right: 30%;
 	}
 }
 	
