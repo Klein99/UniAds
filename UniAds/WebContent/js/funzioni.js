@@ -325,7 +325,7 @@ function inviaForm(){
 
 
 
-function paginazione(numeroPagina, annunciJson){
+function paginazione(numeroPagina, annunciJson,id,size){
 	var fine = numeroPagina*5;
 	
 	for(var i = 5, y = 1; i > 0; i--, y++) {
@@ -347,6 +347,13 @@ function paginazione(numeroPagina, annunciJson){
 			$("#div" + y).empty();
 		}
 	}
+	for(var i = 0; i <size;i++){
+			$("#bottone"+i).css("background-color","#188aff");
+			$("#bottone"+i).css("color","#ffffff");
+	}
+		$("#bottone"+id).css("background-color","#ffffff");
+		$("#bottone"+id).css("color","#188aff");
+		
 }
 
 function paginazioneUtente(numeroPagina, annunciJson,emailUser){
@@ -455,3 +462,5 @@ function sendData()
 		$("#response").append("il quale provvederà a contattarti appena possibile");	
 	}				
 }
+
+

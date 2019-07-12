@@ -67,7 +67,7 @@
    					</ul>
    					<div class="pageButton">
      					<%for(int i=0; i < numeroAnnunci;i=i+5) {%>	  
-    	 		 			<a class="active" onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>)'><%=i/5+1 %></a>
+    	 		 			<a class="active" id="bottone<%=i%>"  onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>,<%=i%>,<%=numeroAnnunci%>)'><%=i/5+1 %></a>
     	 				<%} %>
     	 			</div>
      			</div>
