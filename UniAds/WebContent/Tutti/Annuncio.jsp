@@ -38,6 +38,8 @@
 						<%= annuncio.getSiglaUni() %> <br>
 						<span class="proprieta">Categoria: </span>
 						<%= annuncio.getCategoria().getNome() %> <br>
+						<% isLog = (Boolean) request.getSession().getAttribute("login"); 
+						if(isLog!=null && isLog.equals(true) && object!=null){ %>
 						<div>
 							<form action="mailto: <%= annuncio.getUtente().getEmail() %>" method="GET" >
 								<button class="btnAnnuncio"> Contatta </button>
@@ -48,6 +50,7 @@
 							<div id="corriere"></div>
 							<div id="response"></div>
 						</div>
+						<% } %>
 					</div>
 				</div>
 			</div>
