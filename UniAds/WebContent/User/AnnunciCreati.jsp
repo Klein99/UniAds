@@ -45,8 +45,11 @@
 			<ul class="listAds">
 				<li id="ricerca">I Miei Annunci</li>
 				<%
+				int numeroAnnunciEffettivi=0;
 				for(int i = 1; i <= 5; i++) {
-					if(annunci.size()>i-1 && annunci.get(i-1)!=null && annunci.get(i-1).getUtente().getEmail().equals(utente.getEmail())){%>
+					if(annunci.size()>i-1 && annunci.get(i-1)!=null && annunci.get(i-1).getUtente().getEmail().equals(utente.getEmail())){
+						numeroAnnunciEffettivi = numeroAnnunciEffettivi+1;
+					%>
 						<li class="everyAds" id="div<%=i%>">
 							<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
 	     						<div class="adBody">
@@ -58,7 +61,7 @@
   					<%} %>
   					</ul>
   					<div class="pageButton">
-    					<%for(int i=0; i < numeroAnnunci;i=i+5) { 
+    					<%for(int i=0; i < numeroAnnunciEffettivi;i=i+5) { 
     						String gEmail = new Gson().toJson(utente.getEmail());
     					%>	  
    	 		 			<a class="active" onclick='paginazioneUtente(<%=i/5+1%>,<%=annunciJson%>, <%=gEmail%>)'><%=i/5+1 %></a>
