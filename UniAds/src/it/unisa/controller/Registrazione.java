@@ -118,7 +118,7 @@ public class Registrazione extends HttpServlet {
 					modelCorriere.doSave(corriere);
 					session.setAttribute("login", true);		
 					session.setAttribute("utente", corriere);
-					session.setAttribute("ruolo", "UTENTE");
+					session.setAttribute("ruolo", "CORRIERE");
 					RequestDispatcher  d = getServletContext().getRequestDispatcher("/Tutti/HomePage.jsp");
 					d.forward(request, response);
 				}
