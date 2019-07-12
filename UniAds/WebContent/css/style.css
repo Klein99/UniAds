@@ -635,8 +635,8 @@ float:left;
 	
 	nav ul li 
 	{
-		margin: 3px;
-		padding-left:13px;
+		margin: 6px;
+		padding-left: 6px;
 		padding-bottom: 1px; 
 	}
 	
@@ -656,4 +656,5 @@ float:left;
 	{
 		margin-right: 70px;
 	}
+	
 }
