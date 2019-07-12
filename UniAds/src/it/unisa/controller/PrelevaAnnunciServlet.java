@@ -40,11 +40,21 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		Categoria c = new Categoria();
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		AnnuncioModel modelAnnuncio = new AnnuncioModel(dmcp);
-		if(tutti!=null && tutti.equals("-1")) {
+		if(tutti!=null) {
 			try {
 				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
+				ArrayList<Annuncio> annunciEffettivi = new ArrayList<Annuncio>(); 
+				for(Annuncio a: annunci) {
+					if(tutti.equals(a.getUtente().getEmail())) {
+						annunciEffettivi.add(a);
+					}
+				}
+				request.setAttribute("numeroAnnunciEffettivi", annunciEffettivi.size());
 				request.setAttribute("numeroAnnunci", annunci.size());
 				request.setAttribute("annunci", annunci);
+				request.setAttribute("annunciEffettivi", annunciEffettivi);
+				request.setAttribute("annunciJsonEffettivi", new Gson().toJson(annunciEffettivi));
+				
 				request.setAttribute("annunciJson", new Gson().toJson(annunci));
 				RequestDispatcher d = getServletContext().getRequestDispatcher("/User/AnnunciCreati.jsp");
 				d.forward(request, response);

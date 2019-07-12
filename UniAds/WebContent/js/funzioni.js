@@ -308,11 +308,11 @@ function mostraPassword() {
 	  }
 }
 
-function selectOperazioni(value) {
+function selectOperazioni(value, email) {
 	if(value == 1)
 		window.location.href="/UniAds/Admin/OperazioniAdmin.jsp";
-	if(value==5){
-		window.location.href="/UniAds/Tutti/PrelevaAnnunciServlet?tutti=-1";
+	if(value==5 || value == 2){
+		window.location.href="/UniAds/Tutti/PrelevaAnnunciServlet?tutti="+""+email;
 	}
 	if(value == 9)
 		window.location.href="/UniAds/Corriere/OperazioniCorriere.jsp";
@@ -353,7 +353,7 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser){
 	var fine = numeroPagina*5;
 	for(var i = 5, y = 1; i > 0; i--, y++) {
 		
-		if(annunciJson[fine-i] != null && emailUser.equals(annunciJson[i-1].utente.email)) {
+		if(annunciJson[fine-i] != null && emailUser == annunciJson[i-1].utente.email) {
 			var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 			codice += '<div class="adBody">';
 			codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';

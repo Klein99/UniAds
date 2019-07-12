@@ -32,10 +32,12 @@
 					<input type="hidden" value="0" id="selettorePagine" name="selettorePagine">
 		<%
 		
-				int numeroAnnunci = (Integer) request.getAttribute("numeroAnnunci");
-				ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getAttribute("annunci");
-				String annunciJson = (String) request.getAttribute("annunciJson");
+				int numeroAnnunci = (Integer) request.getAttribute("numeroAnnunciEffettivi");
+			
+				ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getAttribute("annunciEffettivi");
+				String annunciJson = (String) request.getAttribute("annunciJsonEffettivi");
 				System.out.println(annunciJson);
+				
 				if(annunci.size()>0){
 		%>
 
@@ -45,11 +47,9 @@
 		<ul class="listAds">
 			<li id="ricerca">Miei Annunci</li>
 			<%
-				int numeroAnnunciEffettivi = 0;
 						for (int i = 1; i <= 5; i++) {
-							if (annunci.size() > i - 1 && annunci.get(i - 1) != null
-									&& annunci.get(i - 1).getUtente().getEmail().equals(utente.getEmail())) {
-								numeroAnnunciEffettivi = numeroAnnunciEffettivi + 1;
+							String emailUtente=annunci.get(i - 1).getUtente().getEmail();
+							if (annunci.size() > (i - 1)  && annunci.get(i-1)!=null) {
 								String gtitolo = new Gson().toJson(annunci.get(i - 1).getTitolo());
 								String gEmail = new Gson().toJson(annunci.get(i - 1).getUtente().getEmail());
 			%>
@@ -74,7 +74,7 @@
 
 		<div class="pageButton">
 			<%
-				for (int i = 0; i < numeroAnnunciEffettivi; i = i + 5) {
+				for (int i = 0; i < numeroAnnunci; i = i + 5) {
 							String gEmail = new Gson().toJson(utente.getEmail());
 							System.out.println(utente.getEmail());
 			%>
