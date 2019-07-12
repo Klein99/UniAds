@@ -16,16 +16,14 @@
 	<body onload=mostraCategorie();mostraUniversita();mostraListaRegioni()>
 		<%@include file="/Tutti/Header.jsp" %>
 		<%@include file="/Tutti/BarraNavigazione.jsp" %>
-		<div class="containerRuleAboutUS">
-		
-			<h2 style="color:#188aff"><strong>Chi siamo</strong></h2><br>
-			<p>UniAds nasce dall&rsquo;idea di poter aiutare e agevolare la vita universitaria<br/>
-			L&rsquo;applicazione si rivolge quindi in particolar modo agli studenti iscritti alle varie Università italiane ma anche a tutti coloro che forniscono servizi
-			 in ambito universitario con lo scopo di facilitare gli studenti nel loro percorso di studi.</p> <br/> <br>
+		<div class="containerRule">
+			<h2 style="color:#188aff"><strong>Chi siamo</strong></h2>
+			<p>UniAds nasce dall&rsquo;idea di poter aiutare e agevolare la vita universitaria
+			L&rsquo;applicazione si rivolge quindi in particolar modo agli studenti iscritti alle varie Università italiane 
+			ma anche a tutti coloro che forniscono servizi
+			in ambito universitario con lo scopo di facilitare gli studenti nel loro percorso di studi.</p>
 			 
-			 <p>Il sito permette di: 
-			 </p><br/>
-			
+			<p>Il sito permette di: </p>
 			<ul>
 				<li>Inserire, visualizzare ed eventualmente cancellare annunci di vario genere, dalla condivisione di appunti alla vendita di libri usati,
 				 passando per la richiesta/offerta di ripetizioni etc.; </li>

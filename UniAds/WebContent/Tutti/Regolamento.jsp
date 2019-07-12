@@ -16,7 +16,7 @@
 	<body onload=mostraCategorie();mostraUniversita();mostraListaRegioni()>
 		<%@include file="/Tutti/Header.jsp" %>
 		<%@include file="/Tutti/BarraNavigazione.jsp" %>
-		<div class="container">
+		<div class="containerRule">
 		
 			<h2 style="color:#188aff"><strong>Regolamento UniAds</strong></h2><br>
 			<ul>

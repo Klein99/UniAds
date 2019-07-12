@@ -137,6 +137,18 @@ nav ul li a:hover
 	background-color:white;
 }
 
+.containerRule
+{
+   	display: grid;
+   	grid-gap: 5px;
+   	grid-template-columns: 1fr;
+   	padding: 15px;
+    border: 1px solid #5a5a5a;
+	height: calc(100vh - (112.19px + 40px + 56px));
+	background-color:white;
+	overflow: auto;
+}
+
 #grigliaCategorie 
 {
 	display: grid;
