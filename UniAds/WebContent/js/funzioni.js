@@ -317,7 +317,7 @@ function selectOperazioni(value, email) {
 	if(value == 9)
 		window.location.href="/UniAds/Corriere/OperazioniCorriere.jsp";
 }
-
+ 
 function inviaForm(){
 	document.getElementById("ricerca").submit();
 }
