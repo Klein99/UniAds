@@ -66,6 +66,7 @@ public class FiltroLogin implements Filter {
 			HttpSession session = hrequest.getSession(false);
 			if(session!=null) {
 				String ruolo = (String) session.getAttribute("ruolo"); 
+				System.out.println(ruolo);
 				if(ruolo!=null && (ruolo.equals("CORRIERE"))) {
 					chain.doFilter(request, response);
 				}

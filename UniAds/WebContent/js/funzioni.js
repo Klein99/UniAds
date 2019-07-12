@@ -41,11 +41,12 @@ function validazione(form) {
 	$("#emailRegistrazione").remove();
 	checkEmail = true;
 
-	return true
+	return true;
 }
 
 
-function aggiungiPreferiti(event){
+function aggiungiPreferiti(event,emailUtente,emailAnnuncio,titolo,tipo){
+	window.location.href="/UniAds/User/AggiungiPreferiti?emailUtente="+mail+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
 	event.stopPropagation();
 }
 
