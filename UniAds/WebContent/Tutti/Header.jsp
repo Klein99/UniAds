@@ -23,7 +23,7 @@
 				    	<option><%=amministratore.getNome()%></option>
 				    	<option value="1" >Gestione Sito</option>
 				    	<option value="2">I miei annunci</option>
-				        <option value="3">Hello 3</option> 
+				        <option value="3">Preferiti</option> 
 				        <option value="4">Hello 4</option>
 				    </select>
 				    <span class="select_arrow"></span>
@@ -45,10 +45,8 @@
 				    <select onchange="selectOperazioni(value,'<%=utente.getEmail()%>')">
 				        <option><%=utente.getNome()%></option>
 				        <option value="5">I miei annunci</option>
-				        <option value="6">Hello 2</option>
-				        <option value="7">Hello 3</option> 
-				        <option value="8">Hello 4</option>
-				    </select>
+				        <option value="6">Preferiti</option>
+				     </select>
 				    <span class="select_arrow"></span>
 				    </span>
 				</li>
@@ -69,9 +67,6 @@
 				    <select onchange="selectOperazioni(value,'<%=corriere.getEmail()%>')">
 				        <option><%=corriere.getNome()%></option>
 				        <option value="9">Gestione consegna</option>
-				        <option value="10">Hello 2</option>
-				        <option value="11">Hello 3</option> 
-				        <option value="12">Hello 4</option>
 				    </select>
 				    <span class="select_arrow"></span>
 				    </span>

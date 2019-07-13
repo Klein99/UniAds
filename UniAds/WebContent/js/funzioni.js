@@ -48,6 +48,12 @@ function validazione(form) {
 function aggiungiPreferiti(emailUtente,emailAnnuncio,titolo,tipo){
 	
 	window.location.href="/UniAds/User/AggiungiPreferiti?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
+	
+}
+function aggiungiPreferitiLista(emailUtente,emailAnnuncio,titolo,tipo){
+	
+	window.location.href="/UniAds/User/AggiungiPreferitiUtente?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
+	
 }
 
 function rimuoviAnnuncio(emailUtente,titolo){
@@ -323,6 +329,10 @@ function selectOperazioni(value, email) {
 	}
 	if(value == 9)
 		window.location.href="/UniAds/Corriere/OperazioniCorriere.jsp";
+
+	if(value==3 || value==6){
+		window.location.href="/UniAds/User/PrendiPreferitiUtente?email="+email;
+	}
 }
  
 function inviaForm(){
@@ -414,6 +424,46 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser,id,size){
 	$("#bottone"+id).css("color","#188aff");
 
 }
+function paginazionePreferiti(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,sizePreferiti, emailUtente){
+	var fine = numeroPagina*5;
+	if(numeroPagina!=0){
+		for(var i = 5, y = 1; i > 0; i--, y++) {
+			if(annunciJson[fine-i] != null) {
+				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+				codice += '<div class="adBody">';
+				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
+				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
+				codice += '<br>';
+				codice += '</span>';
+				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
+				codice += '</a>';
+				var tipo = true;
+				codice += '<img onclick=\'aggiungiPreferitiLista("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
+						
+				codice += '</div>';
+
+				$("#div" + y).empty();
+				$("#div" + y).html(codice);
+			} 
+			else {
+				$("#div" + y).empty();
+			}
+		}
+	}
+	
+	for(var i = 0; i <size;i++){
+		$("#bottone"+i).css("background-color","#188aff");
+		$("#bottone"+i).css("color","#ffffff");
+	}
+	
+	$("#bottone"+id).css("background-color","#ffffff");
+	$("#bottone"+id).css("color","#188aff");
+		
+}
+
+
+
+
 
 var count = 2;
 
