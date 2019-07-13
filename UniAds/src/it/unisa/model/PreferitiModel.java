@@ -138,7 +138,7 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 				Preferiti bean = new Preferiti();
 
 				bean.setEmailUtente(rs.getString("mail_utente"));
-				bean.setTitoloAnnuncio(rs.getString("titoloAnnuncio"));
+				bean.setTitoloAnnuncio(rs.getString("titolo_annuncio"));
 				bean.setEmailUtenteAnnuncio(rs.getString("email_annuncio"));
 				uni.add(bean);
 			}

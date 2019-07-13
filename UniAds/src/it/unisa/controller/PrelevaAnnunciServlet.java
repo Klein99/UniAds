@@ -34,10 +34,6 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		String regione = request.getParameter("regione");
 		String tutti =  request.getParameter("tutti");
 		String email =  request.getParameter("email");
-		
-		System.out.println(titolo);
-		System.out.println(categoria);
-		System.out.println(siglaUni);
 
 		Categoria c = new Categoria();
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");

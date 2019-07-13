@@ -10,6 +10,7 @@
 		if(isLogNav!=null && isLogNav.equals(true) && objectNav!=null && (objectNav instanceof Amministratore || objectNav instanceof Utente)){
 			GenericUser genericUser = (GenericUser) objectNav;
 			emailParam = genericUser.getEmail();
+
 		}
 		if(isLogNav!=null && isLogNav.equals(true) && objectNav!=null && (objectNav instanceof Corriere)){
 			Corriere c = (Corriere) objectNav;
@@ -18,7 +19,8 @@
 	%>
 		
 		<img src="/UniAds/img/cercare.png" id="search">
-		<form action="<%=response.encodeURL("/UniAds/Tutti/PrelevaAnnunciServlet?email="+emailParam)%>" method="GET" id="ricerca">
+		<form action="<%=response.encodeURL("/UniAds/Tutti/PrelevaAnnunciServlet")%>" method="GET" id="ricerca">
+			<input type= "hidden" value="<%=emailParam%>" name="email">
 			<select name="universita" class="select" id="selectUniversita">
 				<option value="0" selected="selected">Seleziona Università:</option>
 			</select>

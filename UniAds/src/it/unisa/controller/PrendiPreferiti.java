@@ -27,7 +27,7 @@ public class PrendiPreferiti extends HttpServlet {
     	String emailUtente = request.getParameter("email");
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		PreferitiModel modelAnnuncio = new PreferitiModel(dmcp);
-		if(emailUtente!=null && !emailUtente.equals("")) {
+		if(emailUtente!=null && !emailUtente.equals("") && !emailUtente.equals("null")) {
 			try {
 				ArrayList<Preferiti> annunci=modelAnnuncio.doRetrieveAll("titolo_annuncio");
 				ArrayList<Preferiti> annunciEffettivi = new ArrayList<Preferiti>(); 
