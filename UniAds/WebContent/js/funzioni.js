@@ -50,6 +50,15 @@ function aggiungiPreferiti(event,emailUtente,emailAnnuncio,titolo,tipo){
 	event.stopPropagation();
 }
 
+function rimuoviAnnuncio(emailUtente,emailAnnuncio,titolo){
+	alert(emailUtente);
+	alert(emailAnnuncio);
+	alert(titolo);
+	window.location.href="/UniAds/User/EliminaAnnuncioUtente?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo;
+	
+}
+
+
 function mostraCategorie() {
 	   if (window.XMLHttpRequest) {
 	    xmlhttp=new XMLHttpRequest();
@@ -334,10 +343,12 @@ function paginazione(numeroPagina, annunciJson,id,size){
 				codice += '<div class="adBody">';
 				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
 				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
-				codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
+				codice += '<br>';
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
+				codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
+				
 				codice += '</div>';
 
 				$("#div" + y).empty();
@@ -369,10 +380,12 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser,id,size){
 				codice += '<div class="adBody">';
 				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
 				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
-				codice += '<img class="deleteIcon"  onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+				codice += '<br>';
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
+				codice += '<img class="deleteIcon"  onclick=\'rimuoviAnnuncio("'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'")\' onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+				
 				codice += '</div>';
 
 				$("#div" + y).empty();

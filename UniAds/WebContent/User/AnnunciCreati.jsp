@@ -23,7 +23,20 @@
 		
 		
 		<%
-			
+			String gEmailUtente="";
+			if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Amministratore ){
+				amministratore = (Amministratore) request.getSession().getAttribute("utente");
+				gEmailUtente = new Gson().toJson(amministratore.getEmail());
+			}
+			if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Utente ){
+				utente = (Utente) request.getSession().getAttribute("utente");
+				gEmailUtente = new Gson().toJson(utente.getEmail());
+			}	
+			if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Corriere ){
+				corriere = (Corriere) request.getSession().getAttribute("utente");
+				gEmailUtente = new Gson().toJson(corriere.getEmail());
+				
+			}
 			String errore = (String)request.getAttribute("erroreRicerca");
 			Object objNumAnnunci =  request.getAttribute("numeroAnnunci");	
 		
@@ -58,11 +71,11 @@
 				src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i - 1).getUtente().getEmail()%>&titolo=<%=annunci.get(i - 1).getTitolo()%>">
 				<div class="adBody">
 					<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
-						 <span class="titoloAds"> <%=annunci.get(i - 1).getTitolo()%> 
-						 	<img class="preferitiIcon" onclick="aggiungiPreferiti(event)" src="/UniAds/img/heart.png">
+						 <span class="titoloAds"> <%=annunci.get(i - 1).getTitolo()%><br> 
 						</span>
 					 	<span class="descrizioneAds"><%=annunci.get(i - 1).getDescrizione()%></span>
 					</a>
+					<img class='deleteIcon' onclick='rimuoviAnnuncio(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>)' onmouseout='outImg(<%=i%>)' onmouseenter='hoverImg(<%=i%>)' src='/UniAds/img/delete.png' id='<%=i%>'>
 				</div></li>
 			<%
 				}
@@ -76,7 +89,6 @@
 			<%
 				for (int i = 0; i < numeroAnnunci; i = i + 5) {
 							String gEmail = new Gson().toJson(utente.getEmail());
-							System.out.println(utente.getEmail());
 			%>
 			<a class="active" id="bottone<%=i%>"onclick='paginazioneUtente(<%=i/5+1%>,<%=annunciJson%>,<%=gEmail%>,<%=i%>,<%=numeroAnnunci%>)'><%=i / 5 + 1%></a>
 			<%

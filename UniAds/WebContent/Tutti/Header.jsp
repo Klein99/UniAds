@@ -8,7 +8,7 @@
 	<div id="logo"><a href="/UniAds/Tutti/HomePage.jsp" title="UniAds"><img src="/UniAds/img/logo.png"></a></div>
 		<nav>  
 			<%
-				 Amministratore amministratore = new Amministratore();
+				Amministratore amministratore = new Amministratore();
 				Utente utente = new Utente();
 				Corriere corriere = new Corriere();
 				Boolean isLog = (Boolean) request.getSession().getAttribute("login");	

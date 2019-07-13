@@ -55,11 +55,12 @@
 		     						<div class="adBody">
 										<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
 		     							<span class="titoloAds"> 
-		     								<%=annunci.get(i-1).getTitolo()%> 
-		     								<img class="preferitiIcon" onclick="aggiungiPreferiti(event)" src="/UniAds/img/heart.png"> 
+		     								<%=annunci.get(i-1).getTitolo()%> <br>
+		     							 
 		     							</span>
 		     							<span class="descrizioneAds"><%=annunci.get(i-1).getDescrizione()%></span>
 		     						</a>
+		     						<img class="preferitiIcon" onclick="aggiungiPreferiti(event)" src="/UniAds/img/heart.png">
 		     						</div>
 		     				</li>
 							<%}%>        		
