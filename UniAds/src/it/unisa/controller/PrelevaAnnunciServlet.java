@@ -34,7 +34,10 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		String regione = request.getParameter("regione");
 		String tutti =  request.getParameter("tutti");
 		String email =  request.getParameter("email");
-
+		System.out.println(siglaUni);
+		System.out.println(categoria);
+		System.out.println(titolo);
+		
 		Categoria c = new Categoria();
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		AnnuncioModel modelAnnuncio = new AnnuncioModel(dmcp);
@@ -184,7 +187,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				e.printStackTrace();
 			} 
 		}
-		else if(titolo!=null && !titolo.equals("")) {
+		else if(titolo!=null && !titolo.equals("") && !titolo.equals("0")) {
 			try {
 				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
 				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();
@@ -236,6 +239,22 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				e.printStackTrace();
 			} 
 
+		}
+		else if(siglaUni!=null && categoria != null && titolo!=null && siglaUni.equals("0") && categoria.equals("0") && titolo.equals("0")) {
+			System.out.println("OOOOOOOOOOOOO");
+			try {
+				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
+				request.setAttribute("numeroAnnunci", annunci.size());
+				request.setAttribute("annunci", annunci);
+				request.setAttribute("annunciJson", new Gson().toJson(annunci));
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
+				d.forward(request, response);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
 		}
 		else {
 			request.setAttribute("erroreRicerca", "Annunci non trovati");

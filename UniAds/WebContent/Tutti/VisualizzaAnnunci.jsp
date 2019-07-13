@@ -91,12 +91,12 @@
 		     						
 		     							if(tipo.equals(false) && isLog.equals(true)){
 		     					%>	
-		     								<img onclick="aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>)" class="preferitiIcon" src="/UniAds/img/heart.png">
+		     								<img onclick='aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipo%>)' class="preferitiIcon" src="/UniAds/img/heart.png">
 		     					<%	
 		     							}
 		     							if(tipo.equals(true) && isLog.equals(true)){
 		     					%>
-		     								<img onclick="aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>)" class="preferitiIcon" src="/UniAds/img/heartHover.png">
+		     								<img onclick='aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipo%>)' class="preferitiIcon" src="/UniAds/img/heartHover.png">
 		     					<%
 		     							}
 		     						}
@@ -108,7 +108,7 @@
    					</ul>
    					<div class="pageButton">
      					<%for(int i=0; i < numeroAnnunci;i=i+5) {%>	  
-    	 		 			<a class="active" id="bottone<%=i%>"  onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>,<%=i%>,<%=numeroAnnunci%>,<%=annunciJsonPreferiti%>,<%=numeroAnnunciPreferiti%>)'><%=i/5+1 %></a>
+    	 		 			<a class="active" id="bottone<%=i%>"  onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>,<%=i%>,<%=numeroAnnunci%>,<%=annunciJsonPreferiti%>,<%=numeroAnnunciPreferiti%>,<%=gEmailUtente%>)'><%=i/5+1 %></a>
     	 				<%} %>
     	 			</div>
      			</div>

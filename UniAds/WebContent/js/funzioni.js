@@ -46,13 +46,8 @@ function validazione(form) {
 
 
 function aggiungiPreferiti(emailUtente,emailAnnuncio,titolo,tipo){
-	alert(emailUtente);
-	alert(emailAnnuncio);
-	alert(titolo);
-	alert(tipo);
 	
-	window.location.href="/UniAds/User/AggiungiPreferiti?emailUtente="+mail+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
-	event.stopPropagation();
+	window.location.href="/UniAds/User/AggiungiPreferiti?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
 }
 
 function rimuoviAnnuncio(emailUtente,titolo){
@@ -337,7 +332,7 @@ function inviaForm(){
 
 
 
-function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,sizePreferiti){
+function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,sizePreferiti, emailUtente){
 	var fine = numeroPagina*5;
 	if(numeroPagina!=0){
 		for(var i = 5, y = 1; i > 0; i--, y++) {
@@ -358,11 +353,10 @@ function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,size
 						}
 					}
 				
-			
 					if(tipo == false && annunciJsonPreferiti!=null)
-						codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
+						codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heart.png">';
 					if(tipo == true)
-						codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heartHover.png">';
+						codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
 					
 				codice += '</div>';
 

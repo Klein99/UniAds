@@ -24,7 +24,7 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + PreferitiModel.TABLE_NAME
-				+ " (email_annuncio, titoloAnnuncio,mail_utente) VALUES (?, ?, ?)";
+				+ " (email_annuncio, titolo_annuncio,mail_utente) VALUES (?, ?, ?)";
 
 		try {
 			connection = dmcp.getConnection();
@@ -68,7 +68,7 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 			while (rs.next()) {
 				
 				bean.setEmailUtente(rs.getString("mail_utente"));
-				bean.setTitoloAnnuncio(rs.getString("titoloAnnuncio"));
+				bean.setTitoloAnnuncio(rs.getString("titolo_annuncio"));
 				bean.setEmailUtenteAnnuncio(rs.getString("email_annuncio"));
 			}
 
@@ -90,7 +90,7 @@ public class PreferitiModel implements DataAccesObjectInterface<Preferiti>{
 		
 		int result = 0;
 		
-		String deleteSQL = "DELETE FROM " + PreferitiModel.TABLE_NAME + " WHERE mail_utente = ? AND titotloAnnuncio = ? AND email_annuncio = ?";
+		String deleteSQL = "DELETE FROM " + PreferitiModel.TABLE_NAME + " WHERE mail_utente = ? AND titolo_annuncio = ? AND email_annuncio = ?";
 
 		try {
 			connection = dmcp.getConnection();

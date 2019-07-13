@@ -1,9 +1,9 @@
 package it.unisa.model;
 
 public class Preferiti {
-	private String titoloAnnuncio;
-	private String emailUtenteAnnuncio;
-	private String emailUtente;
+	private String titoloAnnuncio="";
+	private String emailUtenteAnnuncio="";
+	private String emailUtente="";
 	 public Preferiti() {
 		 
 	 }

@@ -36,12 +36,13 @@ public class AggiungiPreferiti extends HttpServlet {
    			preferiti.setTitoloAnnuncio(titoloAnnuncio);
    			try {
 				preferiti=modelPreferiti.doRetrieveByKey(preferiti);
-				if(preferiti != null && preferiti.getEmailUtente().equals("") && preferiti.getTitoloAnnuncio().equals("") && preferiti.getEmailUtenteAnnuncio().equals("") && tipo.equals(true)) {
+				System.out.println(preferiti.getEmailUtente());
+				if(preferiti != null && preferiti.getEmailUtente().equals("") && preferiti.getTitoloAnnuncio().equals("") && preferiti.getEmailUtenteAnnuncio().equals("") && tipo.equals(false)) {
 					preferiti.setEmailUtente(emailUtente);
 					preferiti.setEmailUtenteAnnuncio(emailAnnuncio);
 					preferiti.setTitoloAnnuncio(titoloAnnuncio);
 					modelPreferiti.doSave(preferiti);
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/User/Preferiti.jsp");
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie=0&search=0");
 					d.forward(request, response);
 				}
 				else {
@@ -49,7 +50,7 @@ public class AggiungiPreferiti extends HttpServlet {
 					preferiti.setEmailUtenteAnnuncio(emailAnnuncio);
 					preferiti.setTitoloAnnuncio(titoloAnnuncio);
 					modelPreferiti.doDelete(preferiti);
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/User/Preferiti.jsp");
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie=0&search=0");
 					d.forward(request, response);
 				}
 				
