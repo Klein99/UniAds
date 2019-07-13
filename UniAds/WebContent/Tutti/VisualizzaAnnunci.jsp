@@ -1,3 +1,4 @@
+<%@page import="it.unisa.model.Preferiti"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.unisa.model.Annuncio"%>
@@ -23,18 +24,35 @@
 		
 		
 		<%
+		String gEmailUtente="";
+		if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Amministratore ){
+			amministratore = (Amministratore) request.getSession().getAttribute("utente");
+			gEmailUtente = new Gson().toJson(amministratore.getEmail());
+		}
+		if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Utente ){
+			utente = (Utente) request.getSession().getAttribute("utente");
+			gEmailUtente = new Gson().toJson(utente.getEmail());
+		}	
+		if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Corriere ){
+			corriere = (Corriere) request.getSession().getAttribute("utente");
+			gEmailUtente = new Gson().toJson(corriere.getEmail());
 			
+		}	
 			String errore = (String)request.getAttribute("erroreRicerca");
 			Object objNumAnnunci =  request.getAttribute("numeroAnnunci");	
-		
+			Object objNumAnnunciPreferiti =  request.getAttribute("numeroAnnunciPreferiti");	
+			
 			if(errore==null && objNumAnnunci!=null){				
 		%>
 					<input type="hidden" value="0" id="selettorePagine" name="selettorePagine">
 		<%
-		
+				int numeroAnnunciPreferiti=0;
 				int numeroAnnunci = (Integer) request.getAttribute("numeroAnnunci");
 				ArrayList<Annuncio> annunci = (ArrayList<Annuncio>) request.getAttribute("annunci");
 				String annunciJson = (String) request.getAttribute("annunciJson");
+				ArrayList<Preferiti> annunciPreferiti = (ArrayList<Preferiti>) request.getAttribute("annunciPreferiti");
+				String annunciJsonPreferiti = (String) request.getAttribute("annunciJsonPreferiti");
+				System.out.println(annunciJsonPreferiti);
 				System.out.println(annunciJson);
 				if(annunci.size()>0){
 		%>
@@ -56,11 +74,33 @@
 										<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
 		     							<span class="titoloAds"> 
 		     								<%=annunci.get(i-1).getTitolo()%> <br>
-		     							 
 		     							</span>
 		     							<span class="descrizioneAds"><%=annunci.get(i-1).getDescrizione()%></span>
 		     						</a>
-		     						<img class="preferitiIcon" onclick="aggiungiPreferiti(event)" src="/UniAds/img/heart.png">
+		     					<%
+		     							
+		     						if(objNumAnnunciPreferiti!=null){
+		     							numeroAnnunciPreferiti = (Integer) objNumAnnunciPreferiti;
+		     							Boolean tipo = false;
+		     							for(int j = 0; j<annunciPreferiti.size();j++){
+		     								if(annunciPreferiti.get(j).getEmailUtenteAnnuncio().equals(annunci.get(i-1).getUtente().getEmail()) && annunciPreferiti.get(j).getTitoloAnnuncio().equals(annunci.get(i-1).getTitolo())){
+		     									tipo= true;
+		     									break;
+		     								}
+		     							}
+		     						
+		     							if(tipo.equals(false) && isLog.equals(true)){
+		     					%>	
+		     								<img onclick="aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>)" class="preferitiIcon" src="/UniAds/img/heart.png">
+		     					<%	
+		     							}
+		     							if(tipo.equals(true) && isLog.equals(true)){
+		     					%>
+		     								<img onclick="aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>)" class="preferitiIcon" src="/UniAds/img/heartHover.png">
+		     					<%
+		     							}
+		     						}
+		     					%>	
 		     						</div>
 		     				</li>
 							<%}%>        		
@@ -68,7 +108,7 @@
    					</ul>
    					<div class="pageButton">
      					<%for(int i=0; i < numeroAnnunci;i=i+5) {%>	  
-    	 		 			<a class="active" id="bottone<%=i%>"  onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>,<%=i%>,<%=numeroAnnunci%>)'><%=i/5+1 %></a>
+    	 		 			<a class="active" id="bottone<%=i%>"  onclick='paginazione(<%=i/5+1%>,<%=annunciJson%>,<%=i%>,<%=numeroAnnunci%>,<%=annunciJsonPreferiti%>,<%=numeroAnnunciPreferiti%>)'><%=i/5+1 %></a>
     	 				<%} %>
     	 			</div>
      			</div>

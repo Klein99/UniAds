@@ -33,6 +33,8 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		String titolo = request.getParameter("search");
 		String regione = request.getParameter("regione");
 		String tutti =  request.getParameter("tutti");
+		String email =  request.getParameter("email");
+		
 		System.out.println(titolo);
 		System.out.println(categoria);
 		System.out.println(siglaUni);
@@ -77,7 +79,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				request.setAttribute("annunci", annunciView);
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -97,7 +99,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -117,7 +119,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -138,7 +140,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -158,7 +160,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -179,7 +181,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -200,7 +202,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -231,7 +233,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				
 				request.setAttribute("annunciJson", new Gson().toJson(annunciView));
 				request.setAttribute("annunci", annunciView);
-				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+				RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 				d.forward(request, response);
 			} 
 			catch (SQLException e) {
@@ -242,7 +244,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 		else {
 			request.setAttribute("erroreRicerca", "Annunci non trovati");
 			request.setAttribute("numeroAnnunci", 0);
-			RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
+			RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 			d.forward(request, response);
 
 		}

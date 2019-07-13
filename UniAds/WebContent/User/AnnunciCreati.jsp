@@ -23,20 +23,6 @@
 		
 		
 		<%
-			String gEmailUtente="";
-			if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Amministratore ){
-				amministratore = (Amministratore) request.getSession().getAttribute("utente");
-				gEmailUtente = new Gson().toJson(amministratore.getEmail());
-			}
-			if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Utente ){
-				utente = (Utente) request.getSession().getAttribute("utente");
-				gEmailUtente = new Gson().toJson(utente.getEmail());
-			}	
-			if(isLog!=null && isLog.equals(true) && object!=null && object instanceof Corriere ){
-				corriere = (Corriere) request.getSession().getAttribute("utente");
-				gEmailUtente = new Gson().toJson(corriere.getEmail());
-				
-			}
 			String errore = (String)request.getAttribute("erroreRicerca");
 			Object objNumAnnunci =  request.getAttribute("numeroAnnunci");	
 		
@@ -75,7 +61,7 @@
 						</span>
 					 	<span class="descrizioneAds"><%=annunci.get(i - 1).getDescrizione()%></span>
 					</a>
-					<img class='deleteIcon' onclick='rimuoviAnnuncio(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>)' onmouseout='outImg(<%=i%>)' onmouseenter='hoverImg(<%=i%>)' src='/UniAds/img/delete.png' id='<%=i%>'>
+					<img class='deleteIcon' onclick='rimuoviAnnuncio(<%=gEmail%>,<%=gtitolo%>)' onmouseout='outImg(<%=i%>)' onmouseenter='hoverImg(<%=i%>)' src='/UniAds/img/delete.png' id='<%=i%>'>
 				</div></li>
 			<%
 				}

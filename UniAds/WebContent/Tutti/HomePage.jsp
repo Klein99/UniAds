@@ -10,17 +10,18 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
   		<title>UniAds</title>
 	</head>
-	<body onload=mostraCategorie();mostraUniversita();mostraListaRegioni()>
-		<%@include file="/Tutti/Header.jsp" %>
-		<%@include file="/Tutti/BarraNavigazione.jsp" %>
+	<%@include file="/Tutti/Header.jsp" %>
+	<%@include file="/Tutti/BarraNavigazione.jsp" %>
+		
+	<body onload="mostraCategorie();mostraUniversita();mostraListaRegioni('<%=emailParam%>')">
 		<div class="container">
 			<article id="grigliaCategorie">
-				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Appunti&search=" style="height: 123px"><img id="appunti" class="icon-categorie" ></a>
-				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=CarSharing&search=" style="height: 123px"><img id="car" class="icon-categorie" ></a>
-				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Lavoro&search=" style="height: 123px"><img id="lavoro" class="icon-categorie" ></a>
-				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Ripetizioni&search=" style="height: 123px"><img id="ripetizioni" class="icon-categorie"></a>  
-				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Libri&search=" style="height: 123px"><img id="libri" class="icon-categorie"></a>
-				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Affitti&search=" style="height: 123px"><img id="affitti" class="icon-categorie"></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Appunti&search=&email=<%=emailParam%>" style="height: 123px"><img id="appunti" class="icon-categorie" ></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=CarSharing&search=&email=<%=emailParam%>" style="height: 123px"><img id="car" class="icon-categorie" ></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Lavoro&search=&email=<%=emailParam%>" style="height: 123px"><img id="lavoro" class="icon-categorie" ></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Ripetizioni&search=&email=<%=emailParam%>" style="height: 123px"><img id="ripetizioni" class="icon-categorie"></a>  
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Libri&search=&email=<%=emailParam%>" style="height: 123px"><img id="libri" class="icon-categorie"></a>
+				<a href="/UniAds/Tutti/PrelevaAnnunciServlet?universita=0&categorie=Affitti&search=&email=<%=emailParam%>" style="height: 123px"><img id="affitti" class="icon-categorie"></a>
 			</article>
 			<article id="regioni">
 				<ul class="regione-lista" id="regione-lista1"></ul>

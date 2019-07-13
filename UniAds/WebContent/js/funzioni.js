@@ -45,15 +45,18 @@ function validazione(form) {
 }
 
 
-function aggiungiPreferiti(event,emailUtente,emailAnnuncio,titolo,tipo){
+function aggiungiPreferiti(emailUtente,emailAnnuncio,titolo,tipo){
+	alert(emailUtente);
+	alert(emailAnnuncio);
+	alert(titolo);
+	alert(tipo);
+	
 	window.location.href="/UniAds/User/AggiungiPreferiti?emailUtente="+mail+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
 	event.stopPropagation();
 }
 
-function rimuoviAnnuncio(emailUtente,emailAnnuncio,titolo){
-	alert(emailUtente);
-	alert(emailAnnuncio);
-	alert(titolo);
+function rimuoviAnnuncio(emailUtente,titolo){
+	
 	window.location.href="/UniAds/User/EliminaAnnuncioUtente?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo;
 	
 }
@@ -186,7 +189,7 @@ function mostraListaUniversita() {
 	  xmlhttp.send();
 	}
 
-function mostraListaRegioni() {
+function mostraListaRegioni(email) {
 	if (window.XMLHttpRequest) {
 		xmlhttp=new XMLHttpRequest();
 	}
@@ -203,7 +206,7 @@ function mostraListaRegioni() {
 				var temp = obj[i];
 				
 				var testo= temp.nome;
-				var path = '/UniAds/Tutti/PrelevaAnnunciServlet?regione='+temp.nome+'&search=';
+				var path = '/UniAds/Tutti/PrelevaAnnunciServlet?regione='+temp.nome+'&search=&email='+email;
 				var openTag = "<li><a href='"+path+"'>";
 				var closeTag = "</a>"+"</li>";
 				if(i<lunghezza/2)
@@ -334,7 +337,7 @@ function inviaForm(){
 
 
 
-function paginazione(numeroPagina, annunciJson,id,size){
+function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,sizePreferiti){
 	var fine = numeroPagina*5;
 	if(numeroPagina!=0){
 		for(var i = 5, y = 1; i > 0; i--, y++) {
@@ -347,8 +350,20 @@ function paginazione(numeroPagina, annunciJson,id,size){
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
-				codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
+				var tipo=false;
+					for(var j = 0; j<sizePreferiti;j++){
+						if(annunciJsonPreferiti[j].emailUtenteAnnuncio==annunciJson[fine-i].utente.email && annunciJsonPreferiti[j].titoloAnnuncio==annunciJson[fine-i].titolo){
+							tipo= true;
+							break;
+						}
+					}
 				
+			
+					if(tipo == false && annunciJsonPreferiti!=null)
+						codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heart.png">';
+					if(tipo == true)
+						codice += '<img onclick="aggiungiPreferiti(event)" class="preferitiIcon" src="/UniAds/img/heartHover.png">';
+					
 				codice += '</div>';
 
 				$("#div" + y).empty();
@@ -384,7 +399,7 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser,id,size){
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
-				codice += '<img class="deleteIcon"  onclick=\'rimuoviAnnuncio("'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'")\' onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+				codice += '<img class="deleteIcon"  onclick=\'rimuoviAnnuncio("'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'")\' onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
 				
 				codice += '</div>';
 
