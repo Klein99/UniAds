@@ -215,18 +215,19 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				UniversitaModel modelUniversita = new UniversitaModel(dmcp);
 				
 				ArrayList<Universita> universita = modelUniversita.doRetrieveAll("localita");
-				Universita uni = new Universita();
+				ArrayList<Universita> uni = new ArrayList<Universita>();
 				
 				for(Universita u: universita) {
 					if(u.getLocalita().equals(regione)){
-						uni = u;
+						uni.add(u);
 					}
 				}
 				
-				for(Annuncio a : annunci) {
-					if(a.getSiglaUni().equals(uni.getSigla())) {
-						annunciView.add(a);
-					}
+				for(int i = 0 ; i < annunci.size();i++) {
+					for(int j=0;j<uni.size();j++)
+						if(annunci.get(i).getSiglaUni().equals(uni.get(j).getSigla())) {
+							annunciView.add(annunci.get(i));
+						}
 				}
 				request.setAttribute("numeroAnnunci", annunciView.size());
 				
