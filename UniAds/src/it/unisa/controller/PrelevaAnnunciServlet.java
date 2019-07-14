@@ -71,7 +71,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();
 				c.setNome(categoria);
 				for(Annuncio a : annunci) {
-					if(a.getSiglaUni().equals(siglaUni) && a.getCategoria().equals(c) && a.getTitolo().equals(titolo)) {
+					if(a.getSiglaUni().equals(siglaUni) && a.getCategoria().equals(c) && a.getTitolo().contains(titolo)) {
 						annunciView.add(a);
 					}
 				}
@@ -111,7 +111,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();
 				
 				for(Annuncio a : annunci) {
-					if(a.getSiglaUni().equals(siglaUni) && a.getTitolo().equals(titolo)) {
+					if(a.getSiglaUni().equals(siglaUni) && a.getTitolo().contains(titolo)) {
 						annunciView.add(a);
 					}
 				}
@@ -131,7 +131,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();
 				c.setNome(categoria);
 				for(Annuncio a : annunci) {
-					if(a.getTitolo().equals(titolo) && a.getCategoria().equals(c)) {
+					if(a.getTitolo().contains(titolo) && a.getCategoria().equals(c)) {
 						annunciView.add(a);
 					}
 				}
@@ -193,7 +193,7 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				ArrayList<Annuncio> annunciView = new ArrayList<Annuncio>();
 			
 				for(Annuncio a : annunci) {
-					if(a.getTitolo().equals(titolo)) {
+					if(a.getTitolo().contains(titolo)) {
 						annunciView.add(a);
 					}
 				}
