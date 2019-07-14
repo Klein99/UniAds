@@ -24,7 +24,6 @@
 				    	<option value="1" >Gestione Sito</option>
 				    	<option value="2">I miei annunci</option>
 				        <option value="3">Preferiti</option> 
-				        <option value="4">Hello 4</option>
 				    </select>
 				    <span class="select_arrow"></span>
 				    </span>

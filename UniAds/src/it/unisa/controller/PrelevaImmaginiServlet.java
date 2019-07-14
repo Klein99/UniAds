@@ -23,7 +23,7 @@ public class PrelevaImmaginiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   		response.setContentType("image/jpeg");
+   		response.setContentType("image/png");
    		String email = request.getParameter("email");
    		String titolo = request.getParameter("titolo");
    		OutputStream streamOutput = response.getOutputStream();

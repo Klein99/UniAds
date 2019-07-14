@@ -1,3 +1,32 @@
+numeroImmagine=0;
+function visualizzaImgIndietro(titolo, email){
+	if(numeroImmagine>0){
+//		$.ajax({
+//			type: "GET",
+//	        url: "PrelevaImmagine",
+//	        data:"titolo="+titolo+"&email="+email+"&numeroImg="+numeroImg,
+//	        success: function (result) {
+//	        	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="'+result+'" >'); 
+//	        }
+//	     });
+		$("#imgAnnuncio").html('<img id="imgAnnuncio" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>');
+		numeroImmagine--;
+	}
+}
+
+function visualizzaImgAvanti(titolo,email){
+//	$.ajax({
+//		type: "GET",
+//        url: "PrelevaImmagine",
+//        data:"titolo="+titolo+"&email="+email+"&numeroImg="+numeroImg,
+//        success: function (result) {
+//        	alert(result);
+//        	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="'+result+'">'); 
+//        }
+//     });
+	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>');
+	numeroImmagine++;
+}
 
 function unDisplayAgenzia(form) {
 	$("#agenzia").remove();
@@ -224,32 +253,57 @@ function mostraListaRegioni(email) {
 	}
 
 //AGGIUNGE L'IMMAGINE IN INSERIMENTO ANNUNCIO.
+var trigger=-1;
+var numeroImg=0;
 function aggiungiImmagine(n){
-	var i=n+1;	
-	$("#uploadImg").trigger("click");	
+	trigger++;
+	$("#uploadImg"+trigger).trigger("click");
+	$("#uploadImg"+numeroImg).change(function(e){
+	var files = e.currentTarget.files;
+	var file = files[files.length-1];
+	var objectUrl = window.URL.createObjectURL(file);
+	
+	if(numeroImg==0)
+		$("#imgCaricata").prop("src", objectUrl);
+	else
+		$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
+	numeroImg=numeroImg+1;
+	var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
+	var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
+	var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
+	var label = '<label for="imgLabel"></label>';
+	var closeDiv ='</div>';
+	var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
+	$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
+});
+
+
 }
 
-var numeroImg=0;
-$(document).ready(() =>{
-			$("#uploadImg").change(function(e){
-			var files = e.currentTarget.files;
-			var file = files[files.length-1];
-			var objectUrl = window.URL.createObjectURL(file);
-			
-			if(numeroImg==0)
-				$("#imgCaricata").prop("src", objectUrl);
-			else
-				$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
-			numeroImg=numeroImg+1;
-			var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
-			var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
-			var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
-			var label = '<label for="imgLabel"></label>';
-			var closeDiv ='</div>';
-			$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv);
-		});
-		
-});
+//var numeroImg=0;
+//$(document).ready(() =>{
+//			alert(numeroImg);
+//			$("#uploadImg"+numeroImg).change(function(e){
+//			var files = e.currentTarget.files;
+//			var file = files[files.length-1];
+//			var objectUrl = window.URL.createObjectURL(file);
+//			
+//			if(numeroImg==0)
+//				$("#imgCaricata").prop("src", objectUrl);
+//			else
+//				$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
+//			numeroImg=numeroImg+1;
+//			alert(numeroImg);
+//			var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
+//			var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
+//			var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
+//			var label = '<label for="imgLabel"></label>';
+//			var closeDiv ='</div>';
+//			var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
+//			$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
+//		});
+//		
+//});
 
 //RIMUOVE L'IMMAGINE DALL'INSERIMENTO ANNUNCIO.
 function rimuoviImmagine(idd){

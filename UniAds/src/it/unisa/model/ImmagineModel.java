@@ -70,7 +70,7 @@ public class ImmagineModel implements DataAccesObjectInterface<Immagine>{
 				bean.setNomeImmagine(rs.getString("nomeImmagine"));
 				Annuncio annuncio= new Annuncio();
 				GenericUser utente = null;
-				utente.setEmail(rs.getString("email"));
+				utente.setEmail(rs.getString("email_utente_immagine"));
 				annuncio.setUtente(utente);
 				bean.setAnnuncio(annuncio);
 			}
@@ -142,7 +142,7 @@ public class ImmagineModel implements DataAccesObjectInterface<Immagine>{
 				
 				Annuncio annuncio = new Annuncio();
 				GenericUser utente = null;
-				utente.setEmail(rs.getString("email"));
+				utente.setEmail(rs.getString("email_utente_immagine"));
 				annuncio.setUtente(utente);
 				bean.setAnnuncio(annuncio);
 				bean.setImg(rs.getBytes("immagine"));

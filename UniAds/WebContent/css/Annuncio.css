@@ -35,9 +35,17 @@
 	overflow: auto;
 }
 
+#avanti{
+	align-content: center;
+}
+#indietro{
+	
+	margin-left:40%; 
+}
 #slideshow
 {
-	border: 1px solid #AeAeAe;
+	height: 330px;
+	width: 350px;
 }
 
 .slides
