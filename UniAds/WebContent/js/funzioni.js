@@ -1,4 +1,4 @@
-numeroImmagine=0;
+numeroImmagine=1;
 function visualizzaImgIndietro(titolo, email){
 	if(numeroImmagine>0){
 //		$.ajax({
@@ -9,7 +9,16 @@ function visualizzaImgIndietro(titolo, email){
 //	        	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="'+result+'" >'); 
 //	        }
 //	     });
-		$("#imgAnnuncio").html('<img id="imgAnnuncio" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>');
+		$("#imgAnnuncio"+numeroImmagine).remove();
+		$("#indietro").remove();
+		$("#avanti").remove();
+		
+		var img='<img  class="slides" id="imgAnnuncio'+(numeroImmagine-1)+'" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>'
+
+		var indietro = '<button id="indietro" onclick=\'visualizzaImgIndietro("'+titolo+'","'+email+'")\'>&lt;</button>'
+		var avanti = '<button onclick=\'visualizzaImgAvanti("'+titolo+'","'+email+'")\' id="avanti">&gt;</button>'
+
+		$("#slideshow").html(img+indietro+avanti);
 		numeroImmagine--;
 	}
 }
@@ -24,7 +33,16 @@ function visualizzaImgAvanti(titolo,email){
 //        	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="'+result+'">'); 
 //        }
 //     });
-	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>');
+	$("#imgAnnuncio"+numeroImmagine).remove();
+	$("#indietro").remove();
+	$("#avanti").remove();
+	
+	var img='<img  class="slides" id="imgAnnuncio'+(numeroImmagine+1)+'" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>'
+
+	var indietro = '<button id="indietro" onclick=\'visualizzaImgIndietro("'+titolo+'","'+email+'")\'>&lt;</button>';
+	var avanti = '<button onclick=\'visualizzaImgAvanti("'+titolo+'","'+email+'")\' id="avanti">&gt;</button>';
+	$("#slideshow").html(img+indietro+avanti);
+
 	numeroImmagine++;
 }
 

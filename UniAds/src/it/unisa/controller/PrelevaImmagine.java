@@ -15,9 +15,6 @@ import it.unisa.model.DriverManagerConnectionPool;
 import it.unisa.model.Immagine;
 import it.unisa.model.ImmagineModel;
 
-/**
- * Servlet implementation class PrelevaImmagine
- */
 @WebServlet("/PrelevaImmagine")
 public class PrelevaImmagine extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,12 +33,12 @@ public class PrelevaImmagine extends HttpServlet {
 		try {
 			ArrayList<Immagine> immagini = modelImmagine.doRetrieveImmagini(email, titolo);
 			
-			if(immagini.size()>0 && immagini.size()<numeroImg) {
+			if(immagini.size()>0) {
 				System.out.println(numeroImg);
 				System.out.println(immagini.size());
 				
 				OutputStream streamOutput = response.getOutputStream();
-				streamOutput.write(immagini.get(numeroImg).getImg());
+				streamOutput.write(immagini.get(numeroImg%immagini.size()).getImg());
 				streamOutput.flush();
 				streamOutput.close();
 			} 

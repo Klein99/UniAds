@@ -27,7 +27,7 @@
 			<div id="TitoloAnnuncio"> <%= annuncio.getTitolo() %> </div>
 			<div id="fakeTable">
 				<div id="slideshow">
-					<img id="imgAnnuncio" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annuncio.getUtente().getEmail()%>&titolo=<%=annuncio.getTitolo()%>" class="slides" onclick="changeImage()" style="height:300px">
+					<img id="imgAnnuncio0" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="PrelevaImmaginiServlet?email=<%=annuncio.getUtente().getEmail()%>&titolo=<%=annuncio.getTitolo()%>" class="slides" onclick="changeImage()" >
 					<br/>
 					<button id="indietro" onclick="visualizzaImgIndietro('<%=annuncio.getTitolo()%>','<%=annuncio.getUtente().getEmail() %>')">&lt;</button><button onclick="visualizzaImgAvanti('<%=annuncio.getTitolo()%>','<%=annuncio.getUtente().getEmail() %>')" id="avanti">&gt;</button>
 				</div>
