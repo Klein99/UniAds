@@ -1,14 +1,6 @@
 numeroImmagine=1;
 function visualizzaImgIndietro(titolo, email){
 	if(numeroImmagine>0){
-//		$.ajax({
-//			type: "GET",
-//	        url: "PrelevaImmagine",
-//	        data:"titolo="+titolo+"&email="+email+"&numeroImg="+numeroImg,
-//	        success: function (result) {
-//	        	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="'+result+'" >'); 
-//	        }
-//	     });
 		$("#imgAnnuncio"+numeroImmagine).remove();
 		$("#indietro").remove();
 		$("#avanti").remove();
@@ -24,15 +16,6 @@ function visualizzaImgIndietro(titolo, email){
 }
 
 function visualizzaImgAvanti(titolo,email){
-//	$.ajax({
-//		type: "GET",
-//        url: "PrelevaImmagine",
-//        data:"titolo="+titolo+"&email="+email+"&numeroImg="+numeroImg,
-//        success: function (result) {
-//        	alert(result);
-//        	$("#imgAnnuncio").html('<img id="imgAnnuncio" src="'+result+'">'); 
-//        }
-//     });
 	$("#imgAnnuncio"+numeroImmagine).remove();
 	$("#indietro").remove();
 	$("#avanti").remove();
@@ -421,24 +404,30 @@ function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,size
 			if(annunciJson[fine-i] != null) {
 				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 				codice += '<div class="adBody">';
+				codice +='<span>';
+			
+				var tipo=false;
+				for(var j = 0; j<sizePreferiti;j++){
+					if(annunciJsonPreferiti[j].emailUtenteAnnuncio==annunciJson[fine-i].utente.email && annunciJsonPreferiti[j].titoloAnnuncio==annunciJson[fine-i].titolo){
+						tipo= true;
+						break;
+					}
+				}
+			
+				if(tipo == false && annunciJsonPreferiti!=null)
+					codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heart.png">';
+				if(tipo == true)
+					codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
+		
+				
+				
 				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
 				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
 				codice += '<br>';
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
-				var tipo=false;
-					for(var j = 0; j<sizePreferiti;j++){
-						if(annunciJsonPreferiti[j].emailUtenteAnnuncio==annunciJson[fine-i].utente.email && annunciJsonPreferiti[j].titoloAnnuncio==annunciJson[fine-i].titolo){
-							tipo= true;
-							break;
-						}
-					}
-				
-					if(tipo == false && annunciJsonPreferiti!=null)
-						codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heart.png">';
-					if(tipo == true)
-						codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
+				codice +='</span>';
 					
 				codice += '</div>';
 
@@ -469,13 +458,16 @@ function paginazioneUtente(numeroPagina, annunciJson,emailUser,id,size){
 			if(annunciJson[fine-i] != null) {
 				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 				codice += '<div class="adBody">';
+				codice +='<span>';
+				codice += '<img class="deleteIcon"  onclick=\'rimuoviAnnuncio("'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'")\' onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+				
 				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
 				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
 				codice += '<br>';
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
-				codice += '<img class="deleteIcon"  onclick=\'rimuoviAnnuncio("'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'")\' onmouseout="outImg('+i+')" onmouseenter="hoverImg('+i+')" src="/UniAds/img/delete.png" id="'+i+'">';
+				codice +='</span>';
 				
 				codice += '</div>';
 
@@ -503,6 +495,9 @@ function paginazionePreferiti(numeroPagina, annunciJson,id,size,annunciJsonPrefe
 			if(annunciJson[fine-i] != null) {
 				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
 				codice += '<div class="adBody">';
+				codice +='<span>';
+				codice += '<img onclick=\'aggiungiPreferitiLista("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
+				
 				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
 				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
 				codice += '<br>';
@@ -510,8 +505,8 @@ function paginazionePreferiti(numeroPagina, annunciJson,id,size,annunciJsonPrefe
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
 				var tipo = true;
-				codice += '<img onclick=\'aggiungiPreferitiLista("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
-						
+				codice +='</span>';
+							
 				codice += '</div>';
 
 				$("#div" + y).empty();
