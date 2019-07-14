@@ -56,12 +56,13 @@
 				onerror="this.onerror=null; this.src='/UniAds/img/error.png'"
 				src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i - 1).getUtente().getEmail()%>&titolo=<%=annunci.get(i - 1).getTitolo()%>">
 				<div class="adBody">
+				<span><img class='deleteIcon' onclick='rimuoviAnnuncio(<%=gEmail%>,<%=gtitolo%>)' onmouseout='outImg(<%=i%>)' onmouseenter='hoverImg(<%=i%>)' src='/UniAds/img/delete.png' id='<%=i%>'>
 					<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
 						 <span class="titoloAds"> <%=annunci.get(i - 1).getTitolo()%><br> 
 						</span>
 					 	<span class="descrizioneAds"><%=annunci.get(i - 1).getDescrizione()%></span>
 					</a>
-					<img class='deleteIcon' onclick='rimuoviAnnuncio(<%=gEmail%>,<%=gtitolo%>)' onmouseout='outImg(<%=i%>)' onmouseenter='hoverImg(<%=i%>)' src='/UniAds/img/delete.png' id='<%=i%>'>
+				</span>
 				</div></li>
 			<%
 				}

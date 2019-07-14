@@ -63,14 +63,17 @@
 							<li class="everyAds" id="div<%=i%>">
 								<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="/UniAds/PrelevaImmaginiServlet?email=<%=annunciPreferiti.get(i-1).getUtente().getEmail()%>&titolo=<%=annunciPreferiti.get(i-1).getTitolo()%>">
 		     						<div class="adBody">
+		     						<span>
+		     						<%Boolean tipoPreferti=true; %>
+		     							<img onclick='aggiungiPreferitiLista(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipoPreferti%>)' class="preferitiIcon" src="/UniAds/img/heartHover.png">
+		     						
 										<a onclick='selezionaAnnuncio(<%=gtitolo%>,<%=gEmail%>)'>
 		     							<span class="titoloAds"> 
 		     								<%=annunciPreferiti.get(i-1).getTitolo()%> <br>
 		     							</span>
 		     							<span class="descrizioneAds"><%=annunciPreferiti.get(i-1).getDescrizione()%></span>
 		     						</a>
-		     							<%Boolean tipoPreferti=true; %>
-		     							<img onclick='aggiungiPreferitiLista(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipoPreferti%>)' class="preferitiIcon" src="/UniAds/img/heartHover.png">
+		     							</span>
 		     						</div>
 		     				</li>
 							<%}%>        		
