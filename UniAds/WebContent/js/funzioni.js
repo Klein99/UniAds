@@ -5,7 +5,7 @@ function visualizzaImgIndietro(titolo, email){
 		$("#indietro").remove();
 		$("#avanti").remove();
 		
-		var img='<img  class="slides" id="imgAnnuncio'+(numeroImmagine-1)+'" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>'
+		var img='<img  onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" class="slides" id="imgAnnuncio'+(numeroImmagine-1)+'" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>'
 
 		var indietro = '<button id="indietro" onclick=\'visualizzaImgIndietro("'+titolo+'","'+email+'")\'>&lt;</button>'
 		var avanti = '<button onclick=\'visualizzaImgAvanti("'+titolo+'","'+email+'")\' id="avanti">&gt;</button>'
@@ -20,7 +20,7 @@ function visualizzaImgAvanti(titolo,email){
 	$("#indietro").remove();
 	$("#avanti").remove();
 	
-	var img='<img  class="slides" id="imgAnnuncio'+(numeroImmagine+1)+'" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>'
+	var img='<img  onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" class="slides" id="imgAnnuncio'+(numeroImmagine+1)+'" src="PrelevaImmagine?titolo='+titolo+'&email='+email+'&numeroImg='+numeroImmagine+'"/>'
 
 	var indietro = '<button id="indietro" onclick=\'visualizzaImgIndietro("'+titolo+'","'+email+'")\'>&lt;</button>';
 	var avanti = '<button onclick=\'visualizzaImgAvanti("'+titolo+'","'+email+'")\' id="avanti">&gt;</button>';
