@@ -26,18 +26,7 @@ import it.unisa.model.PreferitiModel;
 public class PrendiPreferitiUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PrendiPreferitiUtente() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String emailUtente = request.getParameter("email");
 		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		PreferitiModel modelPreferiti = new PreferitiModel(dmcp);
@@ -45,14 +34,25 @@ public class PrendiPreferitiUtente extends HttpServlet {
 		if(emailUtente!=null && !emailUtente.equals("") && !emailUtente.equals("null")) {
 			try {
 				ArrayList<Preferiti> preferiti=modelPreferiti.doRetrieveAll("titolo_annuncio");
+				ArrayList<Preferiti> p= new ArrayList<Preferiti>();
+				
 				ArrayList<Annuncio> annunciPreferiti = new ArrayList<Annuncio>(); 
 				ArrayList<Annuncio> annunci = modelAnnuncio.doRetrieveAll("titolo");
+				System.out.println(preferiti.size());
 				
 				for(int j = 0 ; j< preferiti.size();j++) {
-					for(int i = 0; i<annunci.size();i++)
-						if(annunci.get(i).getUtente().getEmail().equals(preferiti.get(j).getEmailUtenteAnnuncio()) && annunci.get(i).getTitolo().equals(preferiti.get(j).getTitoloAnnuncio())) {
-							annunciPreferiti.add(annunci.get(i));
+					if(preferiti.get(j).getEmailUtente().equals(emailUtente)) {
+						p.add(preferiti.get(j));
+					}
+				}
+				
+				for(int i = 0; i<p.size();i++) {
+					for(int j=0; j < annunci.size(); j++) {
+						if(p.get(i).getEmailUtenteAnnuncio().equals(annunci.get(j).getUtente().getEmail())&& p.get(i).getTitoloAnnuncio().equals(annunci.get(j).getTitolo())) {
+							annunciPreferiti.add(annunci.get(j));
+							
 						}
+					}
 				}
 				System.out.println("preferiti:"+preferiti.size()+"array:"+annunciPreferiti.size());
 				request.setAttribute("numeroAnnunciPreferiti", annunciPreferiti.size());

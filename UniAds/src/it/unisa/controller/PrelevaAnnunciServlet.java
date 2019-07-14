@@ -242,7 +242,6 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 
 		}
 		else if(siglaUni!=null && categoria != null && titolo!=null && siglaUni.equals("0") && categoria.equals("0") && titolo.equals("0")) {
-			System.out.println("OOOOOOOOOOOOO");
 			try {
 				ArrayList<Annuncio> annunci=modelAnnuncio.doRetrieveAll("titolo");
 				request.setAttribute("numeroAnnunci", annunci.size());
@@ -258,8 +257,11 @@ public class PrelevaAnnunciServlet extends HttpServlet {
 				
 		}
 		else {
+			ArrayList<Annuncio> annunci = new ArrayList<Annuncio>();
 			request.setAttribute("erroreRicerca", "Annunci non trovati");
 			request.setAttribute("numeroAnnunci", 0);
+			request.setAttribute("annunci", annunci);
+			
 			RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrendiPreferiti?email="+email);
 			d.forward(request, response);
 

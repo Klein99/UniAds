@@ -54,7 +54,7 @@
 				String annunciJsonPreferiti = (String) request.getAttribute("annunciJsonPreferiti");
 				System.out.println(annunciJsonPreferiti);
 				System.out.println(annunciJson);
-				if(annunci.size()>0){
+				if(annunci!=null && annunci.size()>0 && numeroAnnunci>0){
 		%>
 		
 		
@@ -129,7 +129,16 @@
 				}
 		%>
       			
-		<%}%>
+		<%}
+		else{
+		%>
+			<div class="containerAds">
+				<div id="notFound"><img src="/UniAds/img/adsNotFound.png"></div>
+			</div>
+		<%
+		}	
+		%>
+		
 				
 		<%@include file="Footer.jsp" %>
 			

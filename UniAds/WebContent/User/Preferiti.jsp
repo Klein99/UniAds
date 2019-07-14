@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
   		
 	</head>
-<body onload="mostraCategorie();mostraUniversita();paginazione(0,0 ,0,0)">	
+<body onload="mostraCategorie();mostraUniversita();paginazionePreferiti(0,0 ,0,0)">	
 	
 		<%@include file="/Tutti/Header.jsp" %>
 		<%@include file="/Tutti/BarraNavigazione.jsp" %>

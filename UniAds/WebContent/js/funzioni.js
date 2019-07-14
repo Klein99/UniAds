@@ -494,6 +494,8 @@ function paginazionePreferiti(numeroPagina, annunciJson,id,size,annunciJsonPrefe
 		for(var i = 5, y = 1; i > 0; i--, y++) {
 			if(annunciJson[fine-i] != null) {
 				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+				var tipo = true;
+				
 				codice += '<div class="adBody">';
 				codice +='<span>';
 				codice += '<img onclick=\'aggiungiPreferitiLista("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
@@ -504,7 +506,6 @@ function paginazionePreferiti(numeroPagina, annunciJson,id,size,annunciJsonPrefe
 				codice += '</span>';
 				codice += '<span class="descrizioneAds">' + annunciJson[fine-i].descrizione + '</span>';
 				codice += '</a>';
-				var tipo = true;
 				codice +='</span>';
 							
 				codice += '</div>';

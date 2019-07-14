@@ -49,6 +49,7 @@ public class PrendiPreferiti extends HttpServlet {
 
 		}
 		else {
+			System.out.println("Preferiti");
 			RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/VisualizzaAnnunci.jsp");
 			d.forward(request, response);
 		}

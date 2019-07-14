@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.model.Annuncio;
+import it.unisa.model.AnnuncioModel;
 import it.unisa.model.DriverManagerConnectionPool;
 import it.unisa.model.Preferiti;
 import it.unisa.model.PreferitiModel;
+import it.unisa.model.Utente;
 
 /**
  * Servlet implementation class AggiungiPreferiti
@@ -42,7 +45,14 @@ public class AggiungiPreferiti extends HttpServlet {
 					preferiti.setEmailUtenteAnnuncio(emailAnnuncio);
 					preferiti.setTitoloAnnuncio(titoloAnnuncio);
 					modelPreferiti.doSave(preferiti);
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie=0&search=0");
+					AnnuncioModel modelAnnuncio = new AnnuncioModel(dmcp);
+					Annuncio annuncio = new Annuncio();
+					annuncio.setTitolo(titoloAnnuncio);
+					Utente utente = new Utente();
+					utente.setEmail(emailAnnuncio);
+					annuncio.setUtente(utente);
+					annuncio = modelAnnuncio.doRetrieveByKey(annuncio);
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie="+annuncio.getCategoria().getNome()+"&search=");
 					d.forward(request, response);
 				}
 				else {
@@ -50,7 +60,15 @@ public class AggiungiPreferiti extends HttpServlet {
 					preferiti.setEmailUtenteAnnuncio(emailAnnuncio);
 					preferiti.setTitoloAnnuncio(titoloAnnuncio);
 					modelPreferiti.doDelete(preferiti);
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie=0&search=0");
+					AnnuncioModel modelAnnuncio = new AnnuncioModel(dmcp);
+					Annuncio annuncio = new Annuncio();
+					annuncio.setTitolo(titoloAnnuncio);
+					Utente utente = new Utente();
+					utente.setEmail(emailAnnuncio);
+					annuncio.setUtente(utente);
+					annuncio = modelAnnuncio.doRetrieveByKey(annuncio);
+				
+					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie="+annuncio.getCategoria().getNome()+"&search=");
 					d.forward(request, response);
 				}
 				
