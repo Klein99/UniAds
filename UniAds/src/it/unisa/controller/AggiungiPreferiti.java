@@ -3,7 +3,6 @@ package it.unisa.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +27,10 @@ public class AggiungiPreferiti extends HttpServlet {
    		String emailUtente = request.getParameter("emailUtente");
    		String emailAnnuncio = request.getParameter("emailAnnuncio");
    		String titoloAnnuncio = request.getParameter("titoloAnnuncio");
+   		System.out.println(emailAnnuncio);
+   		System.out.println(emailUtente);
+   		System.out.println(titoloAnnuncio);
+   		
    		Boolean tipo = Boolean.parseBoolean(request.getParameter("tipo"));
    		DriverManagerConnectionPool dmcp = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
    		PreferitiModel modelPreferiti = new PreferitiModel(dmcp);
@@ -52,8 +55,8 @@ public class AggiungiPreferiti extends HttpServlet {
 					utente.setEmail(emailAnnuncio);
 					annuncio.setUtente(utente);
 					annuncio = modelAnnuncio.doRetrieveByKey(annuncio);
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie="+annuncio.getCategoria().getNome()+"&search=");
-					d.forward(request, response);
+				//	RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie="+annuncio.getCategoria().getNome()+"&search=");
+				//	d.forward(request, response);
 				}
 				else {
 					preferiti.setEmailUtente(emailUtente);
@@ -68,8 +71,8 @@ public class AggiungiPreferiti extends HttpServlet {
 					annuncio.setUtente(utente);
 					annuncio = modelAnnuncio.doRetrieveByKey(annuncio);
 				
-					RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie="+annuncio.getCategoria().getNome()+"&search=");
-					d.forward(request, response);
+				//	RequestDispatcher d = getServletContext().getRequestDispatcher("/Tutti/PrelevaAnnunciServlet?email="+emailUtente+"&universita=0&categorie="+annuncio.getCategoria().getNome()+"&search=");
+				//	d.forward(request, response);
 				}
 				
    			}

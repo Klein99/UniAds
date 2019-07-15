@@ -71,8 +71,9 @@
 							<li class="everyAds" id="div<%=i%>">
 								<img class="adImage" onerror="this.onerror=null; this.src='/UniAds/img/error.png'" src="/UniAds/PrelevaImmaginiServlet?email=<%=annunci.get(i-1).getUtente().getEmail()%>&titolo=<%=annunci.get(i-1).getTitolo()%>">
 		     						<div class="adBody">
-		     						<span>
-		     							<%
+		     						<span >
+		     						<span id="span<%=i%>"></span>
+		     						<%
 		     							
 		     						if(objNumAnnunciPreferiti!=null){
 		     							numeroAnnunciPreferiti = (Integer) objNumAnnunciPreferiti;
@@ -86,12 +87,12 @@
 		     						
 		     							if(tipo.equals(false) && isLog.equals(true)){
 		     					%>	
-		     								<img onclick='aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipo%>)' class="preferitiIcon" src="/UniAds/img/heart.png">
+		     								<img id="img<%=i%>" onclick='aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipo%>,<%=i %>)' class="preferitiIcon" src="/UniAds/img/heart.png">
 		     					<%	
 		     							}
 		     							if(tipo.equals(true) && isLog.equals(true)){
 		     					%>
-		     								<img onclick='aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipo%>)' class="preferitiIcon" src="/UniAds/img/heartHover.png">
+		     								<img id="img<%=i%>" onclick='aggiungiPreferiti(<%=gEmailUtente%>,<%=gEmail%>,<%=gtitolo%>,<%=tipo%>,<%=i%>)' class="preferitiIcon" src="/UniAds/img/heartHover.png">
 		     					<%
 		     							}
 		     						}

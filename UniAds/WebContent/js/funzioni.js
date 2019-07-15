@@ -58,6 +58,7 @@ function checkPassword() {
 		}
 	}
 }
+
 var checkEmail = true;
 function validazione(form) {
 	let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -74,12 +75,40 @@ function validazione(form) {
 	return true;
 }
 
+function aggiungiPreferiti(emailUtente,emailAnnuncio,titolo,tipo,i){
+	
+			let elminina;
+			if(tipo==true || tipo== "true"){
+				elimina=false;
+			
+			}
+			if(tipo==false || tipo=="false"){
+				elimina= true;
+			
+			}
+		
+	   $.ajax({
+           type: "GET",                        
+           url: "/UniAds/User/AggiungiPreferiti",
+           data: "emailUtente="+emailUtente+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo,
+           success:function(result)
+           {
+        		if(tipo==true || tipo== "true"){
+        			$("#img"+i).remove();
+        			$("#span"+i).html('<img id="img'+i+'" onclick=\'aggiungiPreferiti("'+emailUtente+'","'+emailAnnuncio+'","'+titolo+'","'+elimina+'","'+i+'")\' class="preferitiIcon" src="/UniAds/img/heart.png">');		
+        			
+        		}
+	   			else{
+	   				$("#img"+i).remove();
+	    			$('<img id="img'+i+'" onclick=\'aggiungiPreferiti("'+emailUtente+'","'+emailAnnuncio+'","'+titolo+'","'+elimina+'","'+i+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">').appendTo("#span"+i);
+		    		
+	   			}
+        	
 
-function aggiungiPreferiti(emailUtente,emailAnnuncio,titolo,tipo){
+           }
+       });
 	
-	window.location.href="/UniAds/User/AggiungiPreferiti?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
-	
-}
+	}
 function aggiungiPreferitiLista(emailUtente,emailAnnuncio,titolo,tipo){
 	
 	window.location.href="/UniAds/User/AggiungiPreferitiUtente?emailUtente="+emailUtente+"&titoloAnnuncio="+titolo+"&emailAnnuncio="+emailAnnuncio+"&tipo="+tipo;
@@ -141,24 +170,6 @@ function aggiungiCategoria(form, nome) {
 	}
 
 
-function aggiungiUniversita(form, nome) {
-	   if (window.XMLHttpRequest) {
-	    xmlhttp=new XMLHttpRequest();
-	  } else { // code for IE6, IE5
-	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	  xmlhttp.onreadystatechange=function() {
-	    if (this.readyState==4 && this.status==200) {
-	    	
-		}
-	  }
-	  var siglaUniversita=$(form["siglaUniversita"]).val();
-	  var localita=$(form["nomeLocalita"]).val();
-	  
-	  xmlhttp.open("GET","http://localhost:8080/UniAds/InserimentoUniversitaServlet"+"?siglaUniversita="+siglaUniversita+"&localita="+localita,true);
-	  xmlhttp.setRequestHeader("connection","close");
-	  xmlhttp.send();
-	}
 
 
 function mostraUniversita() {
@@ -260,51 +271,28 @@ function aggiungiImmagine(n){
 	trigger++;
 	$("#uploadImg"+trigger).trigger("click");
 	$("#uploadImg"+numeroImg).change(function(e){
-	var files = e.currentTarget.files;
-	var file = files[files.length-1];
-	var objectUrl = window.URL.createObjectURL(file);
+		
+		var files = e.currentTarget.files;
+		var file = files[files.length-1];
+		var objectUrl = window.URL.createObjectURL(file);
 	
-	if(numeroImg==0)
-		$("#imgCaricata").prop("src", objectUrl);
-	else
-		$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
-	numeroImg=numeroImg+1;
-	var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
-	var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
-	var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
-	var label = '<label for="imgLabel"></label>';
-	var closeDiv ='</div>';
-	var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
-	$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
-});
+		if(numeroImg==0)
+			$("#imgCaricata").prop("src", objectUrl);
+		else
+			$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
+		
+		numeroImg=numeroImg+1;
+		var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
+		var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
+		var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
+		var label = '<label for="imgLabel"></label>';
+		var closeDiv ='</div>';
+		var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
+		$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
+	});
 
 
 }
-
-//var numeroImg=0;
-//$(document).ready(() =>{
-//			alert(numeroImg);
-//			$("#uploadImg"+numeroImg).change(function(e){
-//			var files = e.currentTarget.files;
-//			var file = files[files.length-1];
-//			var objectUrl = window.URL.createObjectURL(file);
-//			
-//			if(numeroImg==0)
-//				$("#imgCaricata").prop("src", objectUrl);
-//			else
-//				$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
-//			numeroImg=numeroImg+1;
-//			alert(numeroImg);
-//			var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
-//			var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
-//			var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
-//			var label = '<label for="imgLabel"></label>';
-//			var closeDiv ='</div>';
-//			var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
-//			$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
-//		});
-//		
-//});
 
 //RIMUOVE L'IMMAGINE DALL'INSERIMENTO ANNUNCIO.
 function rimuoviImmagine(idd){
@@ -329,41 +317,6 @@ function maiuscolo(form, nome){
 	$(form[""+nome]).val(maiuscolo);
 }
 
-
-function eliminaCategorie(form, nome){
-	   if (window.XMLHttpRequest) {
-		    xmlhttp=new XMLHttpRequest();
-		  } else { // code for IE6, IE5
-		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  xmlhttp.onreadystatechange=function() {
-		    if (this.readyState==4 && this.status==200) {
-		    	
-			}
-		  }
-		  var nomeCategoria=$(form["nomeCateogira"]).val();
-		  
-		  xmlhttp.open("GET","http://localhost:8080/UniAds/Admin/EliminaCategoriaServlet"+"?nome="+nomeCategoria,true);
-		 
-		  xmlhttp.send();
-}
-function eliminaUniversita(form, nome){
-	   if (window.XMLHttpRequest) {
-		    xmlhttp=new XMLHttpRequest();
-		  } else { // code for IE6, IE5
-		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  xmlhttp.onreadystatechange=function() {
-		    if (this.readyState==4 && this.status==200) {
-		    	
-			}
-		  }
-		  var siglaUniversita=$(form["siglaUniversita"]).val();
-		  window.alert("CIAO");
-		  xmlhttp.open("GET","http://localhost:8080/UniAds/PrendiRegioniServlet",true);
-		 
-		  xmlhttp.send();
-}
 
 
 
@@ -399,27 +352,41 @@ function inviaForm(){
 
 function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,sizePreferiti, emailUtente){
 	var fine = numeroPagina*5;
-	if(numeroPagina!=0){
-		for(var i = 5, y = 1; i > 0; i--, y++) {
-			if(annunciJson[fine-i] != null) {
-				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
-				codice += '<div class="adBody">';
-				codice +='<span>';
-			
-				var tipo=false;
-				for(var j = 0; j<sizePreferiti;j++){
-					if(annunciJsonPreferiti[j].emailUtenteAnnuncio==annunciJson[fine-i].utente.email && annunciJsonPreferiti[j].titoloAnnuncio==annunciJson[fine-i].titolo){
-						tipo= true;
-						break;
-					}
-				}
-			
-				if(tipo == false && annunciJsonPreferiti!=null)
-					codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heart.png">';
-				if(tipo == true)
-					codice += '<img onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
-		
+	$.ajax({
+		type: "GET",                        
+        url: "/UniAds/PreferitiAjax",
+        data: "email="+emailUtente,
+        success:function(result){
+
+        	if(numeroPagina!=0){
+        		for(var i = 5, y = 1; i > 0; i--, y++) {
+        			if(annunciJson[fine-i] != null) {
+        				var codice = '<img class="adImage" onerror="this.onerror=null; this.src=\'/UniAds/img/error.png\'" src="/UniAds/PrelevaImmaginiServlet?email='+annunciJson[fine-i].utente.email+'&titolo='+annunciJson[fine-i].titolo+'">';
+        				codice += '<div class="adBody">';
+        				codice +='<span>';
+        				codice +='<span id="span'+i+'">';
+        				codice +='</span>';
 				
+				
+        				var tipo=false;
+			        
+			           annunciJsonPreferiti=JSON.parse(result);
+			        	 
+			           for(var j = 0; j<annunciJsonPreferiti.length;j++){
+			        	   if(annunciJsonPreferiti[j].emailUtenteAnnuncio==annunciJson[fine-i].utente.email && annunciJsonPreferiti[j].titoloAnnuncio==annunciJson[fine-i].titolo){						
+								tipo= true;
+								break;
+							}
+						}
+
+				
+				
+				if(tipo==false )
+					codice += '<img id="img'+i+'" onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'","'+i+'")\' class="preferitiIcon" src="/UniAds/img/heart.png">';
+					
+				
+				if(tipo==true )
+					codice += '<img id="img'+i+'" onclick=\'aggiungiPreferiti("'+emailUtente+'","'+annunciJson[fine-i].utente.email+'","'+annunciJson[fine-i].titolo+'","'+tipo+'","'+i+'")\' class="preferitiIcon" src="/UniAds/img/heartHover.png">';
 				
 				codice += '<a onclick=\'selezionaAnnuncio("' + annunciJson[fine-i].titolo + '","' + annunciJson[fine-i].utente.email + '")\'>';
 				codice += '<span class="titoloAds">' + annunciJson[fine-i].titolo;
@@ -440,14 +407,21 @@ function paginazione(numeroPagina, annunciJson,id,size,annunciJsonPreferiti,size
 		}
 	}
 	
-	for(var i = 0; i <size;i++){
-		$("#bottone"+i).css("background-color","#188aff");
-		$("#bottone"+i).css("color","#ffffff");
-	}
+        	for(var i = 0; i <size;i++){
+        		$("#bottone"+i).css("background-color","#188aff");
+        		$("#bottone"+i).css("color","#ffffff");
+        	}
 	
-	$("#bottone"+id).css("background-color","#ffffff");
-	$("#bottone"+id).css("color","#188aff");
-		
+        	$("#bottone"+id).css("background-color","#ffffff");
+        	$("#bottone"+id).css("color","#188aff");
+			        	   
+			        	   
+							
+			}
+	});				
+								
+				
+				
 }
 
 function paginazioneUtente(numeroPagina, annunciJson,emailUser,id,size){
