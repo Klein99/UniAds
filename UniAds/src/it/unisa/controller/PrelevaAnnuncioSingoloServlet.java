@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Response;
+
 import it.unisa.model.Annuncio;
 import it.unisa.model.AnnuncioModel;
 import it.unisa.model.DriverManagerConnectionPool;
@@ -32,19 +34,22 @@ public class PrelevaAnnuncioSingoloServlet extends HttpServlet
 		utente.setEmail(mail);
 		annuncioFit.setUtente(utente);
 		Annuncio annuncio = null;
-		try 
-		{
-			annuncio = modelAnnuncio.doRetrieveByKey(annuncioFit);
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
+		if(titolo!=null && !titolo.equals("null")  && mail!= null && !mail.equals("null")) {
+			try {
+				annuncio = modelAnnuncio.doRetrieveByKey(annuncioFit);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			request.setAttribute("Annuncio", annuncio);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Tutti/Annuncio.jsp");
+			rd.forward(request, response);
 		}
-		
-		request.setAttribute("Annuncio", annuncio);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Tutti/Annuncio.jsp");
-		rd.forward(request, response);
-	}	
+		else {
+			response.sendRedirect("/UniAds/Tutti/errore404.jsp");
+		}
+	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{		

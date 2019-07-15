@@ -8,6 +8,10 @@
 		<error-code>404</error-code>
     	<location>/Tutti/errore404.jsp</location>
 	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+    	<location>/Tutti/errore404.jsp</location>
+	</error-page>
 	<filter>
 		<filter-name>httpHeaderSecurity</filter-name>
 		<filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>
