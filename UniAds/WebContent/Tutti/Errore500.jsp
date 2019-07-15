@@ -24,7 +24,7 @@
 		
 		
 		<div class="containerAds"><br><br>
-		<div id="notFound"><img src="/UniAds/img/errore404.png"><br/>
+		<div id="notFound"><img src="/UniAds/img/Errore500.png"><br/>
 		<h3 class="text-align-center">&nbsp;</h3>
 		<p style="text-align: center;color:#0091df;">Ci dispiace molto che non hai trovato quello che cercavi <br/>ma potremmo consigliarti di 
 		Tornare alla&nbsp;<a class="contattaci" style="text-decoration: none;"href="/UniAds/Tutti/HomePage.jsp">home</a><br/>
