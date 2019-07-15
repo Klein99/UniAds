@@ -574,7 +574,7 @@ function displaySelect()
 				var fieldset = "<fieldset class='risi'> <legend>Acquisto Online</legend>";
 				var select = "<select id='corriere' class='select'>";
 				var option = "<option value='0' selected>Scegli un corriere</option>";
-			
+			 
 				for(var i = 0; i<lunghezza; i++){
 					var temp = obj[i];
 				
