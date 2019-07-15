@@ -52,6 +52,16 @@
 {
 	height:300px;
 	width: 350px;
+  padding: 50px;
+  transition: transform .2s;
+  margin: 0 auto;
+}
+
+.slides:hover{
+	-ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
+	
 }
 
 #descrizione
@@ -117,6 +127,21 @@
     margin: 10px;
     border-radius: 10px;
     outline: 0;
+}
+
+.zoom {
+  padding: 50px;
+  background-color: green;
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
 }
 
 	/*<---Responsive--->*/
