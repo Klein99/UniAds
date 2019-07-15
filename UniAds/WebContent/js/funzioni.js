@@ -267,43 +267,73 @@ function mostraListaRegioni(email) {
 //AGGIUNGE L'IMMAGINE IN INSERIMENTO ANNUNCIO.
 var trigger=-1;
 var numeroImg=0;
-function aggiungiImmagine(n){
-	trigger++;
-	$("#uploadImg"+trigger).trigger("click");
-	$("#uploadImg"+numeroImg).change(function(e){
-		
-		var files = e.currentTarget.files;
-		var file = files[files.length-1];
-		var objectUrl = window.URL.createObjectURL(file);
+var size = 0;
+var count = 2;
+
+function aggiungiImmagine(){
+		var container = document.getElementById("divImg");
+		size++;
+		var div =$("<div></div>");
+		var input=$('<input type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+size+'" multiple="multiple" >');
 	
-		if(numeroImg==0)
-			$("#imgCaricata").prop("src", objectUrl);
-		else
-			$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
+		var buttonRimuovi = $('<input type ="button" onclick="rimuoviImmagine(this)" value="-">');
+		$(div).append(input);
+		$(div).append(buttonRimuovi);
+		$("#uploadImg"+(size-1)).parent().after(div);
 		
-		numeroImg=numeroImg+1;
-		var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
-		var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
-		var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
-		var label = '<label for="imgLabel"></label>';
-		var closeDiv ='</div>';
-		var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
-		$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
-	});
+	
+//	console.log(trigger);
+//	
+//	$("#uploadImg"+(trigger+1)).trigger("click");
+//	
+//	$("#uploadImg"+(numeroImg)).change(function(e){
+//		var files = e.currentTarget.files;
+//		var file = files[files.length-1];
+//		console.log(files);
+//		console.log(file);
+//		
+//		if(file!=undefined && files.length>size){
+//			size = files.length;
+//			alert(file);
+//			var objectUrl = window.URL.createObjectURL(file);
+//			trigger++;
+//			
+//			if(numeroImg==0){
+//				$("#imgCaricata").prop("src", objectUrl);
+//				alert(1);
+//			}
+//			else{
+//				$("#imgCaricata"+(numeroImg)).prop("src", objectUrl);
+//				alert(2);
+//			}
+//			numeroImg=numeroImg+1;
+//			var openDiv = '<div class="img" id="divImg'+numeroImg+'">';
+//			var imgTag = '<img class="nuovaImg" src="/UniAds/img/iconaddphoto.png" onclick="aggiungiImmagine()" id="imgCaricata'+(numeroImg)+'">';
+//			var imgDelete = '<img src="/UniAds/img/delete.png" onclick="rimuoviImmagine(\'divImg'+numeroImg+'\')" id="img'+numeroImg+'" onmouseout="outImg(\'img'+numeroImg+'\')" onmouseenter="hoverImg(\'img'+numeroImg+'\')"';
+//			var label = '<label for="imgLabel"></label>';
+//			var closeDiv ='</div>';
+//			var inputFile = '<input style="visibility: hidden" type="file"  value="Scegli immagine" name="img" size="200" id="uploadImg'+(numeroImg)+'" multiple="multiple" >'
+//			$("#"+0).append(openDiv+imgTag+imgDelete+label+closeDiv+inputFile);
+//		}
+//	});
+//
 
-
+}
+function rimuoviImmagine(el) {
+	$(el).parent().remove();
+	size--;
 }
 
 //RIMUOVE L'IMMAGINE DALL'INSERIMENTO ANNUNCIO.
-function rimuoviImmagine(idd){
-	if(idd=="divImg"){
-		$("#imgCaricata").prop("src","/UniAds/img/iconaddphoto.png")
-	}
-	else{
-		$("#"+idd).remove();
-		numeroImg = numeroImg-1;
-	}
-}
+//function rimuoviImmagine(idd){
+//	if(idd=="divImg"){
+//		$("#imgCaricata").prop("src","/UniAds/img/iconaddphoto.png")
+//	}
+//	else{
+//		$("#"+idd).remove();
+//		numeroImg = numeroImg-1;
+//	}
+//}
 
 function primaLetteraMaiuscola(form, nome){
 	var valore = $(form[""+nome]).val();
@@ -550,8 +580,11 @@ function displaySelect()
 				
 					var agenzia = temp.agenzia;
 					var prezzo = temp.prezzo;
-					var valoreOption = "Agenzia:"+agenzia+" Prezzo:"+prezzo;
-					option = option +  "<option value='" + agenzia + "'>" + valoreOption + " </option>";
+					if(agenzia!=agenziaprec){
+						var valoreOption = "Agenzia:"+agenzia+" Prezzo:"+prezzo;
+						option = option +  "<option value='" + agenzia + "'>" + valoreOption + " </option>";
+					}
+					var agenziaprec = agenzia;
 				}	 
 					var selectEnd = "</select>";
 					var input = "<input type='text' placeholder='Numero Carta' id='carta'>";

@@ -10,7 +10,7 @@
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-    	<location>/Tutti/errore404.jsp</location>
+    	<location>/Tutti/Errore500.jsp</location>
 	</error-page>
 	<filter>
 		<filter-name>httpHeaderSecurity</filter-name>
